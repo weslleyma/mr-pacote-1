@@ -3,7 +3,7 @@ package br.ufg.inf.fabrica.persistencia;
 import org.openehr.rm.datatypes.uri.DvURI;
 
 /**
- * Representa registro que armazena DvURI.
+ * Representa registro que armazena DvURI e DvEHRURI.
  */
 public class RegistroDvURI {
 

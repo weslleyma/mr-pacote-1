@@ -3,6 +3,7 @@ package br.ufg.inf.fabrica.persistencia;
 import org.openehr.rm.datatypes.basic.DataValue;
 import org.openehr.rm.datatypes.basic.DvBoolean;
 import org.openehr.rm.datatypes.basic.DvIdentifier;
+import org.openehr.rm.datatypes.uri.DvEHRURI;
 import org.openehr.rm.datatypes.uri.DvURI;
 
 import java.util.HashMap;
@@ -16,7 +17,8 @@ public class DataValueRepositoryRam implements DataValueRepository {
 
     private final int DVBOOLEAN = 0;
     private final int DVIDENTIFIER = 1;
-    private final int DVURI= 2;
+    private final int DVURI = 2;
+    private final int DVEHRURI = 3;
 
     /**
      * Tabela específica para registro de DvBoolean.
@@ -29,7 +31,7 @@ public class DataValueRepositoryRam implements DataValueRepository {
     private Map<String, RegistroDvIdentifier> dvidentifier = new HashMap<String, RegistroDvIdentifier>();
 
     /**
-     * Tabela específica para registro de DvURI.
+     * Tabela específica para registro de DvURI e DvEHRURI.
      */
     private Map<String, RegistroDvURI> dvuri = new HashMap<String, RegistroDvURI>();
 
@@ -63,6 +65,16 @@ public class DataValueRepositoryRam implements DataValueRepository {
         } else if (objeto instanceof DvURI) {
             // Atualiza "raiz"
             raiz.put(key, DVURI);
+
+            // Monta registro
+            RegistroDvURI registro = new RegistroDvURI();
+            registro.from((DvURI) objeto);
+
+            // Guarda registro em tabela própria
+            dvuri.put(key, registro);
+        } else if (objeto instanceof DvEHRURI) {
+            // Atualiza "raiz"
+            raiz.put(key, DVEHRURI);
 
             // Monta registro
             RegistroDvURI registro = new RegistroDvURI();
