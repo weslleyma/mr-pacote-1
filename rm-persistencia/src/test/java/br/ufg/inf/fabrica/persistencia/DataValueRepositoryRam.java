@@ -1,8 +1,10 @@
 package br.ufg.inf.fabrica.persistencia;
 
+import com.sun.org.apache.bcel.internal.classfile.Code;
 import org.openehr.rm.datatypes.basic.DataValue;
 import org.openehr.rm.datatypes.basic.DvBoolean;
 import org.openehr.rm.datatypes.basic.DvIdentifier;
+import org.openehr.rm.datatypes.text.CodePhrase;
 import org.openehr.rm.datatypes.uri.DvEHRURI;
 import org.openehr.rm.datatypes.uri.DvURI;
 
@@ -19,6 +21,7 @@ public class DataValueRepositoryRam implements DataValueRepository {
     private final int DVIDENTIFIER = 1;
     private final int DVURI = 2;
     private final int DVEHRURI = 3;
+    private final int CODEPHRASE = 4;
 
     /**
      * Tabela específica para registro de DvBoolean.
@@ -34,6 +37,11 @@ public class DataValueRepositoryRam implements DataValueRepository {
      * Tabela específica para registro de DvURI e DvEHRURI.
      */
     private Map<String, RegistroDvURI> dvuri = new HashMap<String, RegistroDvURI>();
+
+    /**
+     * Tabela específica para registro de CodePhrase.
+     */
+    private Map<String, RegistroCodePhrase> codephrase = new HashMap<String, RegistroCodePhrase>();
 
     /**
      * Tabela que identifica o tipo do objeto para uma dada chave.
@@ -82,6 +90,16 @@ public class DataValueRepositoryRam implements DataValueRepository {
 
             // Guarda registro em tabela própria
             dvuri.put(key, registro);
+        } else if (objeto instanceof CodePhrase) {
+            // Atualiza "raiz"
+            raiz.put(key, CODEPHRASE);
+
+            // Monta registro
+            RegistroCodePhrase registro = new RegistroCodePhrase();
+            registro.from((CodePhrase) objeto);
+
+            // Guarda registro em tabela própria
+            codephrase.put(key, registro);
         }
     }
 
@@ -95,6 +113,8 @@ public class DataValueRepositoryRam implements DataValueRepository {
                 return dvidentifier.get(key).to();
             case DVURI:
                 return dvuri.get(key).to();
+            case CODEPHRASE:
+                return codephrase.get(key).to();
         }
 
         return null;
