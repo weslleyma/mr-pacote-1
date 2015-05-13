@@ -5,7 +5,7 @@ import org.openehr.rm.datatypes.basic.DataValue;
 import java.util.Map;
 
 /**
- * Repositório para objeto do tipo DataValue.
+ * Repositório para objeto do tipo {@see org.openehr.rm.datatypes.basic.DataValue}.
  */
 public interface DataValueRepository {
 
