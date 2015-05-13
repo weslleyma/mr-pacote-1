@@ -8,11 +8,11 @@ import org.openehr.rm.datatypes.basic.DvBoolean;
 public class RegistroDvBoolean {
     private boolean valor;
 
-    public void fromDataValue(DvBoolean dv) {
+    public void from(DvBoolean dv) {
         valor = dv.getValue();
     }
 
-    public DvBoolean toDataValue() {
+    public DvBoolean to() {
         return valor ? DvBoolean.TRUE : DvBoolean.FALSE;
     }
 }

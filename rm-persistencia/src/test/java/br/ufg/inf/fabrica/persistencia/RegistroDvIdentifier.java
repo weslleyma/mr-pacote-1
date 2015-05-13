@@ -11,14 +11,14 @@ public class RegistroDvIdentifier {
     private String assigner;
     private String type;
 
-    public void fromDataValue(DvIdentifier di) {
+    public void from(DvIdentifier di) {
         assigner = di.getAssigner();
         id = di.getId();
         issuer = di.getIssuer();
         type = di.getType();
     }
 
-    public DvIdentifier toDataValue() {
+    public DvIdentifier to() {
         return new DvIdentifier(issuer, assigner, id, type);
     }
 }

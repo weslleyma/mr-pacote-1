@@ -39,7 +39,7 @@ public class DataValueRepositoryRam implements DataValueRepository {
 
             // Monta registro
             RegistroDvBoolean registro = new RegistroDvBoolean();
-            registro.fromDataValue((DvBoolean) objeto);
+            registro.from((DvBoolean) objeto);
 
             // Guarda registro em tabela própria
             dvboolean.put(key, registro);
@@ -49,7 +49,7 @@ public class DataValueRepositoryRam implements DataValueRepository {
 
             // Monta registro
             RegistroDvIdentifier registro = new RegistroDvIdentifier();
-            registro.fromDataValue((DvIdentifier) objeto);
+            registro.from((DvIdentifier) objeto);
 
             // Guarda registro em tabela própria
             dvidentifier.put(key, registro);
@@ -61,9 +61,9 @@ public class DataValueRepositoryRam implements DataValueRepository {
         int classe = raiz.get(key);
         switch (classe) {
             case DVBOOLEAN :
-                return dvboolean.get(key).toDataValue();
+                return dvboolean.get(key).to();
             case DVIDENTIFIER:
-                return dvidentifier.get(key).toDataValue();
+                return dvidentifier.get(key).to();
         }
 
         return null;
