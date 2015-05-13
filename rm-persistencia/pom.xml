@@ -2,22 +2,24 @@
 	
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-	<groupId>openehr</groupId>
-	<artifactId>ref_impl_java</artifactId>
-	<version>1.0.11-SNAPSHOT</version>
+		<groupId>openehr</groupId>
+		<artifactId>ref_impl_java</artifactId>
+		<version>1.0.11-SNAPSHOT</version>
 	</parent>
+
 	<artifactId>rm-persistencia</artifactId>
 	<packaging>jar</packaging>
-	<name>Trabalho Final (Disciplina Persistencia)</name>
-	<url>http://github.com/kyriosdata/java-libs.git</url>   
+	<name>Persistência para o Modelo de Referência do openEHR</name>
+	<url>http://github.com/kyriosdata/mr.git</url>
 
     <organization>
-		<name>Fabrica</name>
+		<name>Fábrica de Software - Instituto de Informática/UFG</name>
 		<url>http://www.inf.ufg.br/</url>
 	</organization>
 	<inceptionYear>2015</inceptionYear>
 	
-	<description>Trabalho final disciplina de persistência</description>
+	<description>Proposta de implementação de persistência
+        do Modelo de Referência do openEHR</description>
 	
 	<dependencies>		
 		<dependency>
