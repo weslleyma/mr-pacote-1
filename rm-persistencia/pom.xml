@@ -6,7 +6,7 @@
 	<artifactId>ref_impl_java</artifactId>
 	<version>1.0.11-SNAPSHOT</version>
 	</parent>
-	<artifactId>trabalho-final</artifactId>
+	<artifactId>rm-persistencia</artifactId>
 	<packaging>jar</packaging>
 	<name>Trabalho Final (Disciplina Persistencia)</name>
 	<url>http://github.com/kyriosdata/java-libs.git</url>   
