@@ -93,7 +93,7 @@
     <module>openehr-rm-domain</module>
     <module>measure-serv</module>
     <module>mini-termserv</module>
-    <module>trabalho-final</module>
+    <module>rm-persistencia</module>
   </modules>
   <distributionManagement>
     <repository>
