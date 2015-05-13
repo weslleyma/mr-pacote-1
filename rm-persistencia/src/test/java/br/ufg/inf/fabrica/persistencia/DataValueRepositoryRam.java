@@ -3,6 +3,7 @@ package br.ufg.inf.fabrica.persistencia;
 import org.openehr.rm.datatypes.basic.DataValue;
 import org.openehr.rm.datatypes.basic.DvBoolean;
 import org.openehr.rm.datatypes.basic.DvIdentifier;
+import org.openehr.rm.datatypes.uri.DvURI;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,6 +16,7 @@ public class DataValueRepositoryRam implements DataValueRepository {
 
     private final int DVBOOLEAN = 0;
     private final int DVIDENTIFIER = 1;
+    private final int DVURI= 2;
 
     /**
      * Tabela específica para registro de DvBoolean.
@@ -25,6 +27,11 @@ public class DataValueRepositoryRam implements DataValueRepository {
      * Tabela específica para registro de DvIdentifier.
      */
     private Map<String, RegistroDvIdentifier> dvidentifier = new HashMap<String, RegistroDvIdentifier>();
+
+    /**
+     * Tabela específica para registro de DvURI.
+     */
+    private Map<String, RegistroDvURI> dvuri = new HashMap<String, RegistroDvURI>();
 
     /**
      * Tabela que identifica o tipo do objeto para uma dada chave.
@@ -53,6 +60,16 @@ public class DataValueRepositoryRam implements DataValueRepository {
 
             // Guarda registro em tabela própria
             dvidentifier.put(key, registro);
+        } else if (objeto instanceof DvURI) {
+            // Atualiza "raiz"
+            raiz.put(key, DVURI);
+
+            // Monta registro
+            RegistroDvURI registro = new RegistroDvURI();
+            registro.from((DvURI) objeto);
+
+            // Guarda registro em tabela própria
+            dvuri.put(key, registro);
         }
     }
 
@@ -64,6 +81,8 @@ public class DataValueRepositoryRam implements DataValueRepository {
                 return dvboolean.get(key).to();
             case DVIDENTIFIER:
                 return dvidentifier.get(key).to();
+            case DVURI:
+                return dvuri.get(key).to();
         }
 
         return null;
