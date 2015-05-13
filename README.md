@@ -6,5 +6,6 @@ disponível em https://github.com/openehr/java-libs.git.
 TODOS OS CRÉDITOS DEVEM SER DEVIDAMENTE ATRIBUÍDOS
 A QUEM DEVE. 
 
-Em particular, trata-se apenas da parte denominada de
+O presente "fork" inclui apenas parte do disponível na
+URL acima, denominada de
 Modelo de Referência do openEHR. 
