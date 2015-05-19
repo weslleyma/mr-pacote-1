@@ -3,7 +3,7 @@ package br.ufg.inf.fabrica.persistencia;
 import org.openehr.rm.support.identification.*;
 
 /**
- * Representa registro que armazena instância de {@code ObjectRef}.
+ * Registro que armazena instância de {@code ObjectRef}.
  */
 public class RegistroObjectRef {
 
