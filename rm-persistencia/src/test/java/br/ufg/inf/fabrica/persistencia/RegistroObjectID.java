@@ -21,6 +21,9 @@ public class RegistroObjectID {
     private String value;
     private int tipo;
 
+    // GenericID
+    private String scheme;
+
     public void from(ObjectID objectID) {
         if (objectID instanceof TemplateID) {
             tipo = TIPO_TEMPLATE_ID;
@@ -28,6 +31,7 @@ public class RegistroObjectID {
             tipo = TIPO_ARCHETYPE_ID;
         } else if (objectID instanceof GenericID) {
             tipo = TIPO_GENERIC_ID;
+            scheme = ((GenericID) objectID).getScheme();
         } else if (objectID instanceof TerminologyID) {
             tipo = TIPO_TERMINOLOGY_ID;
         } else if (objectID instanceof HierObjectID) {
@@ -41,13 +45,19 @@ public class RegistroObjectID {
         value = objectID.getValue();
     }
 
-    public UID toUID() {
-        if (tipo == TIPO_INTERNET_ID) {
-            return new InternetID(value);
-        } else if (tipo == TIPO_UUID) {
-            return new UUID(value);
-        } else if (tipo == TIPO_ISO_OID) {
-            return new ISO_OID(value);
+    public ObjectID to() {
+        if (tipo == TIPO_TEMPLATE_ID) {
+            return new TemplateID(value);
+        } else if (tipo == TIPO_TERMINOLOGY_ID) {
+            return new TerminologyID(value);
+        } else if (tipo == TIPO_GENERIC_ID) {
+            return new GenericID(value, scheme);
+        } else if (tipo == TIPO_ARCHETYPE_ID) {
+            return new ArchetypeID(value);
+        } else if (tipo == TIPO_HIEROBJECTID) {
+            return new HierObjectID(value);
+        } else if (tipo == TIPO_OBJECTVERSIONID) {
+            return new ObjectVersionID(value);
         }
 
         throw new RuntimeException("tipo inválido");
