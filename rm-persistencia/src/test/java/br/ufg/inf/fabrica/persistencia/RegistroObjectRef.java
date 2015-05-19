@@ -19,7 +19,12 @@ public class RegistroObjectRef {
     private String path;
     private int tipo;
 
+    public String getKeyObjectID() {
+        return keyObjectID;
+    }
+
     public ObjectRef to(ObjectID objectID) {
+
         switch (tipo) {
             case TIPO_OBJECT_REF:
                 return new ObjectRef(objectID, namespace, type);
@@ -31,6 +36,28 @@ public class RegistroObjectRef {
                 return new LocatableRef((ObjectVersionID)objectID, namespace, type, path);
             default:
                 throw new RuntimeException("tipo inválido");
+        }
+    }
+
+    public void from(ObjectRef objectRef, String keyObjectID) {
+        this.keyObjectID = keyObjectID;
+
+        if (objectRef instanceof ObjectRef) {
+            tipo = TIPO_OBJECT_REF;
+            namespace = objectRef.getNamespace();
+            type = objectRef.getType();
+        } else if (objectRef instanceof PartyRef) {
+            tipo = TIPO_PARTY_REF;
+            type = objectRef.getType();
+        } else if (objectRef instanceof AccessGroupRef) {
+            tipo = TIPO_ACCESS_GROUP_REF;
+        } else if (objectRef instanceof LocatableRef) {
+            tipo = TIPO_LOCATABLE_REF;
+            namespace = objectRef.getNamespace();
+            type = objectRef.getType();
+            path = ((LocatableRef) objectRef).getPath();
+        } else {
+            throw new RuntimeException("tipo inválido");
         }
     }
 }
