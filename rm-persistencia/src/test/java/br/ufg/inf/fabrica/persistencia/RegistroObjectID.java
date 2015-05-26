@@ -7,15 +7,12 @@ import org.openehr.rm.support.identification.*;
  */
 public class RegistroObjectID {
 
-    public static final int TIPO_INTERNET_ID = 0;
-    public static final int TIPO_UUID = 1;
-    public static final int TIPO_ISO_OID = 2;
-    public static final int TIPO_TEMPLATE_ID = 3;
-    public static final int TIPO_ARCHETYPE_ID = 4;
-    public static final int TIPO_GENERIC_ID = 5;
-    public static final int TIPO_TERMINOLOGY_ID = 6;
-    public static final int TIPO_HIEROBJECTID = 7;
-    public static final int TIPO_OBJECTVERSIONID = 8;
+    public static final int TIPO_TEMPLATE_ID = 0;
+    public static final int TIPO_ARCHETYPE_ID = 1;
+    public static final int TIPO_GENERIC_ID = 2;
+    public static final int TIPO_TERMINOLOGY_ID = 3;
+    public static final int TIPO_HIEROBJECTID = 4;
+    public static final int TIPO_OBJECTVERSIONID = 5;
 
     // ObjectID
     private String value;
