@@ -4,6 +4,11 @@ import org.openehr.rm.support.identification.*;
 
 /**
  * Registro que armazena instância de {@code ObjectRef}.
+ * 
+ * Observe que o método {@code #from} exige que seja
+ * fornecida a chave correspondente ao objeto 
+ * {@code ObjectID} referenciado pela instância de 
+ * {@code ObjectRef}. 
  */
 public class RegistroObjectRef {
 
