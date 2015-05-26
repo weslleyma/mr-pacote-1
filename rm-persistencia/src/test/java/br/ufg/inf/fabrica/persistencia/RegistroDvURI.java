@@ -3,17 +3,26 @@ package br.ufg.inf.fabrica.persistencia;
 import org.openehr.rm.datatypes.uri.DvURI;
 
 /**
- * Representa registro que armazena DvURI e DvEHRURI.
+ * Registro que armazena DvURI ou DvEHRURI.
+ * 
+ * Ao obter uma instância do registro é 
+ * necessário conhecer o tipo armazenado e
+ * empregar o método apropriado, ou seja,
+ * {@code #to} ou {@code #toEHRURI}.
  */
 public class RegistroDvURI {
 
-    private String uri;
+    private String value;
 
-    public void from(DvURI uri) {
-        this.uri = uri.toString();
+    public void from(DvURI objeto) {
+        this.value = objeto.getValue();
     }
 
     public DvURI to() {
-        return new DvURI(uri);
+        return new DvURI(value);
+    }
+    
+    public DvEHRURI toEHRURI() {
+        return new DvEHRURI(value);
     }
 }
