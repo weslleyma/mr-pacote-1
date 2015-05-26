@@ -30,4 +30,15 @@ public class DvURIRepositoryTest extends TestCase {
 
         Assert.assertEquals(uri, repo.get(key));
     }
+    
+    public void testPersisteRecuperaEHRURI() {
+        DvURI uri = new DvEHRURI("https://github.com");
+
+        String key = UUID.randomUUID().toString();
+
+        repo.save(key, uri);
+
+        DvEHRURI recuperado = (DvEHRURI)repo.get(key);
+        Assert.assertEquals(uri, recuperado);
+    }
 }
