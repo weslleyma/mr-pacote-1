@@ -22,7 +22,7 @@ public class RegistroDvURI {
         return new DvURI(value);
     }
     
-    public DvEHRURI toEHRURI() {
+    public DvURI toEHRURI() {
         return new DvEHRURI(value);
     }
 }
