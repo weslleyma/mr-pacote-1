@@ -12,8 +12,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Implementação empregada apenas para experimentar estratégias
- * e permitir domínio do problema.
+ * Implementação empregada apenas para experimentar estratégia
+ * de persistência de {@code DataValue} usando base relacional.
+ * 
+ * Nessa estratégia cada instância é associada a uma surrogate key.
+ * 
+ * Para cada instância existe um registro formado pela surrogate
+ * key e o tipo da instância em questão. Este registro é fornecido
+ * na tabela RAIZ.
  */
 public class DataValueRepositoryRam implements DataValueRepository {
 
@@ -44,7 +50,7 @@ public class DataValueRepositoryRam implements DataValueRepository {
     private Map<String, RegistroCodePhrase> codephrase = new HashMap<String, RegistroCodePhrase>();
 
     /**
-     * Tabela que identifica o tipo do objeto para uma dada chave.
+     * (RAIZ) Tabela que identifica o tipo do objeto para uma dada chave.
      */
     private Map<String, Integer> raiz = new HashMap<String, Integer>();
 
@@ -113,6 +119,8 @@ public class DataValueRepositoryRam implements DataValueRepository {
                 return dvidentifier.get(key).to();
             case DVURI:
                 return dvuri.get(key).to();
+            case DVEHRURI:
+                return dvuri.get(key).toEHRURI();
             case CODEPHRASE:
                 return codephrase.get(key).to();
         }
