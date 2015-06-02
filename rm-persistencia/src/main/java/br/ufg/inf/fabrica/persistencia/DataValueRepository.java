@@ -12,13 +12,16 @@ public interface DataValueRepository {
     /**
      * Persiste o objeto associado à chave.
      *
+     * O objeto é qualquer instância da classe {@see org.openehr.rm.datatypes.basic.DataValue}.
+     *
      * @param key A chave empregada para identificar unicamente
-     *            o objeto.
+     *            o objeto a ser persistido.
      *
      * @param objeto Instância de @see org.openehr.rm.datatypes.basic.DataValue
      *               a ser persistida.
      *
      * @throws NullPointerException se a chave ou o objeto for <b>null</b>.
+     * @see #get(String)
      */
     void save(String key, DataValue objeto);
 
@@ -29,6 +32,7 @@ public interface DataValueRepository {
      * @param key A chave do objeto a ser recuperado.
      *
      * @throws NullPointerException se a chave fornecida for <b>null</b>.
+     * @see #save(String, DataValue)
      */
     DataValue get(String key);
 
