@@ -1,13 +1,11 @@
 package br.ufg.inf.fabrica.persistencia;
 
-import org.openehr.rm.datatypes.basic.DataValue;
 import org.openehr.rm.support.identification.ObjectID;
 import org.openehr.rm.support.identification.ObjectRef;
 
-import java.util.Map;
-
 /**
- * Repositório para objeto do tipo {@see org.openehr.rm.datatypes.basic.DataValue}.
+ * Repositório para objetos {@see org.openehr.rm.support.identification.ObjectID} e
+ * {@see org.openehr.rm.support.identification.ObjectRef}.
  */
 public interface IdentificacaoRepository {
 
@@ -17,7 +15,7 @@ public interface IdentificacaoRepository {
      * @param key A chave empregada para identificar unicamente
      *            o objeto.
      *
-     * @param objeto Instância de @see org.openehr.rm.datatypes.basic.ObjectID
+     * @param objeto Instância de @see org.openehr.rm.support.identification.ObjectID
      *               a ser persistida.
      *
      * @throws NullPointerException se a chave ou o objeto for <b>null</b>.
