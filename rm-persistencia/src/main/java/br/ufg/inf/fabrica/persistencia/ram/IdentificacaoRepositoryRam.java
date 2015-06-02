@@ -1,5 +1,6 @@
-package br.ufg.inf.fabrica.persistencia;
+package br.ufg.inf.fabrica.persistencia.ram;
 
+import br.ufg.inf.fabrica.persistencia.IdentificacaoRepository;
 import org.openehr.rm.support.identification.ObjectID;
 import org.openehr.rm.support.identification.ObjectRef;
 

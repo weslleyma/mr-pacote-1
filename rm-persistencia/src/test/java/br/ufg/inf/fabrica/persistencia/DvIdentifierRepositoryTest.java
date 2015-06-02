@@ -1,8 +1,8 @@
 package br.ufg.inf.fabrica.persistencia;
 
+import br.ufg.inf.fabrica.persistencia.ram.DataValueRepositoryRam;
 import junit.framework.Assert;
 import junit.framework.TestCase;
-import org.openehr.rm.datatypes.basic.DvBoolean;
 import org.openehr.rm.datatypes.basic.DvIdentifier;
 
 import java.util.UUID;

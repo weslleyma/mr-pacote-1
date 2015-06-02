@@ -1,4 +1,4 @@
-package br.ufg.inf.fabrica.persistencia;
+package br.ufg.inf.fabrica.persistencia.ram;
 
 import org.openehr.rm.datatypes.basic.DvBoolean;
 

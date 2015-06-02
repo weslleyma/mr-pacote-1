@@ -1,9 +1,9 @@
 package br.ufg.inf.fabrica.persistencia;
 
+import br.ufg.inf.fabrica.persistencia.ram.DataValueRepositoryRam;
 import junit.framework.Assert;
 import junit.framework.TestCase;
 import org.openehr.rm.datatypes.text.CodePhrase;
-import org.openehr.rm.datatypes.uri.DvURI;
 import org.openehr.rm.support.identification.TerminologyID;
 
 import java.util.UUID;

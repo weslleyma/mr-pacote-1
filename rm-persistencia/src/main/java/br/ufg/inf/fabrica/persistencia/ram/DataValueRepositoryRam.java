@@ -1,6 +1,10 @@
-package br.ufg.inf.fabrica.persistencia;
+package br.ufg.inf.fabrica.persistencia.ram;
 
-import com.sun.org.apache.bcel.internal.classfile.Code;
+import br.ufg.inf.fabrica.persistencia.DataValueRepository;
+import br.ufg.inf.fabrica.persistencia.ram.RegistroCodePhrase;
+import br.ufg.inf.fabrica.persistencia.ram.RegistroDvBoolean;
+import br.ufg.inf.fabrica.persistencia.ram.RegistroDvIdentifier;
+import br.ufg.inf.fabrica.persistencia.ram.RegistroDvURI;
 import org.openehr.rm.datatypes.basic.DataValue;
 import org.openehr.rm.datatypes.basic.DvBoolean;
 import org.openehr.rm.datatypes.basic.DvIdentifier;
