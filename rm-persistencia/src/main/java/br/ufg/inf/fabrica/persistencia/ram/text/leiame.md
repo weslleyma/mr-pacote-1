@@ -14,6 +14,10 @@ DvText
 - languageCodeString
 - encodingTerminology
 - encodingCodeString
+
+DvCodedText (para permitir que seja incorporado posteriormente)
+
+- guid (DvText)
 - definingCodeTerminology
 - definingCodeCodeString
 
