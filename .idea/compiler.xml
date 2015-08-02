@@ -52,10 +52,18 @@
         <processorPath useClasspath="true" />
         <module name="openehr-rm-domain" />
       </profile>
+      <profile default="false" name="Annotation profile for mr-alternativo" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="mr-alternativo" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="measure-serv" target="1.5" />
       <module name="mini-termserv" target="1.5" />
+      <module name="mr-alternativo" target="1.5" />
       <module name="openehr-rm-core" target="1.5" />
       <module name="openehr-rm-domain" target="1.5" />
       <module name="ref_impl_java" target="1.5" />
