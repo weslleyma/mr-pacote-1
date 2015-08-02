@@ -8,15 +8,50 @@ import java.util.Map;
  * Fábrica de objetos baseados no Modelo de Referência
  * do openEHR.
  *
+ * <p>Um objeto baseado no Modelo de Referência do openEHR
+ * é um objeto em conformidade com as especificações
+ * desse Modelo de Referência. Tais especificações são
+ * acompanhadas de uma implementação de referência em
+ * Java, disponível em {@link https://github.com/openEHR/java-libs}.
+ * </p>
+ *
  * <p>Esta é uma implementação alternativa. Não é um <i>fork</i>,
- * nem trabalho derivado daquela implementação disponível em
- * {@link https://github.com/openEHR/java-libs}.</p>
+ * nem trabalho derivado da implementação (citada acima).
+ * Trata-se de uma nova implementação, que emprega
+ * estratégia distinta, para atender objetivos específicos,
+ * dentre os quais, conformidade com as especificações
+ * do openEHR.
+ * </p>
+ *
+ * <p>Um dos principais objetivos dessa implementação
+ * é atender o uso do Modelo de Referência por dispositivos
+ * móveis que, em geral, apresentam restrições de capacidade de
+ * processamento e memória.</p>
+ *
+ * <p>Neste sentido, duas decisões de projeto foram
+ * estabelecidas: (a) reduzir o tamanho do arquivo jar
+ * correspondente à implementação e (b) minimizar o espaço
+ * exigido para guardar um grafo de objetos baseado no
+ * openEHR.</p>
+ *
+ * <p>Em decorrência das decisões acima duas orientações
+ * são experimentadas: (a) não é criada uma classe para
+ * cada conceito (conforme implmentação de referência) e
+ * (b) dados são armazenados em um vetor de bytes que
+ * serializa um grafo típico baseado na implementação
+ * de referência.</p>
  */
 public interface ModeloDeReferencia {
 
     /**
-     * Detalha a organização de itens de informação
+     * Detalha a organização de dados
      * baseados no Modelo de Referência do openEHR.
+     *
+     * <p>
+     * A estrutura de metainformações registra, para um
+     * dado "setor" do vetor de bytes, dentre outras,
+     * qual a informação ali registrada.
+     * </p>
      *
      * <p>Os dados
      * correspondentes podem ser obtidos por {@code #dados}.
@@ -27,8 +62,13 @@ public interface ModeloDeReferencia {
     Map<Integer, Metadados> estrutura();
 
     /**
-     * Dados propriamente ditos correspondentes a itens de
-     * informação do Modelo de Referência.
+     * Dados propriamente ditos correspondentes a objetos
+     * compatíveis com o Modelo de Referência.
+     *
+     * <p>Um acréscimo de um elemento de dado é
+     * serializado neste vetor. Metainformações
+     * correspondentes devem ser registradas em
+     * outra estrutura.</p>
      *
      * <p>A estrutura desta sequência de bytes é
      * obtida por {@code #estrutura}.</p>
@@ -59,6 +99,8 @@ public interface ModeloDeReferencia {
      * Adiciona um DvBoolean.
      * @param dvb DvBoolean a ser adicionado.
      * @return Identificador do DvBoolean.
+     * @deprecated Método apenas para ilustrar,
+     * versão correta é {@code #adiciona(boolean)}.
      */
     int adiciona(DvBoolean dvb);
 
@@ -68,18 +110,4 @@ public interface ModeloDeReferencia {
      * @return Identificador do valor lógico adicionado.
      */
     int adiciona(boolean valor);
-
-    /**
-     * Adiciona uma sequência de caracteres.
-     *
-     * <p>Provavelmente é o item de informação
-     * mais empregado no Modelo de Referência.
-     * Aqui é empregado para registrar, por exemplo,
-     * o identificador de versão de uma instância de
-     * {@code FeederAuditDetails}.</p>
-     *
-     * @param valor Sequência de caracteres.
-     * @return Identificador da sequência.
-     */
-    int adiciona(String valor);
 }
