@@ -1,7 +1,5 @@
 package br.inf.ufg.fabrica.mr;
 
-import org.openehr.rm.datatypes.basic.DvBoolean;
-
 import java.util.Map;
 
 /**
@@ -96,18 +94,119 @@ public interface ModeloDeReferencia {
     void fromXML(String xml);
 
     /**
-     * Adiciona um DvBoolean.
-     * @param dvb DvBoolean a ser adicionado.
-     * @return Identificador do DvBoolean.
-     * @deprecated Método apenas para ilustrar,
-     * versão correta é {@code #adiciona(boolean)}.
-     */
-    int adiciona(DvBoolean dvb);
-
-    /**
-     * Adiciona um valor lógico.
+     * Adiciona um valor lógico ({@code DV_BOOLEAN}).
+     *
      * @param valor Valor lógico (DvBoolean) a ser adicionado.
      * @return Identificador do valor lógico adicionado.
      */
     int adiciona(boolean valor);
+
+    /**
+     * Adiciona um identificador ({@code DV_IDENTIFIER}).
+     *
+     * @param issuer
+     * @param assigner
+     * @param id
+     * @param type
+     * @return
+     */
+    int adiciona(String issuer, String assigner, String id, String type);
+
+    /**
+     * Adiciona um {@link java.net.URI} ({@code DV_URI}).
+     *
+     * @param uri
+     * @return
+     */
+    int adiciona(String uri);
+
+    /**
+     * Adiciona um {@link java.net.URI} cujo esquema é
+     * "ehr" ({@code DvEHRURI}).
+     *
+     * @param uri
+     * @return
+     */
+    int adicionaEhrUri(String uri);
+
+    /**
+     * Adiciona um identificador de terminologia ({@code TERMINOLOGY_ID}).
+     *
+     * @param nome
+     * @param versao
+     * @return
+     */
+    int adicionaTerminologyId(String nome, String versao);
+
+    /**
+     * Adiciona um identificador de terminologia ({@code TERMINOLOGY_ID}).
+     *
+     * @param nome
+     * @param versao
+     * @return
+     */
+    int adicionaTerminologyId(String valor);
+
+    /**
+     * Adiciona um código ({@code CODE_PHRASE}).
+     *
+     * @param hTerminologyId Identificador de um identificador de
+     *                       terminologia.
+     *
+     * @param codeString
+     * @return
+     */
+    int adicionaCodePhrase(int hTerminologyId, String codeString);
+
+    /**
+     * Adiciona um código ({@code CODE_PHRASE}).
+     *
+     * @param terminologyId
+     * @param codeString
+     * @return
+     */
+    int adicionaCodePhrase(String terminologyId, String codeString);
+
+    /**
+     * Adiciona dado encapsulado em uma sequência de caracteres
+     * ({@code DV_PARSABLE}).
+     *
+     * @param valor
+     * @param formalismo
+     * @return
+     */
+    int adicionaDvParsable(String valor, String formalismo);
+
+    /**
+     * Adiciona dado encapsulado em uma sequência de caracteres
+     * ({@code DV_PARSABLE}).
+     *
+     * @param hCharSet
+     * @param hLinguagem
+     * @param valor
+     * @param formalismo
+     * @return
+     */
+    int adicionaDvParsable(int hCharSet, int hLinguagem, String valor, String formalismo);
+
+    /**
+     * Adiciona dados encapsulados em uma sequência de bytes ({@code DV_MULTIMEDIA}).
+     *
+     * <p>IMPORTANTE: embora vários argumentos usem "handles" para objetos já armazenados,
+     * este não é o caso para um DV_MULTIMEDIA. Aqui, em vez do "handle",
+     * deve vir a informação propriamente dita.</p>
+     *
+     * @param hCharSet
+     * @param hLinguagem
+     * @param textoAlternativo
+     * @param hTipoMidia
+     * @param hAlgoritmoCompressao
+     * @param integridade
+     * @param hAlgoritmoIntegridade
+     * @param hThumbnail
+     * @param hUri
+     * @param dados
+     * @return
+     */
+    int adicionaDvMultimedia(int hCharSet, int hLinguagem, String textoAlternativo, int hTipoMidia, int hAlgoritmoCompressao, byte[] integridade, int hAlgoritmoIntegridade, int hThumbnail,  int hUri, byte[] dados);
 }
