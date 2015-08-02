@@ -5,17 +5,24 @@ import org.openehr.rm.datatypes.basic.DvBoolean;
 import java.util.Map;
 
 /**
- * Fábrica de objetos do tipo DataValue.
+ * Fábrica de objetos baseados no Modelo de Referência
+ * do openEHR.
+ *
+ * <p>Esta é uma implementação alternativa. Não é um <i>fork</i>,
+ * nem trabalho derivado daquela implementação disponível em
+ * {@link https://github.com/openEHR/java-libs}.</p>
  */
 public interface ModeloDeReferencia {
 
     /**
      * Detalha a organização de itens de informação
-     * baseados no Modelo de Referência. Os dados
+     * baseados no Modelo de Referência do openEHR.
+     *
+     * <p>Os dados
      * correspondentes podem ser obtidos por {@code #dados}.
      * @return Estrutura onde, para cada valor inteiro fornecido,
      * tem-se detalhes do item de informação do Modelo de
-     * Referência em questão.
+     * Referência em questão.</p>
      */
     Map<Integer, Metadados> estrutura();
 
@@ -75,15 +82,4 @@ public interface ModeloDeReferencia {
      * @return Identificador da sequência.
      */
     int adiciona(String valor);
-
-    /**
-     * Adiciona inteiro.
-     *
-     * <p>Registra, por exemplo, a magnitude
-     * de uma instância de {@code DvCount}.</p>
-     *
-     * @param valor Valor inteiro.
-     * @return
-     */
-    int adiciona(int valor);
 }
