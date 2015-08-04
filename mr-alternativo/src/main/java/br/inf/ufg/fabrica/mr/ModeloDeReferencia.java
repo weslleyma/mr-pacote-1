@@ -99,7 +99,7 @@ public interface ModeloDeReferencia {
      * @param valor Valor lógico (DvBoolean) a ser adicionado.
      * @return Identificador do valor lógico adicionado.
      */
-    int adiciona(boolean valor);
+    int adicionaDvBoolean(boolean valor);
 
     /**
      * Adiciona um identificador ({@code DV_IDENTIFIER}).
@@ -110,7 +110,7 @@ public interface ModeloDeReferencia {
      * @param type
      * @return
      */
-    int adiciona(String issuer, String assigner, String id, String type);
+    int adicionaDvIdentifier(String issuer, String assigner, String id, String type);
 
     /**
      * Adiciona um {@link java.net.URI} ({@code DV_URI}).
@@ -118,7 +118,7 @@ public interface ModeloDeReferencia {
      * @param uri
      * @return
      */
-    int adiciona(String uri);
+    int adicionaDvUri(String uri);
 
     /**
      * Adiciona um {@link java.net.URI} cujo esquema é
@@ -127,7 +127,7 @@ public interface ModeloDeReferencia {
      * @param uri
      * @return
      */
-    int adicionaEhrUri(String uri);
+    int adicionaDvEhrUri(String uri);
 
     /**
      * Adiciona um identificador de terminologia ({@code TERMINOLOGY_ID}).
@@ -141,22 +141,10 @@ public interface ModeloDeReferencia {
     /**
      * Adiciona um identificador de terminologia ({@code TERMINOLOGY_ID}).
      *
-     * @param nome
-     * @param versao
+     * @param valor
      * @return
      */
     int adicionaTerminologyId(String valor);
-
-    /**
-     * Adiciona um código ({@code CODE_PHRASE}).
-     *
-     * @param hTerminologyId Identificador de um identificador de
-     *                       terminologia.
-     *
-     * @param codeString
-     * @return
-     */
-    int adicionaCodePhrase(int hTerminologyId, String codeString);
 
     /**
      * Adiciona um código ({@code CODE_PHRASE}).
@@ -181,32 +169,42 @@ public interface ModeloDeReferencia {
      * Adiciona dado encapsulado em uma sequência de caracteres
      * ({@code DV_PARSABLE}).
      *
-     * @param hCharSet
-     * @param hLinguagem
+     * @param codePhraseCharSet
+     * @param codePhraseLanguage
      * @param valor
      * @param formalismo
      * @return
      */
-    int adicionaDvParsable(int hCharSet, int hLinguagem, String valor, String formalismo);
+    int adicionaDvParsable(
+            String codePhraseCharSet,
+            String codePhraseLanguage,
+            String valor,
+            String formalismo);
 
     /**
      * Adiciona dados encapsulados em uma sequência de bytes ({@code DV_MULTIMEDIA}).
      *
-     * <p>IMPORTANTE: embora vários argumentos usem "handles" para objetos já armazenados,
-     * este não é o caso para um DV_MULTIMEDIA. Aqui, em vez do "handle",
-     * deve vir a informação propriamente dita.</p>
-     *
-     * @param hCharSet
-     * @param hLinguagem
+     * @param codePhraseCharSet
+     * @param codePhraseLinguagem
      * @param textoAlternativo
-     * @param hTipoMidia
-     * @param hAlgoritmoCompressao
+     * @param codePhraseTipoMidia
+     * @param codePhraseAlgoritmoCompressao
      * @param integridade
-     * @param hAlgoritmoIntegridade
-     * @param hThumbnail
-     * @param hUri
+     * @param codePhraseAlgoritmoIntegridade
+     * @param hDvMultimediaThumbnail
+     * @param dvUri
      * @param dados
      * @return
      */
-    int adicionaDvMultimedia(int hCharSet, int hLinguagem, String textoAlternativo, int hTipoMidia, int hAlgoritmoCompressao, byte[] integridade, int hAlgoritmoIntegridade, int hThumbnail,  int hUri, byte[] dados);
+    int adicionaDvMultimedia(
+            String codePhraseCharSet,
+            String codePhraseLinguagem,
+            String textoAlternativo,
+            String codePhraseTipoMidia,
+            String codePhraseAlgoritmoCompressao,
+            byte[] integridade,
+            String codePhraseAlgoritmoIntegridade,
+            int hDvMultimediaThumbnail,
+            String dvUri,
+            byte[] dados);
 }
