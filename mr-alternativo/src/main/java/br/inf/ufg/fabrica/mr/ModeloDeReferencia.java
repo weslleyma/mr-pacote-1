@@ -1,7 +1,5 @@
 package br.inf.ufg.fabrica.mr;
 
-import java.util.Map;
-
 /**
  * Fábrica de objetos baseados no Modelo de Referência
  * do openEHR.
@@ -45,6 +43,16 @@ import java.util.Map;
  * de referência.</p>
  */
 public interface ModeloDeReferencia {
+
+    /**
+     * Identificador do tipo DV_BOOLEAN.
+     */
+    final int DV_BOOLEAN = 0;
+
+    /**
+     * Identificador do tipo DV_IDENTIFIER.
+     */
+    final int DV_IDENTIFIER = 1;
 
     /**
      * Dados propriamente ditos correspondentes a objetos
@@ -141,6 +149,40 @@ public interface ModeloDeReferencia {
      *             openEHR.
      */
     void fromJSON(String json);
+
+    /**
+     * Obtém o total de objetos, instâncias de elementos
+     * do Modelo de Referência, ocupados pelo presente
+     * objeto.
+     *
+     * <p>Uma instância desta interface é um grafo de
+     * objetos. O presente método permite identificar
+     * quantos objetos fazem parte deste grafo.</p>
+     *
+     * <p>Objeto aqui deve ser interpretado como
+     * instância de "classe" do Modelo de Referência
+     * do openEHR. Ou seja, não necessariamente este valor
+     * é quantidade de instâncias de classes em Java
+     * empregadas para representar o presente grafo de
+     * objetos.</p>
+     *
+     * <p>Se o valor retornado é 3, então existem,
+     * no presente grafo, três objetos, cujos
+     * identificadores são 0, 1 e 2.</p>
+     *
+     * @return Total de objetos mantidos pela instância. O
+     * primeiro é zero.
+     */
+    int totalObjetos();
+
+    /**
+     * Retorna inteiro que identifica o tipo do objeto
+     * identificado.
+     * @param id O identificador do objeto.
+     * @return Valor inteiro correspondente ao tipo do
+     * objeto.
+     */
+    int obtemTipo(int id);
 
     /**
      * Adiciona um valor lógico ({@code DV_BOOLEAN}).
