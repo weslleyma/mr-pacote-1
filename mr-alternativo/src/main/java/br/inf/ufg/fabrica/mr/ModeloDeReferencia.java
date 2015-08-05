@@ -47,26 +47,13 @@ import java.util.Map;
 public interface ModeloDeReferencia {
 
     /**
-     * Detalha a organização de toBytes
-     * baseados no Modelo de Referência do openEHR.
-     *
-     * <p>
-     * A estrutura de metainformações registra, para um
-     * dado "setor" do vetor de bytes, dentre outras,
-     * qual a informação ali registrada.
-     * </p>
-     *
-     * <p>Os toBytes
-     * correspondentes podem ser obtidos por {@code #toBytes}.
-     * @return Estrutura onde, para cada valor inteiro fornecido,
-     * tem-se detalhes do item de informação do Modelo de
-     * Referência em questão.</p>
-     */
-    Map<Integer, Metadados> estrutura();
-
-    /**
      * Dados propriamente ditos correspondentes a objetos
      * compatíveis com o Modelo de Referência.
+     *
+     * <p>Este vetor de bytes mantém os dados correspondentes
+     * a um grafo de objetos, baseados no Modelo de Referência,
+     * conforme o modelo de dados estabelecido pela
+     * implementação da presente interface.</p>
      *
      * <p>Um acréscimo de um elemento de dado é
      * serializado neste vetor. Metainformações
@@ -76,20 +63,23 @@ public interface ModeloDeReferencia {
      * <p>A estrutura desta sequência de bytes é
      * obtida por {@code #estrutura}.</p>
      *
-     * <p>O retorno deste método, em geral, é persistido
-     * e, quando apropriado, recuperado por meio do
+     * <p>O retorno deste método, em geral, é persistido.
+     * Quando uma consulta aos dados correspondentes
+     * for necessária, será "consumido" pelo
      * método {@link #fromBytes(byte[])}.</p>
      *
      * @return Vetor de bytes contendo uma instância
      * do Modelo de Referência (MR) devidamente serializada.
      *
      * @see #fromBytes(byte[])
+     * @see #toJSON()
+     * @see #toXML()
      */
     byte[] toBytes();
 
     /**
      * Realiza processo inverso à serialização, geralmente
-     * empregado para permitir busca sobre os toBytes em
+     * empregado para permitir busca sobre os dados em
      * conformidade com o Modelo de Referência.
      *
      * @param bytes Vetor de bytes serializados por meio
@@ -98,11 +88,15 @@ public interface ModeloDeReferencia {
     void fromBytes(byte[] bytes);
 
     /**
-     * Serializa informações baseadas no MR em um
-     * documento XML.
+     * Serializa as informações do presente objeto, baseado
+     * no MR, em um documento XML.
+     *
+     * <p>O documento XML produzido pelo presente método,
+     * sequência de caracteres, deve estar em conformidade
+     * com os esquemas adotados pelo openEHR.</p>
      *
      * @return Documento XML correspondente ao grafo
-     * de objetos registrado.
+     * de objetos.
      */
     String toXML();
 
@@ -117,12 +111,57 @@ public interface ModeloDeReferencia {
     void fromXML(String xml);
 
     /**
+     * Serializa a instância em uma sequência de caracteres
+     * no formato JSON.
+     *
+     * @see #fromJSON(String)
+     * @see #toBytes()
+     * @see #toXML()
+     *
+     * @return Sequência de caracteres, no formato JSON,
+     * correspondente à serialização do presente objeto.
+     */
+    String toJSON();
+
+    /**
+     * Cria o grafo de objetos, representado pelo presente
+     * objeto, em conformidade com o Modelo de Referência e
+     * serializado em JSON.
+     *
+     * <p>Este método faz o processo inverso ao do método
+     * {@see #toJSON}.</p>
+     *
+     * @see #toJSON()
+     * @see #fromXML(String)
+     * @see #fromBytes(byte[])
+     *
+     * @param json Sequência de caracteres, no formato JSON,
+     *             correspondentes a um grafo de objetos
+     *             serializado do Modelo de Referência do
+     *             openEHR.
+     */
+    void fromJSON(String json);
+
+    /**
      * Adiciona um valor lógico ({@code DV_BOOLEAN}).
      *
      * @param valor Valor lógico (DvBoolean) a ser adicionado.
      * @return Identificador do valor lógico adicionado.
+     *
+     * @see #obtemDvBoolean(int)
      */
     int adicionaDvBoolean(boolean valor);
+
+    /**
+     * Recupera o valor lógico ({@code DV_BOOLEAN}) correspondente
+     * ao identificador.
+     *
+     * @param id O identificador único do valor lógico.
+     * @return O valor lógico.
+     *
+     * @see #adicionaDvBoolean(boolean)
+     */
+    boolean obtemDvBoolean(int id);
 
     /**
      * Adiciona um identificador ({@code DV_IDENTIFIER}).
@@ -140,6 +179,50 @@ public interface ModeloDeReferencia {
             String assigner,
             String id,
             String type);
+
+    /**
+     * Recupera o valor lógico do objeto.
+     *
+     * @param id O identificador único do objeto.
+     * @param campo A ordem do campo, iniciada por 0, para o
+     *              campo cujo valor lógico é desejado.
+     * @return Valor lógico do campo do objeto.
+     *
+     * @throws IllegalArgumentException Nos seguintes casos:
+     * (a) o campo não é lógico; (b) o campo não existe;
+     * (c) o objeto não existe.
+     */
+    boolean botemValorLogico(int id, int campo);
+
+    /**
+     * Recupera texto do objeto.
+     *
+     * @param id O identificador único do objeto.
+     * @param campo A ordem do campo, iniciada por 0, para o
+     *              campo cuja sequência de caracteres
+     *              correspondente é desejada.
+     * @return Sequência de caracteres correspondente ao
+     * campo do objeto.
+     *
+     * @throws IllegalArgumentException Nos seguintes casos:
+     * (a) o campo não é texto; (b) o campo não existe;
+     * (c) o objeto não existe.
+     */
+    String obtemTexto(int id, int campo);
+
+    /**
+     * Recupera vetor de bytes (valor do campo do objeto).
+     *
+     * @param id O identificador único do objeto.
+     * @param campo A ordem do campo, iniciada por 0, cujo
+     *              valor, um vetor de bytes, é desejado.
+     * @return Valor do campo do objeto.
+     *
+     * @throws IllegalArgumentException Nos seguintes casos:
+     * (a) o campo não é texto; (b) o campo não existe;
+     * (c) o objeto não existe.
+     */
+    byte[] obtemVetorBytes(int id, int campo);
 
     /**
      * Adiciona um {@link java.net.URI} ({@code DV_URI}).
