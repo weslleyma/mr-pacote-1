@@ -45,6 +45,25 @@ package br.inf.ufg.fabrica.mr;
  * (b) toBytes são armazenados em um vetor de bytes que
  * serializa um grafo típico baseado na implementação
  * de referência.</p>
+ *
+ * <h3>Visão geral da interface</h3>
+ *
+ * <p>As operações {@link #obtemTexto(int, int)},
+ * {@link #obtemVetorBytes(int, int)} e
+ * {@link #obtemValorLogico(int, int)}, dentre outras similares
+ * para os demais tipos primitivos, permitem recuperar um
+ * valor primitivo, ou seja, um membro de algum objeto. Em
+ * consequência, todos eles fazem uso de dois parâmetros. O
+ * primeiro identifica o objeto e o segundo identifica o campo
+ * que contém a informação desejada.</p>
+ *
+ * <p>As operações acima permitem recuperar valores presentes
+ * no grafo, enquanto as operações como
+ * {@link #adicionaDvBoolean(boolean)} e
+ * {@link #adicionaDvEhrUri(String)} permitem inserir tais
+ * valores. A inserção, contudo, ao contrário da recuperaçào,
+ * não ocorre por campo, mas por toda a coleção de valores
+ * que formam um objeto.</p>
  */
 public interface ModeloDeReferencia {
 
