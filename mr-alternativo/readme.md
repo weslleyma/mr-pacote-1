@@ -10,7 +10,7 @@ então, L(1) refere-se a um objeto deste grafo, L(2) a um outro
 objeto e assim sucessivamente. Se o grafo inclui n objetos, 
 então teremos os objetos L(0), L(1), ..., L(n - 1). 
 
-Além da lista é necessário identificar a raiz do grafo. Um grafo de objetos em conformidade com o modelo de referência possui uma raiz, que é um dos objetos armazenados. À semelhança da forma como referências para outros objetos foram tratadas, veja acima, a raiz é um dos objetos L(0), L(1), ..., L(n-1). Ou seja, além da lista, é necessário armazenar qual objeto é a raiz. 
+Além da lista é necessário identificar a raiz do grafo. Um grafo de objetos em conformidade com o modelo de referência possui uma raiz, que é um dos objetos armazenados. À semelhança da forma como referências para outros objetos foram tratadas, veja acima, a raiz é um dos objetos L(0), L(1), ..., L(n-1). Ou seja, além da lista, é necessário armazenar qual objeto é a raiz, ou seja, um dos valores de 0 a n - 1, inclusive. 
 
 ## O que existe em cada vetor de bytes?
 
