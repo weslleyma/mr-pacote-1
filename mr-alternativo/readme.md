@@ -15,3 +15,5 @@ então teremos os objetos L(0), L(1), ..., L(n - 1).
 Os seguintes elementos são necessários:
 
 1. Tipo do objeto armazenado. Esta informação permite identificar exatamente a forma de interpretar os bytes que seguem.
+2. Serialização dos valores de tipos primitivos. Ou seja, funções como getBytes(boolean) que retorna(m) o(s) byte(s) necessário(s) para armazenar um valor do tipo boolean e assim para todos os demais tipos primitivos. Naturalmente, sabe-se, antecipadamente, quantos bytes são necessários para armazenar cada um dos tipos, não apenas o boolean, mas também int, float, long e demais necessários.
+3. Alguns objetos fazem referência a outros objetos e, neste caso, tal referência será a serialização do inteiro que indica onde está o objeto referenciado na lista. Por exemplo, o objeto L(4) pode referenciar o objeto L(5), o que significa que o objeto serializado em L(5) é referenciado pelo objeto L(4) e, neste caso, para guardar em L(4) esta referência, guarda-se o inteiro de valor 5, como todos os demais valores de tipos primitivos.
