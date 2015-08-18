@@ -50,7 +50,7 @@ package br.inf.ufg.fabrica.mr;
  *
  * <p>As operações {@link #obtemTexto(int, int)},
  * {@link #obtemVetorBytes(int, int)} e
- * {@link #obtemValorLogico(int, int)}, dentre outras similares
+ * {@link #obtemLogico(int, int)}, dentre outras similares
  * para os demais tipos primitivos, permitem recuperar um
  * valor primitivo, ou seja, um membro de algum objeto. Em
  * consequência, todos eles fazem uso de dois parâmetros. O
@@ -210,6 +210,44 @@ public interface ModeloDeReferencia {
     int obtemTipo(int id);
 
     /**
+     * Recupera o byte do campo do objeto.
+     *
+     * @param id O identificador único do objeto.
+     * @param campo A ordem do campo, iniciada por 0, para o
+     *              campo cujo valor é um byte.
+     * @return Valor do byte (campo do objeto).
+     *
+     * @throws IllegalArgumentException Se pelo menos uma das
+     * condições abaixo for verificada:
+     * (a) o campo não é do tipo lógico; (b) o campo não existe;
+     * (c) o objeto não existe.
+     *
+     * @see #obtemTipo(int)
+     * @see #obtemTexto(int, int)
+     * @see #obtemVetorBytes(int, int)
+     */
+    byte obtemByte(int id, int campo);
+
+    /**
+     * Recupera o caractere do campo do objeto.
+     *
+     * @param id O identificador único do objeto.
+     * @param campo A ordem do campo, iniciada por 0, para o
+     *              campo cujo valor é um caractere.
+     * @return Caractere do campo do objeto.
+     *
+     * @throws IllegalArgumentException Se pelo menos uma das
+     * condições abaixo for verificada:
+     * (a) o campo não é do tipo lógico; (b) o campo não existe;
+     * (c) o objeto não existe.
+     *
+     * @see #obtemTipo(int)
+     * @see #obtemTexto(int, int)
+     * @see #obtemVetorBytes(int, int)
+     */
+    char obtemCaractere(int id, int campo);
+
+    /**
      * Recupera o valor lógico do objeto.
      *
      * @param id O identificador único do objeto.
@@ -226,7 +264,65 @@ public interface ModeloDeReferencia {
      * @see #obtemTexto(int, int)
      * @see #obtemVetorBytes(int, int)
      */
-    boolean obtemValorLogico(int id, int campo);
+    boolean obtemLogico(int id, int campo);
+
+    /**
+     * Recupera inteiro.
+     *
+     * @param id O identificador único do objeto.
+     * @param campo A ordem do campo, iniciada por 0, para o
+     *              campo cujo valor inteiro é desejado.
+     * @return Valor inteiro (campo do objeto).
+     *
+     * @throws IllegalArgumentException Se pelo menos uma das
+     * condições abaixo for verificada:
+     * (a) o campo não é do tipo lógico; (b) o campo não existe;
+     * (c) o objeto não existe.
+     *
+     * @see #obtemTipo(int)
+     * @see #obtemTexto(int, int)
+     * @see #obtemVetorBytes(int, int)
+     */
+    int obtemInteiro(int id, int campo);
+
+    /**
+     * Recupera o valor de precisão simples (ponto
+     * flutuante).
+     *
+     * @param id O identificador único do objeto.
+     * @param campo A ordem do campo, iniciada por 0, para o
+     *              campo cujo valor {@code float} é desejado.
+     * @return Valor {@code float} do campo do objeto.
+     *
+     * @throws IllegalArgumentException Se pelo menos uma das
+     * condições abaixo for verificada:
+     * (a) o campo não é do tipo lógico; (b) o campo não existe;
+     * (c) o objeto não existe.
+     *
+     * @see #obtemTipo(int)
+     * @see #obtemTexto(int, int)
+     * @see #obtemVetorBytes(int, int)
+     */
+    float obtemFloat(int id, int campo);
+
+    /**
+     * Recupera valor de precisão dupla (ponto flutuante).
+     *
+     * @param id O identificador único do objeto.
+     * @param campo A ordem do campo, iniciada por 0, para o
+     *              campo cujo valor é um {@code double}.
+     * @return Valor {@code double} do campo do objeto.
+     *
+     * @throws IllegalArgumentException Se pelo menos uma das
+     * condições abaixo for verificada:
+     * (a) o campo não é do tipo lógico; (b) o campo não existe;
+     * (c) o objeto não existe.
+     *
+     * @see #obtemTipo(int)
+     * @see #obtemTexto(int, int)
+     * @see #obtemVetorBytes(int, int)
+     */
+    double obtemDouble(int id, int campo);
 
     /**
      * Recupera texto do objeto.
@@ -267,7 +363,7 @@ public interface ModeloDeReferencia {
      * @param valor Valor lógico (DV_BOOLEAN) a ser adicionado.
      * @return Identificador do valor lógico adicionado.
      *
-     * @see #obtemValorLogico(int, int)
+     * @see #obtemLogico(int, int)
      */
     int adicionaDvBoolean(boolean valor);
 
