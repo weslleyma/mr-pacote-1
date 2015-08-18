@@ -10,7 +10,22 @@ import static org.junit.Assert.*;
 
 /**
  * Valida decisões de tipos em Java empregados pela
- * implementação do Modelo de Referência.
+ * implementação do Modelo de Referência. Os tipos
+ * estão definidos em Support Information Model.
+ *
+ * <p>Os tipos {@code char}, {@code boolean}, {@code int},
+ * {@code float} e {@code double}, são respectivamente as
+ * implementações de Character, Boolean, Integer, Real e
+ * Double.
+ * </p>
+ *
+ * <p>Ao contrário dos tipos primeitivos acima, o tipo Octet
+ * exige atenção especial. Isto porque em Java o tipo byte é
+ * com sinal. Embora contenha exatamente 8 bits, armazenar um
+ * valor de 0 a 255, inclusive, em um byte, exige operação
+ * específica para recuperação do valor. Ou seja, o armazenamento
+ * pode ser um byte, mas a recuperação exige o método
+ * {@code #obtenhaByte}, documentado abaixo.</p>
  */
 public class ModeloDeReferenciaSupportTest {
 
