@@ -358,6 +358,67 @@ public interface ModeloDeReferencia {
     byte[] obtemVetorBytes(int id, int campo);
 
     /**
+     * Cria uma lista de objetos.
+     * @param quantidade Quantidade de objetos da lista.
+     * @return Identificador único da lista.
+     */
+    int adicionaLista(int quantidade);
+
+    /**
+     * Adiciona um item à lista.
+     * @param lista Lista de objetos a ser adicionada
+     *              de um item.
+     * @param item Identificador do objeto a ser
+     *             inserido na lista.
+     * @return Identificador único do item na lista.
+     */
+    int adicionaItem(int lista, int item);
+
+    /**
+     * Procura pelo objeto na lista.
+     *
+     * @param lista Identificador da lista onde o
+     *              objeto será procurado.
+     * @param objeto Identificador do objeto
+     *               a ser procurado. Esse é um
+     *               objeto temporário, construído
+     *               com a classe ObjectTemp.
+     * @return Ordem na lista onde o objeto se
+     * encontra, ou o valor -1, caso o objeto não
+     * esteja presente na lista.
+     */
+    int buscaEmLista(int lista, int objeto);
+
+    /**
+     * Elimina o objeto.
+     *
+     * <p>Este método é particularmente útil
+     * durante uma busca, onde um objeto foi
+     * construído especificamente para esta
+     * finalidade.</p>
+     *
+     * @param objeto Identificador do objeto
+     *               a ser eliminado.
+     */
+    void elimineObjeto(int objeto);
+
+    /**
+     * Cria um dicionário (<i>hash table</i>).
+     *
+     * <p>Uma dicionário é tratado como uma combinação
+     * de duas listas. Onde a ordem de um item da
+     * lista de chaves corresponde à mesma ordem do
+     * item da lista de valores.</p>
+     *
+     * @param chaves Identificador único da lista
+     *               de chaves.
+     * @param valores Identificador único da lista de
+     *                valores.
+     * @return Identificador único do dicionário.
+     */
+    int adicionaHash(int chaves, int valores);
+
+    /**
      * Adiciona um valor lógico ({@code DV_BOOLEAN}).
      *
      * @param valor Valor lógico (DV_BOOLEAN) a ser adicionado.
