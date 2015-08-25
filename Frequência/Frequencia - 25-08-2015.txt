@@ -1,4 +1,5 @@
-- Nome - Matrícula
+﻿- Nome - Matrícula
 
 - Lizandra Ottmann - 122270
 - Weslley M. Araújo - 102449
+- Marla Aragão - 122278
