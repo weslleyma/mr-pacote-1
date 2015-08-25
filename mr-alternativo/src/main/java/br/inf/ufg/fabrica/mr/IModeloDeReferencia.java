@@ -85,6 +85,111 @@ public class IModeloDeReferencia implements ModeloDeReferencia {
      * Identificador do tipo DV_IDENTIFIER.
      */
     final int DV_IDENTIFIER = 1;
+    
+    /**
+     * Identificador do tipo DV_URI.
+     */
+    final int DV_URI = 2;
+    
+    /**
+     * Identificador do tipo DV_STATE.
+     */
+    final int DV_STATE = 3;
+    
+    /**
+     * Identificador do tipo DV_EHRURI.
+     */
+    final int DV_EHR_URI = 4;
+    
+    /**
+     * Identificador do tipo DV_TERMINOLOGY_ID.
+     */
+    final int DV_TERMINOLOGY_ID = 5;
+    
+    /**
+     * Identificador do tipo DV_CODE_PHRASE.
+     */
+    final int DV_CODE_PHRASE = 6;
+    
+    /**
+     * Identificador do tipo DV_PARSABLE.
+     */
+    final int DV_PARSABLE = 7;
+    
+    /**
+     * Identificador do tipo DV_MULTIMEDIA.
+     */
+    final int DV_MULTIMEDIA = 8;
+    
+    /**
+     * Identificador do tipo DV_TEXT.
+     */
+    final int DV_TEXT = 9;
+    
+    /**
+     * Identificador do tipo DV_CODED_TEXT.
+     */
+    final int DV_CODED_TEXT = 10;
+    
+    /**
+     * Identificador do tipo DV_PARAGRAPH.
+     */
+    final int DV_PARAGRAPH = 11;
+    
+    /**
+     * Identificador do tipo TERM_MAPPING.
+     */
+    final int TERM_MAPPING = 12;
+    
+    /**
+     * Identificador do tipo CODE_PHRASE.
+     */
+    final int CODE_PHRASE = 13;
+    
+    /**
+     * Identificador do tipo DV_ORDERED.
+     */
+    final int DV_ORDERED = 14;
+    
+    /**
+     * Identificador do tipo DV_INTERVAL.
+     */
+    final int DV_INTERVAL = 15;
+    
+    /**
+     * Identificador do tipo REFERENCE_RANGE.
+     */
+    final int REFERENCE_RANGE = 16;
+    
+    /**
+     * Identificador do tipo DV_ORDINAL.
+     */
+    final int DV_ORDINAL = 17;
+    
+    /**
+     * Identificador do tipo DV_QUANTIFIED.
+     */
+    final int DV_QUANTIFIED = 18;
+    
+    /**
+     * Identificador do tipo DV_AMOUNT.
+     */
+    final int DV_AMOUNT = 19;
+    
+    /**
+     * Identificador do tipo DV_QUANTITY.
+     */
+    final int DV_QUANTITY = 20;
+    
+    /**
+     * Identificador do tipo DV_COUNT.
+     */
+    final int DV_COUNT = 21;
+    
+    /**
+     * Identificador do tipo DV_PROPORTION.
+     */
+    final int DV_PROPORTION = 22;
 
     // TODO acrescente uma constante para todos os demais tipos
 
