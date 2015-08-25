@@ -5,6 +5,7 @@
  */
 package br.inf.ufg.fabrica.mr;
 
+
 /**
  * Fábrica de objetos baseados no Modelo de Referência
  * do openEHR.
