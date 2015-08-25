@@ -6,10 +6,6 @@
 package br.inf.ufg.fabrica.mr;
 
 /**
- *
- * @author Marla Aragão
- */
-/**
  * Fábrica de objetos baseados no Modelo de Referência
  * do openEHR.
  *
