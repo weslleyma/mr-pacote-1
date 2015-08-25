@@ -442,6 +442,7 @@ public class IModeloDeReferencia implements ModeloDeReferencia {
     final int BASIC_DEFINITIONS = 72;
     
     
+    
     // TODO acrescente uma constante para todos os demais tipos
 
     /**
