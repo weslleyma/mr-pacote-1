@@ -437,7 +437,422 @@ public class IModeloDeReferencia implements ModeloDeReferencia {
      * Identificador do tipo BASIC_DEFINITIONS.
      */
     final int BASIC_DEFINITIONS = 72;
-
+    
+    /**
+     * Identificador do tipo EHR.
+     */
+    final int EHR = 73;
+    
+    /**
+     * Identificador do tipo VESRIONED_EHR_ACCESS.
+     */
+    final int VERSIONED_EHR_ACCESS = 74;
+    
+    /**
+     * Identificador do tipo EHR_ACCESS.
+     */
+    final int EHR_ACCESS = 75;
+    
+    /**
+     * Identificador do tipo VERSIONED_EHR_STATUS.
+     */
+    final int VERSIONED_EHR_STATUS = 76;
+    
+    /**
+     * Identificador do tipo EHR_STATUS.
+     */
+    final int EHR_STATUS = 77;
+    
+    /**
+     * Identificador do tipo VERSIONED_COMPOSTION.
+     */
+    final int VERSIONED_COMPOSITION = 78;
+    
+    /**
+     * Identificador do tipo COMPOSITION.
+     */
+    final int COMPOSITION = 79;
+    
+    /**
+     * Identificador do tipo EVENT_CONTEXT.
+     */
+    final int EVENT_CONTEXT = 80;
+    
+    /**
+     * Identificador do tipo CONTENT_ITEM.
+     */
+    final int CONTENT_ITEM = 81;
+    
+    /**
+     * Identificador do tipo SECTION.
+     */
+    final int SECTION = 82;
+    
+    /**
+     * Identificador do tipo ENTRY.
+     */
+    final int ENTRY = 83;
+    
+    /**
+     * Identificador do tipo ADMIN_ENTRY.
+     */
+    final int ADMIN_ENTRY = 84;
+    
+    /**
+     * Identificador do tipo CARE_ENTRY.
+     */
+    final int CARE_ENTRY = 85;
+    
+    /**
+     * Identificador do tipo OBSERVATION.
+     */
+    final int OBSERVATION = 86;
+    
+    /**
+     * Identificador do tipo EVALUATION.
+     */
+    final int EVALUATION = 87;
+    
+    /**
+     * Identificador do tipo INSTRUCTION.
+     */
+    final int INSTRUCTION = 88;
+    
+    /**
+     * Identificador do tipo ACTIVITY.
+     */
+    final int ACTIVITY = 89;
+    
+    /**
+     * Identificador do tipo ACTION.
+     */
+    final int ACTION = 90;
+    
+    /**
+     * Identificador do tipo INSTRUCTION_DETAILS.
+     */
+    final int INSTRUCTION_DETAILS = 91;
+    
+    /**
+     * Identificador do tipo ISM_TRANSITION.
+     */
+    final int ISM_TRANSITION = 92;
+    
+    /**
+     * Identificador do tipo PATHABLE.
+     */
+    final int PATHABLE = 93;
+    
+    /**
+     * Identificador do tipo DATA_VALUE.
+     */
+    final int DATA_VALUE = 94;
+    
+    /**
+     * Identificador do tipo LOCATABLE.
+     */
+    final int LOCATABLE = 95;
+    
+    /**
+     * Identificador do tipo ARCHETYPED.
+     */
+    final int ARCHETYPED = 96;
+    
+    /**
+     * Identificador do tipo LINK.
+     */
+    final int LINK = 97;
+    
+    /**
+     * Identificador do tipo FEEDER_AUDIT.
+     */
+    final int FEEDER_AUDIT = 98;
+    
+    /**
+     * Identificador do tipo FEEDER_AUDIT_DETAILS.
+     */
+    final int FEEDER_AUDIT_DETAILS = 100;
+    
+    /**
+     * Identificador do tipo PARTY_PROXY.
+     */
+    final int PARTY_PROXY = 101;
+    
+    
+    /**
+     * Identificador do tipo PARTY_SELF.
+     */
+    final int PARTY_SELF = 102;
+    
+    /**
+     * Identificador do tipo PARTY_IDENTIFIED.
+     */
+    final int PARTY_IDENTIFIED = 103;
+    
+    /**
+     * Identificador do tipo PARTY_RELATED.
+     */
+    final int PARTY_RELATED = 104;
+    
+    /**
+     * Identificador do tipo PARTICIPATION.
+     */
+    final int PARTICIPATION = 105;
+    
+    /**
+     * Identificador do tipo AUDIT_DETAILS.
+     */
+    final int AUDIT_DETAILS = 106;
+    
+    /**
+     * Identificador do tipo ATTESTATION.
+     */
+    final int ATTESTATION = 107;
+    
+    /**
+     * Identificador do tipo REVISION_HISTORY.
+     */
+    final int REVISION_HISTORY = 108;
+    
+    /**
+     * Identificador do tipo REVISION_HISTORY_ITEM.
+     */
+    final int REVISION_HISTORY_ITEM = 109;
+    
+    /**
+     * Identificador do tipo VERSIONED_FOLDER.
+     */
+    final int VERSIONED_FOLDER = 110;
+    
+    /**
+     * Identificador do tipo FOLDER.
+     */
+    final int FOLDER = 111;
+    
+    /**
+     * Identificador do tipo VERSIONED_OBJECT.
+     */
+    final int VERSIONED_OBJECT = 112;
+    
+    /**
+     * Identificador do tipo VERSION.
+     */
+    final int VERSION = 113;
+    
+    /**
+     * Identificador do tipo ORIGINAL_VERSION.
+     */
+    final int ORIGINAL_VERSION = 114;
+    
+    /**
+     * Identificador do tipo IMPORTED_VERSION.
+     */
+    final int IMPORTED_VERSION = 115;
+    
+    /**
+     * Identificador do tipo CONTRIBUTION.
+     */
+    final int CONTRIBUTION = 116;
+    
+    /**
+     * Identificador do tipo AUTORED_RESOURCE.
+     */
+    final int AUTHORED_RESOURCE = 117;
+    
+    /**
+     * Identificador do tipo TRANSLATION_DETAILS.
+     */
+    final int TRANSLATION_DETAILS = 118;
+    
+    /**
+     * Identificador do tipo RESOURCE_DESCRIPTION.
+     */
+    final int RESOURCE_DESCRIPTION = 119;
+    
+    /**
+     * Identificador do tipo RESOURCE_DESCRIPTION_ITEM.
+     */
+    final int RESOURCE_DESCRIPTION_ITEM = 120;
+    
+    /**
+     * Identificador do tipo DATA_STRUCTURE.
+     */
+    final int DATA_STRUCTURE = 121;
+    
+    /**
+     * Identificador do tipo ITEM_STRUCTURE.
+     */
+    final int ITEM_STRUCTURE = 122;
+    
+    /**
+     * Identificador do tipo ITEM_SINGLE.
+     */
+    final int ITEM_SINGLE = 123;
+    
+    /**
+     * Identificador do tipo ITEM_LIST.
+     */
+    final int ITEM_LIST = 124;
+    
+    /**
+     * Identificador do tipo ITEM_TABLE.
+     */
+    final int ITEM_TABLE = 125;
+    
+    /**
+     * Identificador do tipo ITEM_TREE.
+     */
+    final int ITEM_TREE = 126;
+    
+    /**
+     * Identificador do tipo ITEM.
+     */
+    final int ITEM = 127;
+    
+    /**
+     * Identificador do tipo CLUSTER.
+     */
+    final int CLUSTER = 128;
+    
+    /**
+     * Identificador do tipo ELEMENT.
+     */
+    final int ELEMENT = 129;
+    
+    /**
+     * Identificador do tipo HISTORY.
+     */
+    final int HISTORY = 130;
+    
+    /**
+     * Identificador do tipo EVENT.
+     */
+    final int EVENT = 131;
+    
+    /**
+     * Identificador do tipo POINT_EVENT.
+     */
+    final int POINT_EVENT = 132;
+    
+    /**
+     * Identificador do tipo INTERVAL_EVENT.
+     */
+    final int INTERVAL_EVENT = 133;
+    
+    /**
+     * Identificador do tipo EXTRACT_REQUEST.
+     */
+    final int EXTRACT_REQUEST = 134;
+    
+    /**
+     * Identificador do tipo EXTRACT_ACTION_REQUEST.
+     */
+    final int EXTRACT_ACTION_REQUEST = 135;
+    
+    /**
+     * Identificador do tipo EXTRACT_SPEC.
+     */
+    final int EXTRACT_SPEC = 136;
+    
+    /**
+     * Identificador do tipo EXTRACT_MANIFEST.
+     */
+    final int EXTRACT_MANIFEST = 137;
+    
+    /**
+     * Identificador do tipo EXTRACT_ENTITY_MANIFEST.
+     */
+    final int EXTRACT_ENTITY_MANIFEST = 138;
+    
+    /**
+     * Identificador do tipo EXTRACT_VERSION_SPEC.
+     */
+    final int EXTRACT_VERSION_SPEC = 139;
+    
+    /**
+     * Identificador do tipo EXTRACT_UPDATE_SPEC.
+     */
+    final int EXTRACT_UPDATE_SPEC = 140;
+    
+    /**
+     * Identificador do tipo EXTRACT.
+     */
+    final int EXTRACT = 141;
+    
+    /**
+     * Identificador do tipo EXTRACT_CHAPTER.
+     */
+    final int EXTRACT_CHAPTER = 142;
+    
+    /**
+     * Identificador do tipo EXTRACT_ENTITY_CHAPTER.
+     */
+    final int EXTRACT_ENTITY_CHAPTER = 143;
+    
+    /**
+     * Identificador do tipo EXTRACT_ITEM.
+     */
+    final int EXTRACT_ITEM = 144;
+    
+    /**
+     * Identificador do tipo EXTRACT_FOLDER.
+     */
+    final int EXTRACT_FOLDER = 145;
+    
+    /**
+     * Identificador do tipo EXTRACT_CONTENT_ITEM.
+     */
+    final int EXTRACT_CONTENT_ITEM = 146;
+    
+    /**
+     * Identificador do tipo EXTRACT_PARTICIPATION.
+     */
+    final int EXTRACT_PARTICIPATION = 147;
+    
+    /**
+     * Identificador do tipo OPENEHR_CONTENT_ITEM.
+     */
+    final int OPENEHR_CONTENT_ITEM = 148;
+    
+    /**
+     * Identificador do tipo X_VERSIONED_OBJECT.
+     */
+    final int X_VERSIONED_OBJECT = 149;
+    
+    /**
+     * Identificador do tipo GENERIC_CONTENT_ITEM.
+     */
+    final int GENERIC_CONTENT_ITEM = 150;
+    
+    /**
+     * Identificador do tipo SYNC_EXTRACT_REQUEST.
+     */
+    final int SYNC_EXTRACT_REQUEST = 151;
+    
+    /**
+     * Identificador do tipo SYNC_EXTRACT.
+     */
+    final int SYNC_EXTRACT = 152;
+    
+    /**
+     * Identificador do tipo SYNC_EXTRACT_SPEC.
+     */
+    final int SYNC_EXTRACT_SPEC = 153;
+    
+    /**
+     * Identificador do tipo X_CONTRIBUTION.
+     */
+    final int X_CONTRIBUTION = 154;
+    
+    /**
+     * Identificador do tipo ADDRESSED_MESSAGE.
+     */
+    final int ADDRESSED_MESSAGE = 155;
+    
+    /**
+     * Identificador do tipo MESSAGE.
+     */
+    final int MESSAGE = 156;
     
     // TODO acrescente uma constante para todos os demais tipos
 
