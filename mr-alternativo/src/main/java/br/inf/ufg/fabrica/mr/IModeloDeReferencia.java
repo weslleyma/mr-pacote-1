@@ -859,6 +859,11 @@ public class IModeloDeReferencia implements ModeloDeReferencia {
 
 
     /**
+     * Inteiro que armazena o identificador único de um objeto.
+     */
+    private int idObjeto = 0;
+
+    /**
      * Inteiro que armazena a quantidade de objetos presentes no grafo.
      */
     private int totalObj = 0;
@@ -1058,7 +1063,24 @@ public class IModeloDeReferencia implements ModeloDeReferencia {
      * @see #obtemVetorBytes(int, int)
      */
     public boolean obtemValorLogico(int id, int campo) {
-        return true;
+        boolean valor = false;
+        if (this.idcampoValor.containsKey(id + "-" + campo) ) {
+            if ( this.idcampoValor.get(id + "-" + campo) instanceof Boolean ) {
+                valor = (Boolean) this.idcampoValor.get(id + "-" + campo);
+            }
+            else if ( this.idcampoValor.get(id + "-" + campo) == null || this.idcampoValor.get(id + "-" + campo) == "") {
+                throw new IllegalArgumentException("O objeto não existe");
+            }
+            else {
+                throw new IllegalArgumentException("O Campo não é do tipo lógico!");
+            }
+        }
+        else {
+            if ( !this.idcampoValor.containsKey(id + "-" + 0) ) {
+                throw new IllegalArgumentException("O campo não existe");
+            }
+        }
+        return valor;
     }
 
     /**
@@ -1107,7 +1129,13 @@ public class IModeloDeReferencia implements ModeloDeReferencia {
      * @see #obtemValorLogico(int, int)
      */
     public int adicionaDvBoolean(boolean valor) {
-        return 0;
+        int idObjeto = this.idObjeto;
+        this.ordemTipoObjMR.put(this.totalObj, 0);
+        this.tipoObjId.put(0, this.idObjeto);
+        this.idcampoValor.put(this.idObjeto + "-" + 0, valor);
+        this.idObjeto++;
+        this.totalObj++;
+        return idObjeto;
     }
 
     /**
