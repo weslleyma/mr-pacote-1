@@ -877,12 +877,12 @@ public class IModeloDeReferencia implements ModeloDeReferencia {
     private Map<Integer, Integer> ordemTipoObjMR = new HashMap<Integer, Integer>();
 
     /**
-     * Estrutura de dados utilizada para armazenar o tipo e o identificador
-     * único do objeto.
-     * O primeiro inteiro (Integer) corresponde ao tipo do objeto inserido e o
-     * segundo inteiro (Integer) corresponde ao identificador único do objeto.
+     * Estrutura de dados utilizada para armazenar o identificador único do objeto
+     * e seu tipo.
+     * O primeiro inteiro (Integer) corresponde ao identificador único do objeto e o
+     * segundo inteiro (Integer) corresponde ao tipo do objeto inserido.
      */
-    private Map<Integer, Integer> tipoObjId = new HashMap<Integer, Integer>();
+    private Map<Integer, Integer> idTipoObj = new HashMap<Integer, Integer>();
 
     /**
      * Estrutura de dados utilizada para armazenar o identificador único do
@@ -1042,7 +1042,7 @@ public class IModeloDeReferencia implements ModeloDeReferencia {
      * objeto.
      */
     public int obtemTipo(int id){
-        return this.ordemTipoObjMR.get(id);
+        return this.idTipoObj.get(id);
     }
 
     /**
@@ -1065,7 +1065,7 @@ public class IModeloDeReferencia implements ModeloDeReferencia {
     public boolean obtemValorLogico(int id, int campo) {
         boolean valor = false;
         if (this.idcampoValor.containsKey(id + "-" + campo) ) {
-            if ( this.idcampoValor.get(id + "-" + campo) instanceof Boolean ) {
+            if ( this.obtemTipo(id) == DV_BOOLEAN) {
                 valor = (Boolean) this.idcampoValor.get(id + "-" + campo);
             }
             else if ( this.idcampoValor.get(id + "-" + campo) == null || this.idcampoValor.get(id + "-" + campo) == "") {
@@ -1131,7 +1131,7 @@ public class IModeloDeReferencia implements ModeloDeReferencia {
     public int adicionaDvBoolean(boolean valor) {
         int idObjeto = this.idObjeto;
         this.ordemTipoObjMR.put(this.totalObj, 0);
-        this.tipoObjId.put(0, this.idObjeto);
+        this.idTipoObj.put(this.idObjeto, 0);
         this.idcampoValor.put(this.idObjeto + "-" + 0, valor);
         this.idObjeto++;
         this.totalObj++;
