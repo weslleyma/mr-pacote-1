@@ -1130,8 +1130,8 @@ public class IModeloDeReferencia implements ModeloDeReferencia {
      */
     public int adicionaDvBoolean(boolean valor) {
         int idObjeto = this.idObjeto;
-        this.ordemTipoObjMR.put(this.totalObj, 0);
-        this.idTipoObj.put(this.idObjeto, 0);
+        this.ordemTipoObjMR.put(this.totalObj, DV_BOOLEAN);
+        this.idTipoObj.put(this.idObjeto, DV_BOOLEAN);
         this.idcampoValor.put(this.idObjeto + "-" + 0, valor);
         this.idObjeto++;
         this.totalObj++;
@@ -1154,7 +1154,16 @@ public class IModeloDeReferencia implements ModeloDeReferencia {
             String assigner,
             String id,
             String type) {
-        return 0;
+        int idObjeto = this.idObjeto;
+        this.ordemTipoObjMR.put(this.totalObj, DV_IDENTIFIER);
+        this.idTipoObj.put(this.idObjeto, DV_IDENTIFIER);
+        this.idcampoValor.put(this.idObjeto + "-" + 0, issuer);
+        this.idcampoValor.put(this.idObjeto + "-" + 1, assigner);
+        this.idcampoValor.put(this.idObjeto + "-" + 2, id);
+        this.idcampoValor.put(this.idObjeto + "-" + 3, type);
+        this.idObjeto++;
+        this.totalObj++;
+        return idObjeto;
     }
 
     /**
