@@ -14,3 +14,13 @@ doravante apenas MR.
 O objetivo é facilitar a experimentação de estratégias 
 de persistência de informações registradas segundo o
 MR. 
+
+
+Pacote de Trabalho 1
+- Nome: Responsabilidade
+- Marla Aragão: Implementação
+- Weslley M. Araújo: Implementação
+- Higor Quintão: Implementação
+- Willian de Oliveira: Testes
+- Lizandra Ottmann: Documentação
+- Thaísa Andrade: Testes
