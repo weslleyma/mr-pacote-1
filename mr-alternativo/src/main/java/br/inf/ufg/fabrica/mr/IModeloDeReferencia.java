@@ -230,7 +230,217 @@ public class IModeloDeReferencia implements ModeloDeReferencia {
      * Identificador do tipo DV_TIME_SPECIFICATION.
      */
     final int DV_TIME_SPECIFICATION = 30;
+    
+    /**
+     * Identificador do tipo DV_PERIODIC_TIME_SPECIFICATION.
+     */
+    final int DV_PERIODIC_TIME_SPECIFICATION = 31;
+    
+    /**
+     * Identificador do tipo DV_GENERAL_TIME_SPECIFICATION.
+     */
+    final int DV_GENERAL_TIME_SPECIFICATION = 32;
+    
+    /**
+     * Identificador do tipo DV_ENCAPSULATED.
+     */
+    final int DV_ENCAPSULATED = 33;
+    
+    /**
+     * Identificador do tipo GENERIC_ENTRY.
+     */
+    final int GENERIC_ENTRY = 34;
+    
+    /**
+     * Identificador do tipo PARTY.
+     */
+    final int PARTY = 35;
+    
+    /**
+     * Identificador do tipo ROLE.
+     */
+    final int ROLE = 36;
+    
+    /**
+     * Identificador do tipo PARTY_RELATIONSHIP.
+     */
+    final int PARTY_RELATIONSHIP = 37;
+    
+    /**
+     * Identificador do tipo PARTY_IDENTITY.
+     */
+    final int PARTY_IDENTITY = 38;
+    
+    /**
+     * Identificador do tipo CONTACT.
+     */
+    final int CONTACT = 39;
+    
+    /**
+     * Identificador do tipo ADDRESS.
+     */
+    final int ADDRESS = 40;
+    
+    /**
+     * Identificador do tipo CAPABILITY.
+     */
+    final int CAPABILITY = 41;
 
+    /**
+     * Identificador do tipo ACTOR.
+     */
+    final int ACTOR = 42;
+    
+    /**
+     * Identificador do tipo PERSON.
+     */
+    final int PERSON = 43;
+    
+    /**
+     * Identificador do tipo ORGANIZATION.
+     */
+    final int ORGANIZATION = 44;
+    
+    /**
+     * Identificador do tipo GROUP.
+     */
+    final int GROUP = 45;
+    
+    /**
+     * Identificador do tipo AGENT.
+     */
+    final int AGENT = 46;
+    
+    /**
+     * Identificador do tipo EXTERNAL_ENVIROMENT_ACCESS.
+     */
+    final int EXTERNAL_ENVIROMENT_ACCESS = 47;
+    
+    /**
+     * Identificador do tipo UID.
+     */
+    final int UID = 48;
+    
+    /**
+     * Identificador do tipo ISO_OID.
+     */
+    final int ISO_OID = 49;
+    
+    /**
+     * Identificador do tipo UUID.
+     */
+    final int UUID = 50;
+    
+    /**
+     * Identificador do tipo INTERNET_ID.
+     */
+    final int INTERNET_ID = 51;
+    
+    /**
+     * Identificador do tipo OBJECT_ID.
+     */
+    final int OBJECT_ID = 52;
+    
+    /**
+     * Identificador do tipo UID_BASED_ID.
+     */
+    final int UID_BASED_ID = 53;
+    
+    /**
+     * Identificador do tipo HIER_OBJECT_ID.
+     */
+    final int HIER_OBJECT_ID = 54;
+    
+    /**
+     * Identificador do tipo OBJECT_VERSION_ID.
+     */
+    final int OBJECT_VERSION_ID = 55;
+    
+    /**
+     * Identificador do tipo VERSION_TREE_ID.
+     */
+    final int VERSION_TREE_ID = 56;
+    
+    /**
+     * Identificador do tipo ARCHETYPE_ID.
+     */
+    final int ARCHETYPE_ID = 57;
+    
+    /**
+     * Identificador do tipo TEMPLATE_ID.
+     */
+    final int TEMPLATE_ID = 58;
+    
+    /**
+     * Identificador do tipo TERMINOLOGY_ID.
+     */
+    final int TERMINOLOGY_ID = 59;
+    
+    /**
+     * Identificador do tipo GENERIC_ID.
+     */
+    final int GENERIC_ID = 60;
+    
+    /**
+     * Identificador do tipo OBJECT_REF.
+     */
+    final int OBJECT_REF = 61;
+    
+    /**
+     * Identificador do tipo ACCESS_GROUP_REF.
+     */
+    final int ACCESS_GROUP_REF = 62;
+    
+    /**
+     * Identificador do tipo PARTY_REF.
+     */
+    final int PARTY_REF = 63;
+    
+    /**
+     * Identificador do tipo LOCATABLE_REF.
+     */
+    final int LOCATABLE_REF = 64;
+    
+    /**
+     * Identificador do tipo TERMINOLOGY_SERVICE.
+     */
+    final int TERMINOLOGY_SERVICE = 65;
+    
+    /**
+     * Identificador do tipo TERMINOLOGY_ACCESS.
+     */
+    final int TERMINOLOGY_ACCESS = 66;
+    
+    /**
+     * Identificador do tipo CODE_SET_ACCESS.
+     */
+    final int CODE_SET_ACCESS = 67;
+    
+    /**
+     * Identificador do tipo OPENEHR_TERMINOLOGY_GROUP.
+     */
+    final int OPENEHR_TERMINOLOGY_GROUP = 68;
+    
+    /**
+     * Identificador do tipo OPENEHR_CODE_SET_IDENTIFIERS.
+     */
+    final int OPENEHR_CODE_SET_IDENTIFIERS = 69;
+    
+    /**
+     * Identificador do tipo TERMINOLOGY_SERVICES.
+     */
+    final int TERMINOLOGY_SERVICES = 70;
+    
+    /**
+     * Identificador do tipo OPENEHR_DEFINITIONS.
+     */
+    final int OPENEHR_DEFINITIONS = 71;
+    
+    /**
+     * Identificador do tipo BASIC_DEFINITIONS.
+     */
+    final int BASIC_DEFINITIONS = 72;
+    
     // TODO acrescente uma constante para todos os demais tipos
 
     /**
