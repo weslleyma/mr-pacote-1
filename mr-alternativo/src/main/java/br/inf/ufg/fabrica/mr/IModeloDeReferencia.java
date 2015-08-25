@@ -190,6 +190,46 @@ public class IModeloDeReferencia implements ModeloDeReferencia {
      * Identificador do tipo DV_PROPORTION.
      */
     final int DV_PROPORTION = 22;
+    
+    /**
+     * Identificador do tipo PROPORTION_KIND.
+     */
+    final int PROPORTION_KIND = 23;
+    
+    /**
+     * Identificador do tipo DV_ABSOLUTE_QUANTITY.
+     */
+    final int DV_ABSOLUTE_QUANTITY = 24;
+    
+    /**
+     * Identificador do tipo DV_TEMPORAL.
+     */
+    final int DV_TEMPORAL = 25;
+    
+    /**
+     * Identificador do tipo DV_DATE.
+     */
+    final int DV_DATE = 26;
+    
+    /**
+     * Identificador do tipo DV_TIME.
+     */
+    final int DV_TIME = 27;
+    
+    /**
+     * Identificador do tipo DV_DATE_TIME.
+     */
+    final int DV_DATE_TIME = 28;
+    
+    /**
+     * Identificador do tipo DV_DURATION.
+     */
+    final int DV_DURATION = 29;
+    
+    /**
+     * Identificador do tipo DV_TIME_SPECIFICATION.
+     */
+    final int DV_TIME_SPECIFICATION = 30;
 
     // TODO acrescente uma constante para todos os demais tipos
 
