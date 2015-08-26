@@ -59,7 +59,7 @@ import java.util.Map;
  *
  * <p>As operações {@link #obtemTexto(int, int)},
  * {@link #obtemVetorBytes(int, int)} e
- * {@link #obtemValorLogico(int, int)}, dentre outras similares
+ * {@link #obtemLogico(int, int)}, dentre outras similares
  * para os demais tipos primitivos, permitem recuperar um
  * valor primitivo, ou seja, um membro de algum objeto. Em
  * consequência, todos eles fazem uso de dois parâmetros. O
@@ -581,7 +581,6 @@ public class IModeloDeReferencia implements ModeloDeReferencia {
      */
     final int PARTY_PROXY = 101;
 
-
     /**
      * Identificador do tipo PARTY_SELF.
      */
@@ -1008,6 +1007,42 @@ public class IModeloDeReferencia implements ModeloDeReferencia {
     }
 
     /**
+     * Define a raiz do presente objeto.
+     *
+     * <p>Uma instância desta interface é um grafo com uma
+     * raiz única. Após todos os objetos serem adicionados
+     * ao grafo, partindo dos objetos "primitivos" até o objeto
+     * de mais "alto nível" (raiz), este método deve ser chamado
+     * a fim de guardar a identificação da raiz. Isso possibilita
+     * que seja estabelecido um ponto de acesso único ao grafo
+     * para uma posterior remontagem.</p>
+     *
+     * @see #obtemRaiz()
+     *
+     * @param O identificador único da raiz.
+     *
+     * @throws IllegalArgumentException O objeto raiz não existe.
+     */
+    public void defineRaiz(int raiz) {
+
+    }
+
+    /**
+     * Obtém o identificador da raiz do presente objeto.
+     *
+     * <p>Este método retorna o identificador que determina
+     * o ponto inicial para remontagem do grafo de objetos,
+     * conforme a especificação do Modelo de Referência.</p>
+     *
+     * @see #defineRaiz(int)
+     *
+     * @return O identificador único da raiz.
+     */
+    public int obtemRaiz() {
+        return 0;
+    }
+
+    /**
      * Obtém o total de objetos, instâncias de elementos
      * do Modelo de Referência, ocupados pelo presente
      * objeto.
@@ -1118,6 +1153,94 @@ public class IModeloDeReferencia implements ModeloDeReferencia {
      */
     public byte[] obtemVetorBytes(int id, int campo) {
         return null;
+    }
+
+    /**
+     * Cria uma lista de objetos.
+     * Note que na montagem do grafo de objetos todos os
+     * objetos "filhos" devem ser adicionados antes de se
+     * adicionar o "pai" ao grafo. Logo, o tamanho da lista
+     * é fixo porque todos seus objetos são previamente
+     * conhecidos/adicionados.
+     *
+     * @param quantidade Quantidade de objetos da lista.
+     * @return Identificador único da lista.
+     */
+    public int adicionaLista(int quantidade) {
+        return 0;
+    }
+
+    /**
+     * Adiciona um item à lista.
+     * @param lista Lista de objetos a ser adicionada
+     *              de um item.
+     * @param item Identificador do objeto a ser
+     *             inserido na lista.
+     * @return Identificador único do item na lista.
+     *
+     * @throws IllegalArgumentException Nos seguintes casos:
+     * (a) a lista não existe; (b) o item não existe.
+     */
+    public int adicionaItem(int lista, int item) {
+        return 0;
+    }
+
+    /**
+     * Procura pelo objeto na lista.
+     *
+     * @param lista Identificador da lista onde o
+     *              objeto será procurado.
+     * @param objeto Identificador do objeto
+     *               a ser procurado. Esse é um
+     *               objeto temporário, construído
+     *               com a classe ObjectTemp.
+     * @return Ordem na lista onde o objeto se
+     * encontra, ou o valor -1, caso o objeto não
+     * esteja presente na lista.
+     *
+     * @throws IllegalArgumentException a lista não existe.
+     *
+     */
+    public int buscaEmLista(int lista, int objeto) {
+        return 0;
+    }
+
+    /**
+     * Elimina o objeto.
+     *
+     * <p>Este método é particularmente útil
+     * durante uma busca, onde um objeto foi
+     * construído especificamente para esta
+     * finalidade.</p>
+     *
+     * @param objeto Identificador do objeto
+     *               a ser eliminado.
+     */
+    public void elimineObjeto(int objeto) {
+
+    }
+
+    /**
+     * Cria um dicionário (<i>hash table</i>).
+     *
+     * <p>Um dicionário é tratado como uma combinação
+     * de duas listas. Assim, para um par (Chave, Valor)
+     * qualquer, se Chave se encontra na posição i
+     * da lista de chaves, então Valor se encontra
+     * na posição i da lista de valores.</p>
+     *
+     * @param chaves Identificador único da lista
+     *               de chaves.
+     * @param valores Identificador único da lista de
+     *                valores.
+     * @return Identificador único do dicionário.
+     * @throws IllegalArgumentException Nos seguintes casos:
+     * (a) a lista de chaves não existe;
+     * (b) a lista de valores não existe;
+     * (c) a lista de chaves é incompatível (contém elementos repetidos).
+     */
+    public int adicionaHash(int chaves, int valores) {
+        return 0;
     }
 
     /**
@@ -1303,27 +1426,228 @@ public class IModeloDeReferencia implements ModeloDeReferencia {
         return 0;
     }
 
+    /**
+     * Adiciona um Identificador de Objeto da
+     * ISO/IEC 8824) ({@code ISO_OID}).
+     *
+     * @param valor Sequência de caracteres que é uma
+     *              serialização de um ISO_OID.
+     * @return O identificador único na estrutura deste
+     *          identificador de objeto da ISO.
+     */
+    public int adicionaIsoOid(String valor) {
+        return 0;
+    }
+
+    /**
+     * Adiciona um Identificador Único Universal DCE
+     * ({@code UUID}).
+     *
+     * @param valor Sequência de caracteres que é uma
+     *              serialização de um UUID.
+     * @return O identificador único na estrutura do UUID.
+     */
+    public int adicionaUuid(String valor) {
+        return 0;
+    }
+
+    /**
+     * Adiciona um identificador de domínio
+     * da internet invertido ({@code INTERNET_ID}).
+     *
+     * @param valor Sequência de caracteres que é uma
+     *              serialização de um identificador de domínio.
+     * @return O identificador único na estrutura
+     *          do identificador de internet.
+     */
+    public int adicionaInternetId(String valor) {
+        return 0;
+    }
+
+    /**
+     * Adiciona um identificador de hierarquia
+     * ({@code HIER_OBJECT_ID}).
+     *
+     * @param valor Sequência de caracteres que é uma
+     *              serialização de um identificador de
+     *              hierarquia ({HIER_OBJECT_ID}).
+     * @return O identificador único na estrutura deste
+     *         identificador de hierarquia.
+     */
+    public int adicionaHierObjectId(String valor) {
+        return 0;
+    }
+
+    /**
+     * Adiciona um identificador de hierarquia
+     * ({@code HIER_OBJECT_ID}).
+     *
+     * @param raiz identificador único permanente de
+     *          entidade (@code UID).
+     * @param extensão identificador local do objeto.
+     * @return O identificador único na estrutura do
+     * identificador de hierarquia.
+     */
+    public int adicionaHierObjectId(String raiz, String extensao) {
+        return 0;
+    }
+
+    /**
+     * Adiciona um identificador único global para uma
+     * versão de um objeto ({@code OBJECT_VERSION_ID}).
+     *
+     * @param valor Sequência de caracteres que é uma
+     *              serialização de um identificador de uma
+     *              versão de um objeto ({OBJECT_VERSION_ID}).
+     * @return O identificador único na estrutura deste
+     *          identificador de versão de objeto.
+     */
+    public int adicionaObjectVersionId(String valor) {
+        return 0;
+    }
+
+    /**
+     * Adiciona um identificador único global para uma
+     * versão de um objeto ({@code OBJECT_VERSION_ID}).
+     *
+     * @param objectId identificador único para
+     *                  objeto lógico (@code UID).
+     * @param versionTreeId identificador da versão
+     *                      com relação aos outros de sua
+     *                      árvore (@code VERSION_TREE_ID).
+     * @param creatingSystemId identificador do sistema
+     *                      criador da versão (@code UID).
+     * @return O identificador único na estrutura do
+     *          identificador de versão de objeto.
+     */
+    public int adicionaObjectVersionId(String objectId, String versionTreeId, String creatingSystemId) {
+        return 0;
+    }
+
+    /**
+     * Recupera o byte do campo do objeto.
+     *
+     * @param id O identificador único do objeto.
+     * @param campo A ordem do campo, iniciada por 0, para o
+     *              campo cujo valor é um byte.
+     * @return Valor do byte (campo do objeto).
+     *
+     * @throws IllegalArgumentException Se pelo menos uma das
+     * condições abaixo for verificada:
+     * (a) o campo não é do tipo byte; (b) o campo não existe;
+     * (c) o objeto não existe.
+     *
+     * @see #obtemTipo(int)
+     * @see #obtemTexto(int, int)
+     * @see #obtemVetorBytes(int, int)
+     */
     public byte obtemByte(int id, int campo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public char obtemCaractere(int id, int campo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    /**
+     * Recupera a String do campo do objeto.
+     *
+     * @param id O identificador único do objeto.
+     * @param campo A ordem do campo, iniciada por 0, para o
+     *              campo cujo valor é uma String.
+     * @return String do campo do objeto.
+     *
+     * @throws IllegalArgumentException Se pelo menos uma das
+     * condições abaixo for verificada:
+     * (a) o campo não é do tipo String; (b) o campo não existe;
+     * (c) o objeto não existe.
+     *
+     * @see #obtemTipo(int)
+     * @see #obtemTexto(int, int)
+     * @see #obtemVetorBytes(int, int)
+     */
+    public String obtemString(int id, int campo) {
+        return null;
     }
 
+    /**
+     * Recupera o valor lógico do objeto.
+     *
+     * @param id O identificador único do objeto.
+     * @param campo A ordem do campo, iniciada por 0, para o
+     *              campo cujo valor lógico é desejado.
+     * @return Valor lógico do campo do objeto.
+     *
+     * @throws IllegalArgumentException Se pelo menos uma das
+     * condições abaixo for verificada:
+     * (a) o campo não é do tipo lógico; (b) o campo não existe;
+     * (c) o objeto não existe.
+     *
+     * @see #obtemTipo(int)
+     * @see #obtemTexto(int, int)
+     * @see #obtemVetorBytes(int, int)
+     */
     public boolean obtemLogico(int id, int campo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * Recupera inteiro.
+     *
+     * @param id O identificador único do objeto.
+     * @param campo A ordem do campo, iniciada por 0, para o
+     *              campo cujo valor inteiro é desejado.
+     * @return Valor inteiro (campo do objeto).
+     *
+     * @throws IllegalArgumentException Se pelo menos uma das
+     * condições abaixo for verificada:
+     * (a) o campo não é do tipo inteiro; (b) o campo não existe;
+     * (c) o objeto não existe.
+     *
+     * @see #obtemTipo(int)
+     * @see #obtemTexto(int, int)
+     * @see #obtemVetorBytes(int, int)
+     */
     public int obtemInteiro(int id, int campo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * Recupera o valor de precisão simples (ponto
+     * flutuante).
+     *
+     * @param id O identificador único do objeto.
+     * @param campo A ordem do campo, iniciada por 0, para o
+     *              campo cujo valor {@code float} é desejado.
+     * @return Valor {@code float} do campo do objeto.
+     *
+     * @throws IllegalArgumentException Se pelo menos uma das
+     * condições abaixo for verificada:
+     * (a) o campo não é do tipo float; (b) o campo não existe;
+     * (c) o objeto não existe.
+     *
+     * @see #obtemTipo(int)
+     * @see #obtemTexto(int, int)
+     * @see #obtemVetorBytes(int, int)
+     */
     public float obtemFloat(int id, int campo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * Recupera valor de precisão dupla (ponto flutuante).
+     *
+     * @param id O identificador único do objeto.
+     * @param campo A ordem do campo, iniciada por 0, para o
+     *              campo cujo valor é um {@code double}.
+     * @return Valor {@code double} do campo do objeto.
+     *
+     * @throws IllegalArgumentException Se pelo menos uma das
+     * condições abaixo for verificada:
+     * (a) o campo não é do tipo double; (b) o campo não existe;
+     * (c) o objeto não existe.
+     *
+     * @see #obtemTipo(int)
+     * @see #obtemTexto(int, int)
+     * @see #obtemVetorBytes(int, int)
+     */
     public double obtemDouble(int id, int campo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
