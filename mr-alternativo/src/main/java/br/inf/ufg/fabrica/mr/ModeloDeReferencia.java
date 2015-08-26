@@ -174,7 +174,39 @@ public interface ModeloDeReferencia {
      *             openEHR.
      */
     void fromJSON(String json);
-
+    
+    /** 
+     * Define a raiz do presente objeto.
+     * 
+     * <p>Uma instância desta interface é um grafo com uma
+     * raiz única. Após todos os objetos serem adicionados
+     * ao grafo, partindo dos objetos "primitivos" até o objeto 
+     * de mais "alto nível" (raiz), este método deve ser chamado
+     * a fim de guardar a identificação da raiz. Isso possibilita
+     * que seja estabelecido um ponto de acesso único ao grafo 
+     * para uma posterior remontagem.</p>
+     * 
+     * @see #obtemRaiz()
+     * 
+     * @param O identificador único da raiz.
+     * 
+     * @throws IllegalArgumentException O objeto raiz não existe.
+     */
+    void defineRaiz(int raiz);
+    
+    /** 
+     * Obtém o identificador da raiz do presente objeto.
+     * 
+     * <p>Este método retorna o identificador que determina
+     * o ponto inicial para remontagem do grafo de objetos,
+     * conforme a especificação do Modelo de Referência.</p>
+     * 
+     * @see #defineRaiz(int)
+     * 
+     * @return O identificador único da raiz.
+     */
+    int obtemRaiz();
+    
     /**
      * Obtém o total de objetos, instâncias de elementos
      * do Modelo de Referência, ocupados pelo presente
@@ -219,7 +251,7 @@ public interface ModeloDeReferencia {
      *
      * @throws IllegalArgumentException Se pelo menos uma das
      * condições abaixo for verificada:
-     * (a) o campo não é do tipo lógico; (b) o campo não existe;
+     * (a) o campo não é do tipo byte; (b) o campo não existe;
      * (c) o objeto não existe.
      *
      * @see #obtemTipo(int)
@@ -229,23 +261,23 @@ public interface ModeloDeReferencia {
     byte obtemByte(int id, int campo);
 
     /**
-     * Recupera o caractere do campo do objeto.
+     * Recupera a String do campo do objeto.
      *
      * @param id O identificador único do objeto.
      * @param campo A ordem do campo, iniciada por 0, para o
-     *              campo cujo valor é um caractere.
-     * @return Caractere do campo do objeto.
+     *              campo cujo valor é uma String.
+     * @return String do campo do objeto.
      *
      * @throws IllegalArgumentException Se pelo menos uma das
      * condições abaixo for verificada:
-     * (a) o campo não é do tipo lógico; (b) o campo não existe;
+     * (a) o campo não é do tipo String; (b) o campo não existe;
      * (c) o objeto não existe.
      *
      * @see #obtemTipo(int)
      * @see #obtemTexto(int, int)
      * @see #obtemVetorBytes(int, int)
      */
-    char obtemCaractere(int id, int campo);
+    String obtemString(int id, int campo);
 
     /**
      * Recupera o valor lógico do objeto.
@@ -276,7 +308,7 @@ public interface ModeloDeReferencia {
      *
      * @throws IllegalArgumentException Se pelo menos uma das
      * condições abaixo for verificada:
-     * (a) o campo não é do tipo lógico; (b) o campo não existe;
+     * (a) o campo não é do tipo inteiro; (b) o campo não existe;
      * (c) o objeto não existe.
      *
      * @see #obtemTipo(int)
@@ -296,7 +328,7 @@ public interface ModeloDeReferencia {
      *
      * @throws IllegalArgumentException Se pelo menos uma das
      * condições abaixo for verificada:
-     * (a) o campo não é do tipo lógico; (b) o campo não existe;
+     * (a) o campo não é do tipo float; (b) o campo não existe;
      * (c) o objeto não existe.
      *
      * @see #obtemTipo(int)
@@ -315,7 +347,7 @@ public interface ModeloDeReferencia {
      *
      * @throws IllegalArgumentException Se pelo menos uma das
      * condições abaixo for verificada:
-     * (a) o campo não é do tipo lógico; (b) o campo não existe;
+     * (a) o campo não é do tipo double; (b) o campo não existe;
      * (c) o objeto não existe.
      *
      * @see #obtemTipo(int)
@@ -349,7 +381,7 @@ public interface ModeloDeReferencia {
      * @return Valor do campo do objeto.
      *
      * @throws IllegalArgumentException Nos seguintes casos:
-     * (a) o campo não é texto; (b) o campo não existe;
+     * (a) o campo não é um vetor de bytes; (b) o campo não existe;
      * (c) o objeto não existe.
      *
      * @see #obtemTexto(int, int)
@@ -357,6 +389,84 @@ public interface ModeloDeReferencia {
      */
     byte[] obtemVetorBytes(int id, int campo);
 
+    /**
+     * Cria uma lista de objetos.
+     * Note que na montagem do grafo de objetos todos os
+     * objetos "filhos" devem ser adicionados antes de se
+     * adicionar o "pai" ao grafo. Logo, o tamanho da lista
+     * é fixo porque todos seus objetos são previamente
+     * conhecidos/adicionados.
+     * 
+     * @param quantidade Quantidade de objetos da lista.
+     * @return Identificador único da lista.
+     */
+    int adicionaLista(int quantidade);
+
+    /**
+     * Adiciona um item à lista.
+     * @param lista Lista de objetos a ser adicionada
+     *              de um item.
+     * @param item Identificador do objeto a ser
+     *             inserido na lista.
+     * @return Identificador único do item na lista.
+     *
+     * @throws IllegalArgumentException Nos seguintes casos:
+     * (a) a lista não existe; (b) o item não existe.
+     */
+    int adicionaItem(int lista, int item);
+
+    /**
+     * Procura pelo objeto na lista.
+     *
+     * @param lista Identificador da lista onde o
+     *              objeto será procurado.
+     * @param objeto Identificador do objeto
+     *               a ser procurado. Esse é um
+     *               objeto temporário, construído
+     *               com a classe ObjectTemp.
+     * @return Ordem na lista onde o objeto se
+     * encontra, ou o valor -1, caso o objeto não
+     * esteja presente na lista.
+     * 
+     * @throws IllegalArgumentException a lista não existe.
+     * 
+     */
+    int buscaEmLista(int lista, int objeto);
+
+    /**
+     * Elimina o objeto.
+     *
+     * <p>Este método é particularmente útil
+     * durante uma busca, onde um objeto foi
+     * construído especificamente para esta
+     * finalidade.</p>
+     *
+     * @param objeto Identificador do objeto
+     *               a ser eliminado.
+     */
+    void elimineObjeto(int objeto);
+
+    /**
+     * Cria um dicionário (<i>hash table</i>).
+     *
+     * <p>Um dicionário é tratado como uma combinação
+     * de duas listas. Assim, para um par (Chave, Valor)
+     * qualquer, se Chave se encontra na posição i
+     * da lista de chaves, então Valor se encontra
+     * na posição i da lista de valores.</p>
+     *
+     * @param chaves Identificador único da lista
+     *               de chaves.
+     * @param valores Identificador único da lista de
+     *                valores.
+     * @return Identificador único do dicionário.
+     * @throws IllegalArgumentException Nos seguintes casos:
+     * (a) a lista de chaves não existe;
+     * (b) a lista de valores não existe;
+     * (c) a lista de chaves é incompatível (contém elementos repetidos).
+     */
+    int adicionaHash(int chaves, int valores);
+    
     /**
      * Adiciona um valor lógico ({@code DV_BOOLEAN}).
      *
@@ -504,4 +614,91 @@ public interface ModeloDeReferencia {
             int hDvMultimediaThumbnail,
             String dvUri,
             byte[] dado);
+    
+    /**
+     * Adiciona um Identificador de Objeto da
+     * ISO/IEC 8824) ({@code ISO_OID}).
+     *
+     * @param valor Sequência de caracteres que é uma
+     *              serialização de um ISO_OID.
+     * @return O identificador único na estrutura deste
+     *          identificador de objeto da ISO.
+     */
+    int adicionaIsoOid(String valor);
+    
+    /**
+     * Adiciona um Identificador Único Universal DCE 
+     * ({@code UUID}).
+     *
+     * @param valor Sequência de caracteres que é uma
+     *              serialização de um UUID.
+     * @return O identificador único na estrutura do UUID.
+     */
+    int adicionaUuid(String valor);
+    
+    /**
+     * Adiciona um identificador de domínio
+     * da internet invertido ({@code INTERNET_ID}).
+     *
+     * @param valor Sequência de caracteres que é uma
+     *              serialização de um identificador de domínio.
+     * @return O identificador único na estrutura 
+     *          do identificador de internet.
+     */
+    int adicionaInternetId(String valor);
+
+    /**
+     * Adiciona um identificador de hierarquia
+     * ({@code HIER_OBJECT_ID}).
+     *
+     * @param valor Sequência de caracteres que é uma
+     *              serialização de um identificador de
+     *              hierarquia ({HIER_OBJECT_ID}).
+     * @return O identificador único na estrutura deste
+     *         identificador de hierarquia.
+     */
+    int adicionaHierObjectId(String valor);
+    
+    /**
+     * Adiciona um identificador de hierarquia
+     * ({@code HIER_OBJECT_ID}).
+     *
+     * @param raiz identificador único permanente de 
+     *          entidade (@code UID).
+     * @param extensão identificador local do objeto.
+     * @return O identificador único na estrutura do 
+     * identificador de hierarquia.
+     */
+    int adicionaHierObjectId(String raiz, String extensao);
+
+    /**
+     * Adiciona um identificador único global para uma
+     * versão de um objeto ({@code OBJECT_VERSION_ID}).
+     *
+     * @param valor Sequência de caracteres que é uma
+     *              serialização de um identificador de uma
+     *              versão de um objeto ({OBJECT_VERSION_ID}).
+     * @return O identificador único na estrutura deste
+     *          identificador de versão de objeto.
+     */
+    int adicionaObjectVersionId(String valor);
+    
+    /**
+     * Adiciona um identificador único global para uma
+     * versão de um objeto ({@code OBJECT_VERSION_ID}).
+     *
+     * @param objectId identificador único para
+     *                  objeto lógico (@code UID).
+     * @param versionTreeId identificador da versão
+     *                      com relação aos outros de sua 
+     *                      árvore (@code VERSION_TREE_ID).
+     * @param creatingSystemId identificador do sistema
+     *                      criador da versão (@code UID).
+     * @return O identificador único na estrutura do 
+     *          identificador de versão de objeto.
+     */
+    int adicionaObjectVersionId(String objectId,
+            String versionTreeId,
+            String creatingSystemId);
+
 }
