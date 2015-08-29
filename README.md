@@ -18,9 +18,8 @@ MR.
 
 Pacote de Trabalho 1
 - Nome: Responsabilidade
-- Marla Aragão: Implementação
-- Weslley M. Araújo: Implementação
-- Higor Quintão: Implementação
-- Willian de Oliveira: Testes
-- Lizandra Ottmann: Documentação
-- Thaísa Andrade: Testes
+- Marla Aragão: Implementação, Documentação e Testes
+- Weslley M. Araújo: Implementação, Documentação e Testes
+- Higor Quintão: Implementação, Documentação e Testes
+- Lizandra Ottmann: Implementação, Documentação e Testes
+- Thaísa Andrade: Implementação, Documentação e Testes
