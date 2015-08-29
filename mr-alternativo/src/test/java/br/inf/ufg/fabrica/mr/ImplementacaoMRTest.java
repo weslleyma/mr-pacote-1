@@ -4,6 +4,9 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.Rule;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
@@ -68,6 +71,33 @@ public class ImplementacaoMRTest {
 
     @Test
     public void testObtemValorLogicoDvIdentifierThrows2() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O objeto não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        classe.obtemTexto(1, 1);
+    }
+
+    @Test
+    public void testAdicionaDvUri() throws URISyntaxException {
+        ImplementacaoMR classe = new ImplementacaoMR();
+        String uri = new URI("weslley").toString();
+        int idObjeto = classe.adicionaDvUri(uri);
+        String valor = classe.obtemTexto(idObjeto, 0);
+        assertEquals(valor, uri);
+    }
+
+    @Test
+    public void testObtemValorLogicoDvUriThrows1() throws URISyntaxException {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O campo não exite!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        String uri = new URI("weslley").toString();
+        int idObjeto = classe.adicionaDvUri(uri);
+        classe.obtemTexto(idObjeto, 1);
+    }
+
+    @Test
+    public void testObtemValorLogicoDvUriThrows2() throws URISyntaxException {
         exception.expect(IllegalArgumentException.class);
         exception.expectMessage("O objeto não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();

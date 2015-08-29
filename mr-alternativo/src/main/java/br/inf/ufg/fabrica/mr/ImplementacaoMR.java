@@ -913,6 +913,24 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     private ArrayList<Object> listDvIdentifier = new ArrayList<Object>();
 
     /**
+     * Estruturas de dados utilizadas para armazenar uma instância de DV_URI
+     *
+     * Na estrutura #dvUri devem ser inseridos 2 objetos, sendo Integer e String:
+     * ID único do objeto e valor.
+     * Ex.: 0, "value"
+     *
+     * O #idIndiceDvUri que tem por função, mapear o ID do objeto com o
+     * índice dele na lista de objetos #dvUri. O objetivo de agilizar a busca de objetos.
+     *
+     * Na estrutura #listDvUri devem ser inseridos no mínimo 2 objetos Inteiros:
+     * Quantidade de itens e o valor dos índices de #dvUri.
+     * Ex.: 1, 10
+     */
+    private ArrayList<Object> dvUri = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceDvUri = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listDvUri = new ArrayList<Object>();
+
+    /**
      * Estruturas de dados utilizada para armazenar uma instância de CODE_PHRASE
      *
      * Na estrutura #codePhrase devem ser inseridos 3 objetos, sendo Integer, Integer e String:
@@ -948,6 +966,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     private ArrayList<Object> dvMultimedia = new ArrayList<Object>();
     private Map<Integer, Integer> idIndiceDvMultimedia = new HashMap<Integer, Integer>();
     private ArrayList<Object> listDvMultimedia = new ArrayList<Object>();
+
 
 
 
@@ -1221,6 +1240,20 @@ public class ImplementacaoMR implements ModeloDeReferencia {
                 else{
                     try{
                         return (String) this.dvIdentifier.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo texto!");
+                    }
+                }
+            }
+            else if ( this.idTipo.get(id) == DV_URI  ) {
+                int idIndice = this.idIndiceDvUri.get(id);
+                if ( campo != 0 ) {
+                    throw new IllegalArgumentException("O campo não exite!");
+                }
+                else{
+                    try{
+                        return (String) this.dvUri.get(idIndice + campo + 1);
                     }
                     catch (Exception e) {
                         throw new IllegalArgumentException("O campo não é do tipo texto!");
@@ -1522,7 +1555,14 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      * @return O identificador único desta URI na estrutura.
      */
     public int adicionaDvUri(String uri) {
-        return 0;
+        int idObjeto = this.idObjeto;
+        this.dvUri.add(idObjeto);
+        int indiceObjInserido = this.dvUri.size()-1;
+        this.dvUri.add(uri);
+        this.idIndiceDvUri.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, DV_URI);
+        this.idObjeto++;
+        return idObjeto;
     }
 
     /**
