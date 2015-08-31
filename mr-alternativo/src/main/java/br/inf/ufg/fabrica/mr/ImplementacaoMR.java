@@ -11,7 +11,6 @@ package br.inf.ufg.fabrica.mr;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -1533,6 +1532,22 @@ public class ImplementacaoMR implements ModeloDeReferencia {
         if ( !this.idTipo.containsKey(id) ) {
             throw new IllegalArgumentException("O objeto não existe!");
         }
+        else {
+            if ( this.idTipo.get(id) == EHR) {
+                int idIndice = this.idIndiceEhr.get(id);
+                if ( campo < 0 || campo > 8 ) {
+                    throw new IllegalArgumentException("O campo não existe!");
+                }
+                else{
+                    try{
+                        return (Integer) this.ehr.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo inteiro!");
+                    }
+                }
+            }
+        }
         
         return -1;
     }
@@ -2201,13 +2216,13 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      * 
      * @param system_id The id of the EHR system on which this EHR was created (HIER_OBJECT_ID).
      * @param ehr_id The id of this EHR (HIER_OBJECT_ID).
-     * @param contributions List of contributions causing changes to this EHR. 
+     * @param contributions Array(int) of contributions causing changes to this EHR. 
      *                      Each contribution contains a list of versions, 
      *                      which may include references to any number of VERSION instances, 
      *                      i.e. items of type VERSIONED_COMPOSITION and VERSIONED_FOLDER.
      * @param ehr_status Reference to EHR_STATUS object for this EHR.
      * @param ehr_access Reference to EHR_ACCESS object for this EHR.
-     * @param compositions Master list of all Versioned Composition references in this EHR.
+     * @param compositions Array(int) Master list of all Versioned Composition references in this EHR.
      * @param directory Optional directory structure for this EHR.
      * @param time_created Time of creation of the EHR (DV_DATE_TIME).
      * 
@@ -2215,10 +2230,10 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      */
     public int adicionaEHR(int system_id, 
             int ehr_id,
-            List<Integer> contributions,
+            int[] contributions,
             int ehr_status,
             int ehr_access,
-            List<Integer> compositions,
+            int[] compositions,
             int directory,
             int time_created) {
         
@@ -2228,10 +2243,21 @@ public class ImplementacaoMR implements ModeloDeReferencia {
         
         this.ehr.add(system_id);
         this.ehr.add(ehr_id);
+        
+        this.ehr.add(contributions.length); //tamanho do array contributions
+        for (int i = 0; i < contributions.length; i++) {
+           this.ehr.add(contributions[i]); 
+        }
+        
         this.ehr.add(contributions);
         this.ehr.add(ehr_status);
         this.ehr.add(ehr_access);
-        this.ehr.add(compositions);
+        
+        this.ehr.add(compositions.length); //tamanho do array compositions
+        for (int i = 0; i < compositions.length; i++) {
+           this.ehr.add(compositions[i]); 
+        }
+
         this.ehr.add(directory);
         this.ehr.add(time_created);
                 
