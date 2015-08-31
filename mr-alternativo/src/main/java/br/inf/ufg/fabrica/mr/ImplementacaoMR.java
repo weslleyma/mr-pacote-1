@@ -1261,7 +1261,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
             }
             else if ( this.idTipo.get(id) == OPENEHR_TERMINOLOGY_GROUP) {
                 int idIndice = this.idIndiceOpenEhrTerminologyGroup.get(id);
-                if ( campo < 0 || campo > 15 ) {
+                if ( campo < 0 || campo > 14 ) {
                     throw new IllegalArgumentException("O campo não exite!");
                 }
                 else{
