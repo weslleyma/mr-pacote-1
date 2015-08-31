@@ -396,11 +396,6 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      */
     final int LOCATABLE_REF = 64;
 
-    /**
-     * Identificador do tipo TERMINOLOGY_SERVICE.
-     */
-    final int TERMINOLOGY_SERVICE = 65;
-
 
     /**
      * Identificador do tipo OPENEHR_TERMINOLOGY_GROUP.
@@ -415,7 +410,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     /**
      * Identificador do tipo TERMINOLOGY_SERVICES.
      */
-    final int TERMINOLOGY_SERVICES = 70;
+    final int TERMINOLOGY_SERVICE = 70;
 
     /**
      * Identificador do tipo OPENEHR_DEFINITIONS.
@@ -978,8 +973,45 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     private ArrayList<Object> listOpenEhrTerminologyGroup = new ArrayList<Object>();
 
 
+    /**
+     * Estruturas de dados utilizada para armazenar uma instância de OPENEHR_CODE_SET_IDENTIFIERS
+     *
+     * Na estrutura #openEhrCodeSetIdentifiers devem ser inseridos 8 objetos: Inteiro, String, 
+     * String, String, String, String, String, String.
+     * Ex.: "identificador", "Code_set_id_character_sets", "Code_set_id_compression_algorithms", "Code_set_id_countries"
+     * , "Code_set_integrity_check_algorithms", "Code_set_id_languages", "Code_set_id_media_types"
+     * , "Code_set_id_normal_statuses".
+     *
+     * O #idIndiceOpenEhrCodeSetIdentifiers que tem por função, mapear o ID do objeto com o
+     * índice dele na lista de objetos #openEhrCodeSetIdentifiers. O objetivo é agilizar a busca de objetos.
+     *
+     * Na estrutura #listOpenEhrCodeSetIdentifiers devem ser inseridos no mínimo 2 objetos Inteiros:
+     * Quantidade de itens e o valor dos índices de #openEhrCodeSetIdentifiers.
+     * Ex.: 1, 10
+     */
+    private ArrayList<Object> openEhrCodeSetIdentifiers = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceOpenEhrCodeSetIdentifiers = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listOpenEhrCodeSetIdentifiers = new ArrayList<Object>();    
 
 
+    /**
+     * Estruturas de dados utilizada para armazenar uma instância de TERMINOLOGY_SERVICES
+     *
+     * Herda de duas classes: OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS, OPENEHR_CODE_SET_IDENTIFIERS
+     * 
+     * Na estrutura #terminologyServices devem ser inseridos 23 objetos: Inteiro e Strings referentes
+     * aos atributos das duas classes-pai.
+     *
+     * O #idIndiceTerminologyServices que tem por função, mapear o ID do objeto com o
+     * índice dele na lista de objetos #terminologyServices. O objetivo é agilizar a busca de objetos.
+     *
+     * Na estrutura #listTerminologyServices devem ser inseridos no mínimo 2 objetos Inteiros:
+     * Quantidade de itens e o valor dos índices de #terminologyServices.
+     * Ex.: 1, 10
+     */
+    private ArrayList<Object> terminologyService = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceTerminologyService = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listTerminologyServices = new ArrayList<Object>(); 
 
 
     /**
@@ -1267,6 +1299,34 @@ public class ImplementacaoMR implements ModeloDeReferencia {
                 else{
                     try{
                         return (String) this.openEhrTerminologyGroup.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo texto!");
+                    }
+                }
+            }
+            else if ( this.idTipo.get(id) == OPENEHR_CODE_SET_IDENTIFIERS) {
+                int idIndice = this.idIndiceOpenEhrCodeSetIdentifiers.get(id);
+                if ( campo < 0 || campo > 6 ) {
+                    throw new IllegalArgumentException("O campo não exite!");
+                }
+                else{
+                    try{
+                        return (String) this.openEhrCodeSetIdentifiers.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo texto!");
+                    }
+                }
+            }
+            else if ( this.idTipo.get(id) == TERMINOLOGY_SERVICE) {
+                int idIndice = this.idIndiceTerminologyService.get(id);
+                if ( campo < 0 || campo > 21 ) {
+                    throw new IllegalArgumentException("O campo não exite!");
+                }
+                else{
+                    try{
+                        return (String) this.terminologyService.get(idIndice + campo + 1);
                     }
                     catch (Exception e) {
                         throw new IllegalArgumentException("O campo não é do tipo texto!");
@@ -1806,7 +1866,26 @@ public class ImplementacaoMR implements ModeloDeReferencia {
         return 0;
     }
 
-    
+    /**
+     * 
+     * @param terminologyIdOpenehr Name of openEHR’s own terminology.
+     * @param groupIdAuditChange
+     * @param groupIdAttestationReason
+     * @param groupIdCompositionCategory
+     * @param groupIdEventMathFunction
+     * @param groupIdInstructionStates
+     * @param groupIdInstructionTransitions
+     * @param groupIdNullFlavours
+     * @param groupIdProperty
+     * @param groupIdParticipationFunction
+     * @param groupIdParticipationMode
+     * @param groupIdSetting
+     * @param groupIdTermMappingPurpose
+     * @param groupIdSubjectRelationship
+     * @param groupIdVersionLifeCycleState
+     * 
+     * @return id do objeto inserido
+     */
     public int adicionaOpenEhrTerminologyGroup(String terminologyIdOpenehr, 
             String groupIdAuditChange,  
             String groupIdAttestationReason, 
@@ -1845,6 +1924,131 @@ public class ImplementacaoMR implements ModeloDeReferencia {
         
         this.idIndiceOpenEhrTerminologyGroup.put(idObjeto, indiceObjInserido);
         this.idTipo.put(idObjeto, OPENEHR_TERMINOLOGY_GROUP);
+        this.idObjeto++;
+        return idObjeto;
+    }
+    
+    /**
+     * 
+     * @param codeSetIdCharacterSets
+     * @param codeSetIdCompressionAlgorithms
+     * @param codeSetIdCountries
+     * @param codeSetIntegrityCheckAlgorithms
+     * @param codeSetIdLanguages
+     * @param codeSetIdMediaTypes
+     * @param codeSetIdNormalStatuses
+     * 
+     * @return id do objeto inserido
+     */
+    public int adicionaOpenEhrCodeSetIdentifiers(String codeSetIdCharacterSets, 
+            String codeSetIdCompressionAlgorithms,  
+            String codeSetIdCountries, 
+            String codeSetIntegrityCheckAlgorithms, 
+            String codeSetIdLanguages,
+            String codeSetIdMediaTypes,
+            String codeSetIdNormalStatuses) {
+        
+        int idObjeto = this.idObjeto;
+        this.openEhrCodeSetIdentifiers.add(idObjeto);
+        int indiceObjInserido = this.openEhrCodeSetIdentifiers.size()-1;
+        
+        this.openEhrCodeSetIdentifiers.add(codeSetIdCharacterSets);
+        this.openEhrCodeSetIdentifiers.add(codeSetIdCompressionAlgorithms);
+        this.openEhrCodeSetIdentifiers.add(codeSetIdCountries);
+        this.openEhrCodeSetIdentifiers.add(codeSetIntegrityCheckAlgorithms);
+        this.openEhrCodeSetIdentifiers.add(codeSetIdLanguages);
+        this.openEhrCodeSetIdentifiers.add(codeSetIdMediaTypes);
+        this.openEhrCodeSetIdentifiers.add(codeSetIdNormalStatuses);
+        
+        this.idIndiceOpenEhrCodeSetIdentifiers.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, OPENEHR_CODE_SET_IDENTIFIERS);
+        this.idObjeto++;
+        return idObjeto;
+    }
+    
+    /**
+     * Herda das classes OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS e OPENEHR_CODE_SET_IDENTIFIERS
+     * 
+     * Atributos da classe OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS:
+     * @param terminologyIdOpenehr
+     * @param groupIdAuditChange
+     * @param groupIdAttestationReason
+     * @param groupIdCompositionCategory
+     * @param groupIdEventMathFunction
+     * @param groupIdInstructionStates
+     * @param groupIdInstructionTransitions
+     * @param groupIdNullFlavours
+     * @param groupIdProperty
+     * @param groupIdParticipationFunction
+     * @param groupIdParticipationMode
+     * @param groupIdSetting
+     * @param groupIdTermMappingPurpose
+     * @param groupIdSubjectRelationship
+     * @param groupIdVersionLifeCycleState
+     * 
+     * Atributos da classe OPENEHR_CODE_SET_IDENTIFIERS:
+     * @param codeSetIdCharacterSets
+     * @param codeSetIdCompressionAlgorithms
+     * @param codeSetIdCountries
+     * @param codeSetIntegrityCheckAlgorithms
+     * @param codeSetIdLanguages
+     * @param codeSetIdMediaTypes
+     * @param codeSetIdNormalStatuses
+     * 
+     * @return id do objeto inserido
+     */
+    public int adicionaTerminologyService(String terminologyIdOpenehr, 
+            String groupIdAuditChange,  
+            String groupIdAttestationReason, 
+            String groupIdCompositionCategory, 
+            String groupIdEventMathFunction,
+            String groupIdInstructionStates,
+            String groupIdInstructionTransitions, 
+            String groupIdNullFlavours, 
+            String groupIdProperty, 
+            String groupIdParticipationFunction, 
+            String groupIdParticipationMode, 
+            String groupIdSetting, 
+            String groupIdTermMappingPurpose, 
+            String groupIdSubjectRelationship, 
+            String groupIdVersionLifeCycleState,
+            String codeSetIdCharacterSets, 
+            String codeSetIdCompressionAlgorithms,  
+            String codeSetIdCountries, 
+            String codeSetIntegrityCheckAlgorithms, 
+            String codeSetIdLanguages,
+            String codeSetIdMediaTypes,
+            String codeSetIdNormalStatuses) {
+        
+        int idObjeto = this.idObjeto;
+        this.terminologyService.add(idObjeto);
+        int indiceObjInserido = this.terminologyService.size()-1;
+        
+        this.terminologyService.add(terminologyIdOpenehr);
+        this.terminologyService.add(groupIdAuditChange);
+        this.terminologyService.add(groupIdAttestationReason);
+        this.terminologyService.add(groupIdCompositionCategory);
+        this.terminologyService.add(groupIdEventMathFunction);
+        this.terminologyService.add(groupIdInstructionStates);
+        this.terminologyService.add(groupIdInstructionTransitions);
+        this.terminologyService.add(groupIdNullFlavours);
+        this.terminologyService.add(groupIdProperty);
+        this.terminologyService.add(groupIdParticipationFunction);
+        this.terminologyService.add(groupIdParticipationMode);
+        this.terminologyService.add(groupIdSetting);
+        this.terminologyService.add(groupIdTermMappingPurpose);
+        this.terminologyService.add(groupIdSubjectRelationship);
+        this.terminologyService.add(groupIdVersionLifeCycleState);
+        this.terminologyService.add(codeSetIdCharacterSets);
+        this.terminologyService.add(codeSetIdCompressionAlgorithms);
+        this.terminologyService.add(codeSetIdCountries);
+        this.terminologyService.add(codeSetIntegrityCheckAlgorithms);
+        this.terminologyService.add(codeSetIdLanguages);
+        this.terminologyService.add(codeSetIdMediaTypes);
+        this.terminologyService.add(codeSetIdNormalStatuses);
+        
+        this.idIndiceTerminologyService.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, TERMINOLOGY_SERVICE);
         this.idObjeto++;
         return idObjeto;
     }
