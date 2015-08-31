@@ -107,16 +107,6 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     final int DV_EHR_URI = 4;
 
     /**
-     * Identificador do tipo DV_TERMINOLOGY_ID.
-     */
-    final int DV_TERMINOLOGY_ID = 5;
-
-    /**
-     * Identificador do tipo DV_CODE_PHRASE.
-     */
-    final int DV_CODE_PHRASE = 6;
-
-    /**
      * Identificador do tipo DV_PARSABLE.
      */
     final int DV_PARSABLE = 7;
@@ -877,7 +867,10 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     private Map<Integer, Integer> idTipo = new HashMap<Integer, Integer>();
 
     /**
-     * Estruturas de dados utilizadas para armazenar uma instância de DV_BOOLEAN
+     * Estruturas de dados utilizadas para armazenar uma instância de Classes do
+     * Modelo Relacional.
+     *
+     * Abaixo tem um exemplo de DV_BOOLEAN, porém deve valer para todas as demais Classes.
      *
      * Na estrutura #dvBoolean devem ser inseridos 2 objetos, sendo Integer e Boolean:
      * ID único do objeto e valor.
@@ -918,17 +911,32 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      * Na estrutura #dvUri devem ser inseridos 2 objetos, sendo Integer e String:
      * ID único do objeto e valor.
      * Ex.: 0, "value"
-     *
-     * O #idIndiceDvUri que tem por função, mapear o ID do objeto com o
-     * índice dele na lista de objetos #dvUri. O objetivo de agilizar a busca de objetos.
-     *
-     * Na estrutura #listDvUri devem ser inseridos no mínimo 2 objetos Inteiros:
-     * Quantidade de itens e o valor dos índices de #dvUri.
-     * Ex.: 1, 10
      */
     private ArrayList<Object> dvUri = new ArrayList<Object>();
     private Map<Integer, Integer> idIndiceDvUri = new HashMap<Integer, Integer>();
     private ArrayList<Object> listDvUri = new ArrayList<Object>();
+
+    /**
+     * Estruturas de dados utilizadas para armazenar uma instância de DV_STATE
+     *
+     * Na estrutura #dvState devem ser inseridos 3 objetos:
+     * ID único do objeto, índice para um DV_CODED_TEXT e um boolean.
+     * Ex.: 0, 0, true
+     */
+    private ArrayList<Object> dvState = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceDvState = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listDvState = new ArrayList<Object>();
+
+    /**
+     * Estruturas de dados utilizadas para armazenar uma instância de DV_EHR_URI
+     *
+     * Na estrutura #dvEhrUri devem ser inseridos 2 objetos, sendo Integer e String:
+     * ID único do objeto e valor.
+     * Ex.: 0, "value"
+     */
+    private ArrayList<Object> dvEhrUri = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceDvEhrUri = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listDvEhrUri = new ArrayList<Object>();
 
     /**
      * Estruturas de dados utilizada para armazenar uma instância de CODE_PHRASE
@@ -936,13 +944,6 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      * Na estrutura #codePhrase devem ser inseridos 3 objetos, sendo Integer, Integer e String:
      * ID único do objeto, índice para um terminologyId, e uma string.
      * Ex.: 0, 5, "ab"
-     *
-     * O #idIndiceCodePhrase que tem por função, mapear o ID do objeto com o
-     * índice dele na lista de objetos #codePhrase. O objetivo de agilizar a busca de objetos.
-     *
-     * Na estrutura #listCodePhrase devem ser inseridos no mínimo 2 objetos Inteiros:
-     * Quantidade de itens e o valor dos índices de #codePhrase.
-     * Ex.: 1, 10
      */
     private ArrayList<Object> codePhrase = new ArrayList<Object>();
     private Map<Integer, Integer> idIndiceCodePhrase = new HashMap<Integer, Integer>();
@@ -955,13 +956,6 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      * Ex.: 0, "string", "índice para um DV_URI", "Byte", "índice para um CODE_PHRASE",
      * "índice para um CODE_PHRASE", "Byte", "índice para uma Lista de CODE_PHRASE",
      * "índice para um DV_MULTIMEDIA".
-     *
-     * O #idIndiceDvMultimedia que tem por função, mapear o ID do objeto com o
-     * índice dele na lista de objetos #dvMultimedia. O objetivo de agilizar a busca de objetos.
-     *
-     * Na estrutura #listDvMultimedia devem ser inseridos no mínimo 2 objetos Inteiros:
-     * Quantidade de itens e o valor dos índices de #dvMultimedia.
-     * Ex.: 1, 10
      */
     private ArrayList<Object> dvMultimedia = new ArrayList<Object>();
     private Map<Integer, Integer> idIndiceDvMultimedia = new HashMap<Integer, Integer>();
