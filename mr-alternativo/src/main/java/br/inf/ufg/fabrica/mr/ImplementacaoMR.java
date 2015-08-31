@@ -961,21 +961,29 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     private Map<Integer, Integer> idIndiceDvMultimedia = new HashMap<Integer, Integer>();
     private ArrayList<Object> listDvMultimedia = new ArrayList<Object>();
 
+    
+    /**
+     * Estruturas de dados utilizada para armazenar uma instância de CODE_SET_ACCESS
+     *
+     * Na estrutura #codeSetAcess devem ser inseridos 5 objetos, inteiro, String, Inteiro, Boolean, Boolean.
+     * Ex.: "identificador", "índice para um CODE_PHRASE", "has_lang", "has_code".
+     *
+     * O #idIndiceCodeSetAccess que tem por função, mapear o ID do objeto com o
+     * índice dele na lista de objetos #codeSetAccess. O objetivo é agilizar a busca de objetos.
+     *
+     * Na estrutura #listCodeSetAccess devem ser inseridos no mínimo 2 objetos Inteiros:
+     * Quantidade de itens e o valor dos índices de #codeSetAccess.
+     * Ex.: 1, 10
+     */
+    private ArrayList<Object> codeSetAccess = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceCodeSetAccess = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listCodeSetAccess = new ArrayList<Object>();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+    
+    
+    
+    
 
 
 
@@ -1189,7 +1197,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
             throw new IllegalArgumentException("O objeto não existe!");
         }
         else {
-            if ( this.idTipo.get(id) == DV_BOOLEAN  ) {
+            if (this.idTipo.get(id) == DV_BOOLEAN  ) {
                 int idIndice = this.idIndiceDvBoolean.get(id);
                 if ( campo != 0 ) {
                     throw new IllegalArgumentException("O campo não exite!");
@@ -1197,6 +1205,20 @@ public class ImplementacaoMR implements ModeloDeReferencia {
                 else{
                     try{
                         return (Boolean) this.dvBoolean.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo lógico!");
+                    }
+                }
+            }
+            else if (this.idTipo.get(id) == CODE_SET_ACCESS) {
+                int idIndice = this.idIndiceCodeSetAccess.get(id);
+                if (campo != 3 && campo != 4) {
+                    throw new IllegalArgumentException("O campo não exite!");
+                }
+                else{
+                    try{
+                        return (Boolean) this.codeSetAccess.get(idIndice + campo + 1);
                     }
                     catch (Exception e) {
                         throw new IllegalArgumentException("O campo não é do tipo lógico!");
@@ -1248,6 +1270,20 @@ public class ImplementacaoMR implements ModeloDeReferencia {
                 else{
                     try{
                         return (String) this.dvUri.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo texto!");
+                    }
+                }
+            }
+            else if (this.idTipo.get(id) == CODE_SET_ACCESS) {
+                int idIndice = this.idIndiceCodeSetAccess.get(id);
+                if (campo != 0) {
+                    throw new IllegalArgumentException("O campo não exite!");
+                }
+                else {
+                    try{
+                        return (String) this.codeSetAccess.get(idIndice + campo + 1);
                     }
                     catch (Exception e) {
                         throw new IllegalArgumentException("O campo não é do tipo texto!");
@@ -1358,7 +1394,26 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      * @see #obtemVetorBytes(int, int)
      */
     public int obtemInteiro(int id, int campo) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if ( !this.idTipo.containsKey(id) ) {
+            throw new IllegalArgumentException("O objeto não existe!");
+        }
+        else {
+            if (this.idTipo.get(id) == CODE_SET_ACCESS) {
+                int idIndice = this.idIndiceCodeSetAccess.get(id);
+                if (campo != 1) {
+                    throw new IllegalArgumentException("O campo não exite!");
+                }
+                else{
+                    try{
+                        return (Integer) this.codeSetAccess.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo inteiro!");
+                    }
+                }
+            }
+        }
+        return -1;
     }
 
     /**
@@ -1780,5 +1835,31 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      */
     public int adicionaObjectVersionId(String objectId, String versionTreeId, String creatingSystemId) {
         return 0;
+    }
+    
+    /**
+     * 
+     * @param id
+     * @param codePhrase
+     * @param has_lang
+     * @param has_code
+     * @return identificador único do objeto 
+     */
+    public int adicionaCodeSetAccess(String id, 
+            int codePhrase, 
+            boolean has_lang, 
+            boolean has_code) {
+        
+        int idObjeto = this.idObjeto;
+        this.codeSetAccess.add(idObjeto);
+        int indiceObjInserido = this.codeSetAccess.size()-1;
+        this.codeSetAccess.add(id);
+        this.codeSetAccess.add(codePhrase);
+        this.codeSetAccess.add(has_lang);
+        this.codeSetAccess.add(has_code);
+        this.idIndiceCodeSetAccess.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, CODE_SET_ACCESS);
+        this.idObjeto++;
+        return idObjeto;
     }
 }
