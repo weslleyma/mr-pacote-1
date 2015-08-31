@@ -11,6 +11,7 @@ package br.inf.ufg.fabrica.mr;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -1013,6 +1014,69 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     private Map<Integer, Integer> idIndiceTerminologyService = new HashMap<Integer, Integer>();
     private ArrayList<Object> listTerminologyServices = new ArrayList<Object>(); 
 
+    /**
+     * Estruturas de dados utilizada para armazenar uma instância de BASIC_DEFINITIONS
+     *
+     * 
+     * Na estrutura #basicDefinitions devem ser inseridos 3 objetos: Inteiro, String, String.
+     *
+     * O #idIndiceBasicDefinitions que tem por função, mapear o ID do objeto com o
+     * índice dele na lista de objetos #basicDefinitions. O objetivo é agilizar a busca de objetos.
+     *
+     * Na estrutura #listBasicDefinitions devem ser inseridos no mínimo 2 objetos Inteiros:
+     * Quantidade de itens e o valor dos índices de #basicDefinitions.
+     * Ex.: 1, 10
+     */
+    private ArrayList<Object> basicDefinitions = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceBasicDefinitions = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listBasicDefinitions = new ArrayList<Object>(); 
+    
+    /**
+     * Estruturas de dados utilizada para armazenar uma instância de OPENEHR_DEFINITIONS
+     *
+     * Herda da classe BASIC_DEFINITIONS
+     * 
+     * Na estrutura #basicDefinitions devem ser inseridos 3 objetos: Inteiro, e Strings referentes 
+     * aos atributos da classe pai.
+     *
+     * O #idIndiceOpenEhrDefinitions que tem por função, mapear o ID do objeto com o
+     * índice dele na lista de objetos #openEhrDefinitions. O objetivo é agilizar a busca de objetos.
+     *
+     * Na estrutura #listOpenEhrDefinitions devem ser inseridos no mínimo 2 objetos Inteiros:
+     * Quantidade de itens e o valor dos índices de #openEhrDefinitions.
+     * Ex.: 1, 10
+     */
+    private ArrayList<Object> openEhrDefinitions = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceOpenEhrDefinitions = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listOpenEhrDefinitions = new ArrayList<Object>(); 
+    
+    /**
+     * Estruturas de dados utilizada para armazenar uma instância de EHR
+     * 
+     * Na estrutura #ehr devem ser inseridos 9 objetos: Inteiro, Inteiro, Inteiro, List<Integer>,
+     * Inteiro, Inteiro, List<Integer>, Inteiro, Inteiro
+     *
+     * O #idIndiceEhr que tem por função, mapear o ID do objeto com o
+     * índice dele na lista de objetos #ehr. O objetivo é agilizar a busca de objetos.
+     *
+     * Na estrutura #listEhr devem ser inseridos no mínimo 2 objetos Inteiros:
+     * Quantidade de itens e o valor dos índices de #ehr.
+     * Ex.: 1, 10
+     */
+    private ArrayList<Object> ehr = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceEhr = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listEhr = new ArrayList<Object>(); 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     /**
      * Método Construtor da Classe.
@@ -1327,6 +1391,34 @@ public class ImplementacaoMR implements ModeloDeReferencia {
                 else{
                     try{
                         return (String) this.terminologyService.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo texto!");
+                    }
+                }
+            }
+            else if ( this.idTipo.get(id) == BASIC_DEFINITIONS) {
+                int idIndice = this.idIndiceBasicDefinitions.get(id);
+                if ( campo < 0 || campo > 2 ) {
+                    throw new IllegalArgumentException("O campo não exite!");
+                }
+                else{
+                    try{
+                        return (String) this.basicDefinitions.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo texto!");
+                    }
+                }
+            }
+            else if ( this.idTipo.get(id) == OPENEHR_DEFINITIONS) {
+                int idIndice = this.idIndiceOpenEhrDefinitions.get(id);
+                if ( campo < 0 || campo > 2 ) {
+                    throw new IllegalArgumentException("O campo não exite!");
+                }
+                else{
+                    try{
+                        return (String) this.openEhrDefinitions.get(idIndice + campo + 1);
                     }
                     catch (Exception e) {
                         throw new IllegalArgumentException("O campo não é do tipo texto!");
@@ -2049,6 +2141,102 @@ public class ImplementacaoMR implements ModeloDeReferencia {
         
         this.idIndiceTerminologyService.put(idObjeto, indiceObjInserido);
         this.idTipo.put(idObjeto, TERMINOLOGY_SERVICE);
+        this.idObjeto++;
+        return idObjeto;
+    }
+    
+    /**
+     * 
+     * Define vaores de constantes usados globalmente.
+     * 
+     * @param CR carriage return character
+     * @param LF line feed character
+     * 
+     * @return id do objeto inserido 
+     */
+    public int adicionaBasicDefinition(char CR, 
+            char LF) {
+        
+        int idObjeto = this.idObjeto;
+        this.basicDefinitions.add(idObjeto);
+        int indiceObjInserido = this.basicDefinitions.size()-1;
+        
+        this.basicDefinitions.add(CR);
+        this.basicDefinitions.add(LF);
+                
+        this.idIndiceBasicDefinitions.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, BASIC_DEFINITIONS);
+        this.idObjeto++;
+        return idObjeto;
+    }
+    
+    /**
+     * Classe de herança usada para acessar constantes definidas em outros pacotes
+     * Herda da classe BASIC_DEFINITIONS
+     * 
+     * @param CR carriage return character
+     * @param LF line feed character
+     * 
+     * @return id do objeto inserido 
+     */
+    public int adicionaOpenEhrDefinitions(char CR, 
+            char LF) {
+        
+        int idObjeto = this.idObjeto;
+        this.openEhrDefinitions.add(idObjeto);
+        int indiceObjInserido = this.openEhrDefinitions.size()-1;
+        
+        this.basicDefinitions.add(CR);
+        this.basicDefinitions.add(LF);
+                
+        this.idIndiceOpenEhrDefinitions.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, OPENEHR_DEFINITIONS);
+        this.idObjeto++;
+        return idObjeto;
+    }
+
+
+    /**
+     * Objeto raiz e ponto de acesso do EHR para um objeto de cuidados
+     * 
+     * @param system_id The id of the EHR system on which this EHR was created (HIER_OBJECT_ID).
+     * @param ehr_id The id of this EHR (HIER_OBJECT_ID).
+     * @param contributions List of contributions causing changes to this EHR. 
+     *                      Each contribution contains a list of versions, 
+     *                      which may include references to any number of VERSION instances, 
+     *                      i.e. items of type VERSIONED_COMPOSITION and VERSIONED_FOLDER.
+     * @param ehr_status Reference to EHR_STATUS object for this EHR.
+     * @param ehr_access Reference to EHR_ACCESS object for this EHR.
+     * @param compositions Master list of all Versioned Composition references in this EHR.
+     * @param directory Optional directory structure for this EHR.
+     * @param time_created Time of creation of the EHR (DV_DATE_TIME).
+     * 
+     * @return id do obejto inserido
+     */
+    public int adicionaEHR(int system_id, 
+            int ehr_id,
+            List<Integer> contributions,
+            int ehr_status,
+            int ehr_access,
+            List<Integer> compositions,
+            int directory,
+            int time_created) {
+        
+        int idObjeto = this.idObjeto;
+        this.ehr.add(idObjeto);
+        int indiceObjInserido = this.ehr.size()-1;
+        
+        this.ehr.add(system_id);
+        this.ehr.add(ehr_id);
+        this.ehr.add(contributions);
+        this.ehr.add(ehr_status);
+        this.ehr.add(ehr_access);
+        this.ehr.add(compositions);
+        this.ehr.add(directory);
+        this.ehr.add(time_created);
+                
+        this.idIndiceEhr.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, EHR);
         this.idObjeto++;
         return idObjeto;
     }
