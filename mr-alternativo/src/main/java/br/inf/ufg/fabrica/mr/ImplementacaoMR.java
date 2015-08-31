@@ -401,15 +401,6 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      */
     final int TERMINOLOGY_SERVICE = 65;
 
-    /**
-     * Identificador do tipo TERMINOLOGY_ACCESS.
-     */
-    final int TERMINOLOGY_ACCESS = 66;
-
-    /**
-     * Identificador do tipo CODE_SET_ACCESS.
-     */
-    final int CODE_SET_ACCESS = 67;
 
     /**
      * Identificador do tipo OPENEHR_TERMINOLOGY_GROUP.
@@ -963,23 +954,28 @@ public class ImplementacaoMR implements ModeloDeReferencia {
 
 
     /**
-     * Estruturas de dados utilizada para armazenar uma instância de CODE_SET_ACCESS
+     * Estruturas de dados utilizada para armazenar uma instância de OPENEHR_TERMINOLOGY_GROUP
      *
-     * Na estrutura #codeSetAcess devem ser inseridos 5 objetos, inteiro, String, Inteiro, Boolean, Boolean.
-     * Ex.: "identificador", "índice para um CODE_PHRASE", "has_lang", "has_code".
+     * Na estrutura #openEhrTerminologyGroup devem ser inseridos 16 objetos: Inteiro, String, 
+     * String, String, String, String, String, String, String, String, String, String, String, String,
+     * String, String,.
+     * Ex.: "identificador", "Terminology_id_openehr", "Group_id_audit_change_type", "Group_id_attestation_reason"
+     * , "Group_id_attestation_reason", "Group_id_composition_category", "Group_id_event_math_function"
+     * , "Group_id_instruction_states", "Group_id_instruction_transitions", "Group_id_null_flavours"
+     * , "Group_id_property", "Group_id_participation_function", "Group_id_participation_mode"
+     * , "Group_id_setting", "Group_id_term_mapping_purpose", "Group_id_subject_relationship"
+     * , "Group_id_version_life_cycle_state".
      *
-     * O #idIndiceCodeSetAccess que tem por função, mapear o ID do objeto com o
-     * índice dele na lista de objetos #codeSetAccess. O objetivo é agilizar a busca de objetos.
+     * O #idIndiceOpenEhrTerminologyGroup que tem por função, mapear o ID do objeto com o
+     * índice dele na lista de objetos #openEhrTerminologyGroup. O objetivo é agilizar a busca de objetos.
      *
-     * Na estrutura #listCodeSetAccess devem ser inseridos no mínimo 2 objetos Inteiros:
-     * Quantidade de itens e o valor dos índices de #codeSetAccess.
+     * Na estrutura #listOpenEhrTerminologyGroup devem ser inseridos no mínimo 2 objetos Inteiros:
+     * Quantidade de itens e o valor dos índices de #openEhrTerminologyGroup.
      * Ex.: 1, 10
      */
-    private ArrayList<Object> codeSetAccess = new ArrayList<Object>();
-    private Map<Integer, Integer> idIndiceCodeSetAccess = new HashMap<Integer, Integer>();
-    private ArrayList<Object> listCodeSetAccess = new ArrayList<Object>();
-
-
+    private ArrayList<Object> openEhrTerminologyGroup = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceOpenEhrTerminologyGroup = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listOpenEhrTerminologyGroup = new ArrayList<Object>();
 
 
 
@@ -1210,20 +1206,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
                     }
                 }
             }
-            else if (this.idTipo.get(id) == CODE_SET_ACCESS) {
-                int idIndice = this.idIndiceCodeSetAccess.get(id);
-                if (campo != 3 && campo != 4) {
-                    throw new IllegalArgumentException("O campo não exite!");
-                }
-                else{
-                    try{
-                        return (Boolean) this.codeSetAccess.get(idIndice + campo + 1);
-                    }
-                    catch (Exception e) {
-                        throw new IllegalArgumentException("O campo não é do tipo lógico!");
-                    }
-                }
-            }
+            
             
         }
         return false;
@@ -1276,20 +1259,21 @@ public class ImplementacaoMR implements ModeloDeReferencia {
                     }
                 }
             }
-            else if (this.idTipo.get(id) == CODE_SET_ACCESS) {
-                int idIndice = this.idIndiceCodeSetAccess.get(id);
-                if (campo != 0) {
+            else if ( this.idTipo.get(id) == OPENEHR_TERMINOLOGY_GROUP) {
+                int idIndice = this.idIndiceOpenEhrTerminologyGroup.get(id);
+                if ( campo < 0 || campo > 15 ) {
                     throw new IllegalArgumentException("O campo não exite!");
                 }
-                else {
+                else{
                     try{
-                        return (String) this.codeSetAccess.get(idIndice + campo + 1);
+                        return (String) this.openEhrTerminologyGroup.get(idIndice + campo + 1);
                     }
                     catch (Exception e) {
                         throw new IllegalArgumentException("O campo não é do tipo texto!");
                     }
                 }
             }
+            
         }
         return null;
     }
@@ -1397,22 +1381,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
         if ( !this.idTipo.containsKey(id) ) {
             throw new IllegalArgumentException("O objeto não existe!");
         }
-        else {
-            if (this.idTipo.get(id) == CODE_SET_ACCESS) {
-                int idIndice = this.idIndiceCodeSetAccess.get(id);
-                if (campo != 1) {
-                    throw new IllegalArgumentException("O campo não exite!");
-                }
-                else{
-                    try{
-                        return (Integer) this.codeSetAccess.get(idIndice + campo + 1);
-                    }
-                    catch (Exception e) {
-                        throw new IllegalArgumentException("O campo não é do tipo inteiro!");
-                    }
-                }
-            }
-        }
+        
         return -1;
     }
 
@@ -1838,28 +1807,44 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     }
 
     
-    /**
-     * 
-     * @param id
-     * @param codePhrase
-     * @param has_lang
-     * @param has_code
-     * @return identificador único do objeto 
-     */
-    public int adicionaCodeSetAccess(String id, 
-            int codePhrase, 
-            boolean has_lang, 
-            boolean has_code) {
+    public int adicionaOpenEhrTerminologyGroup(String terminologyIdOpenehr, 
+            String groupIdAuditChange,  
+            String groupIdAttestationReason, 
+            String groupIdCompositionCategory, 
+            String groupIdEventMathFunction,
+            String groupIdInstructionStates,
+            String groupIdInstructionTransitions, 
+            String groupIdNullFlavours, 
+            String groupIdProperty, 
+            String groupIdParticipationFunction, 
+            String groupIdParticipationMode, 
+            String groupIdSetting, 
+            String groupIdTermMappingPurpose, 
+            String groupIdSubjectRelationship, 
+            String groupIdVersionLifeCycleState) {
         
         int idObjeto = this.idObjeto;
-        this.codeSetAccess.add(idObjeto);
-        int indiceObjInserido = this.codeSetAccess.size()-1;
-        this.codeSetAccess.add(id);
-        this.codeSetAccess.add(codePhrase);
-        this.codeSetAccess.add(has_lang);
-        this.codeSetAccess.add(has_code);
-        this.idIndiceCodeSetAccess.put(idObjeto, indiceObjInserido);
-        this.idTipo.put(idObjeto, CODE_SET_ACCESS);
+        this.openEhrTerminologyGroup.add(idObjeto);
+        int indiceObjInserido = this.openEhrTerminologyGroup.size()-1;
+        
+        this.openEhrTerminologyGroup.add(terminologyIdOpenehr);
+        this.openEhrTerminologyGroup.add(groupIdAuditChange);
+        this.openEhrTerminologyGroup.add(groupIdAttestationReason);
+        this.openEhrTerminologyGroup.add(groupIdCompositionCategory);
+        this.openEhrTerminologyGroup.add(groupIdEventMathFunction);
+        this.openEhrTerminologyGroup.add(groupIdInstructionStates);
+        this.openEhrTerminologyGroup.add(groupIdInstructionTransitions);
+        this.openEhrTerminologyGroup.add(groupIdNullFlavours);
+        this.openEhrTerminologyGroup.add(groupIdProperty);
+        this.openEhrTerminologyGroup.add(groupIdParticipationFunction);
+        this.openEhrTerminologyGroup.add(groupIdParticipationMode);
+        this.openEhrTerminologyGroup.add(groupIdSetting);
+        this.openEhrTerminologyGroup.add(groupIdTermMappingPurpose);
+        this.openEhrTerminologyGroup.add(groupIdSubjectRelationship);
+        this.openEhrTerminologyGroup.add(groupIdVersionLifeCycleState);
+        
+        this.idIndiceOpenEhrTerminologyGroup.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, OPENEHR_TERMINOLOGY_GROUP);
         this.idObjeto++;
         return idObjeto;
     }
