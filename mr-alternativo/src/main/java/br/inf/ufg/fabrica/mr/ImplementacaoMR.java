@@ -961,7 +961,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     private Map<Integer, Integer> idIndiceDvMultimedia = new HashMap<Integer, Integer>();
     private ArrayList<Object> listDvMultimedia = new ArrayList<Object>();
 
-    
+
     /**
      * Estruturas de dados utilizada para armazenar uma instância de CODE_SET_ACCESS
      *
@@ -979,11 +979,10 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     private Map<Integer, Integer> idIndiceCodeSetAccess = new HashMap<Integer, Integer>();
     private ArrayList<Object> listCodeSetAccess = new ArrayList<Object>();
 
-    
-    
-    
-    
-    
+
+
+
+
 
 
 
@@ -1197,7 +1196,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
             throw new IllegalArgumentException("O objeto não existe!");
         }
         else {
-            if (this.idTipo.get(id) == DV_BOOLEAN  ) {
+            if ( this.idTipo.get(id) == DV_BOOLEAN  ) {
                 int idIndice = this.idIndiceDvBoolean.get(id);
                 if ( campo != 0 ) {
                     throw new IllegalArgumentException("O campo não exite!");
@@ -1225,6 +1224,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
                     }
                 }
             }
+            
         }
         return false;
     }
@@ -1836,6 +1836,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     public int adicionaObjectVersionId(String objectId, String versionTreeId, String creatingSystemId) {
         return 0;
     }
+
     
     /**
      * 
