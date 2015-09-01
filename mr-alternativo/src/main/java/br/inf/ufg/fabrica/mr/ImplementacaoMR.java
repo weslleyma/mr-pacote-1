@@ -1204,6 +1204,58 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     private Map<Integer, Integer> idIndiceFeederAuditDetails = new HashMap<Integer, Integer>();
     private ArrayList<Object> listFeederAuditDetails = new ArrayList<Object>();
     
+    /**
+     * Estruturas de dados utilizada para armazenar uma instância de ARCHETYPED
+     * 
+     * Na estrutura #archetyped devem ser inseridos 7 objetos: Inteiro, String, Inteiro, Inteiro,
+     * Inteiro, Inteiro, String
+     *
+     * O #idIndiceArchetyped que tem por função, mapear o ID do objeto com o
+     * índice dele na lista de objetos #archetyped. O objetivo é agilizar a busca de objetos.
+     *
+     * Na estrutura #listArchetyped devem ser inseridos no mínimo 2 objetos Inteiros:
+     * Quantidade de itens e o valor dos índices de #archetyped.
+     * Ex.: 1, 10
+     */
+    private ArrayList<Object> archetyped = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceArchetyped = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listArchetyped = new ArrayList<Object>();
+    
+    /**
+     * Estruturas de dados utilizada para armazenar uma instância de ISM_TRANSITIONS
+     * 
+     * Na estrutura #ismTransitions devem ser inseridos 4 objetos: Inteiro, Inteiro, Inteiro, Inteiro
+     *
+     * O #idIndiceIsmTransitions que tem por função, mapear o ID do objeto com o
+     * índice dele na lista de objetos #ismTransitions. O objetivo é agilizar a busca de objetos.
+     *
+     * Na estrutura #listIsmTransitions devem ser inseridos no mínimo 2 objetos Inteiros:
+     * Quantidade de itens e o valor dos índices de #ismTransitions.
+     * Ex.: 1, 10
+     */
+    private ArrayList<Object> ismTransition = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceIsmTransition = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listIsmTransitions = new ArrayList<Object>();
+    
+    /**
+     * Estruturas de dados utilizada para armazenar uma instância de IINSTRUCTION_DETAILS
+     * 
+     * Na estrutura #instructionDetails devem ser inseridos 4 objetos: Inteiro, Inteiro, String, Inteiro
+     *
+     * O #idIndiceInstructionDetails que tem por função, mapear o ID do objeto com o
+     * índice dele na lista de objetos #instructionDetails. O objetivo é agilizar a busca de objetos.
+     *
+     * Na estrutura #listInstructionDetails devem ser inseridos no mínimo 2 objetos Inteiros:
+     * Quantidade de itens e o valor dos índices de #instructionDetailss.
+     * Ex.: 1, 10
+     */
+    private ArrayList<Object> instructionDetails = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceInstructionDetails = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listInstructionDetails = new ArrayList<Object>();
+    
+    
+    
+    
     
     
 
@@ -1594,6 +1646,34 @@ public class ImplementacaoMR implements ModeloDeReferencia {
                     }
                 }
             }
+            else if ( this.idTipo.get(id) == ARCHETYPED) {
+                int idIndice = this.idIndiceArchetyped.get(id);
+                if ( campo < 0 || campo > 2 ) {
+                    throw new IllegalArgumentException("O campo não existe!");
+                }
+                else{
+                    try{
+                        return (String) this.archetyped.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo texto!");
+                    }
+                }
+            }
+            else if ( this.idTipo.get(id) == INSTRUCTION_DETAILS) {
+                int idIndice = this.idIndiceInstructionDetails.get(id);
+                if ( campo < 0 || campo > 2 ) {
+                    throw new IllegalArgumentException("O campo não existe!");
+                }
+                else{
+                    try{
+                        return (String) this.instructionDetails.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo texto!");
+                    }
+                }
+            }
             
         }
         return null;
@@ -1801,6 +1881,48 @@ public class ImplementacaoMR implements ModeloDeReferencia {
                     }
                 }
             }
+            else if ( this.idTipo.get(id) == ARCHETYPED) {
+                int idIndice = this.idIndiceArchetyped.get(id);
+                if ( campo < 0 || campo > 2 ) {
+                    throw new IllegalArgumentException("O campo não existe!");
+                }
+                else{
+                    try{
+                        return (Integer) this.archetyped.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo inteiro!");
+                    }
+                }
+            }
+            else if ( this.idTipo.get(id) == ISM_TRANSITION) {
+                int idIndice = this.idIndiceIsmTransition.get(id);
+                if ( campo < 0 || campo > 2 ) {
+                    throw new IllegalArgumentException("O campo não existe!");
+                }
+                else{
+                    try{
+                        return (Integer) this.ismTransition.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo inteiro!");
+                    }
+                }
+            }
+            else if ( this.idTipo.get(id) == INSTRUCTION_DETAILS) {
+                int idIndice = this.idIndiceInstructionDetails.get(id);
+                if ( campo < 0 || campo > 2 ) {
+                    throw new IllegalArgumentException("O campo não existe!");
+                }
+                else{
+                    try{
+                        return (Integer) this.instructionDetails.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo inteiro!");
+                    }
+                }
+            }
         }
         
         return -1;
@@ -1911,7 +2033,197 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      *               a ser eliminado.
      */
     public void elimineObjeto(int objeto) {
-
+        if ( !this.idTipo.containsKey(objeto) ) {
+            throw new IllegalArgumentException("O objeto não existe!");
+        }
+        else {
+            if ( this.idTipo.get(objeto) == EHR) {
+                //
+            }
+            else if (this.idTipo.get(objeto) == DV_IDENTIFIER) {
+                int indice = this.idIndiceDvIdentifier.get(objeto);
+                int proxIndice = indice + 4;
+                for (int i = proxIndice; i >= indice; i--) {
+                    this.dvIdentifier.remove(i);
+                }
+                this.idTipo.remove(objeto);
+                this.idIndiceDvIdentifier.remove(objeto);
+            }
+            else if (this.idTipo.get(objeto) == DV_BOOLEAN) {
+                int indice = this.idIndiceDvBoolean.get(objeto);
+                int proxIndice = indice + 1;
+                for (int i = proxIndice; i >= indice; i--) {
+                    this.dvBoolean.remove(i);
+                }
+                this.idIndiceDvBoolean.remove(objeto);
+                this.idTipo.remove(objeto);
+            }
+            else if (this.idTipo.get(objeto) == DV_URI) {
+                int indice = this.idIndiceDvUri.get(objeto);
+                int proxIndice = indice + 1;
+                for (int i = proxIndice; i >= indice; i--) {
+                    this.dvUri.remove(i);
+                }
+                this.idIndiceDvEhrUri.remove(objeto);
+                this.idTipo.remove(objeto);
+            }
+            else if (this.idTipo.get(objeto) == DV_EHR_URI) {
+                int indice = this.idIndiceDvEhrUri.get(objeto);
+                int proxIndice = indice + 1;
+                for (int i = proxIndice; i >= indice; i--) {
+                    this.dvEhrUri.remove(i);
+                }
+                this.idIndiceDvEhrUri.remove(objeto);
+                this.idTipo.remove(objeto);
+            }
+            else if (this.idTipo.get(objeto) == TERMINOLOGY_ID) {
+                //
+            }
+            else if (this.idTipo.get(objeto) == CODE_PHRASE) {
+                int indice = this.idIndiceCodePhrase.get(objeto);
+                int proxIndice = indice + 2;
+                for (int i = proxIndice; i >= indice; i--) {
+                    this.codePhrase.remove(i);
+                }
+                this.idIndiceCodePhrase.remove(objeto);
+                this.idTipo.remove(objeto);
+            }
+            else if (this.idTipo.get(objeto) == DV_PARSABLE) {
+                //nao implementado ainda
+            }
+            else if (this.idTipo.get(objeto) == ISO_OID) {
+                //
+            }
+            else if (this.idTipo.get(objeto) == UUID) {
+                //
+            }
+            else if (this.idTipo.get(objeto) == INTERNET_ID) {
+                //
+            }
+            else if (this.idTipo.get(objeto) == HIER_OBJECT_ID) {
+                //
+            }
+            else if (this.idTipo.get(objeto) == OBJECT_VERSION_ID) {
+                //
+            }
+            else if (this.idTipo.get(objeto) == OPENEHR_TERMINOLOGY_GROUP) {
+                int indice = this.idIndiceOpenEhrTerminologyGroup.get(objeto);
+                int proxIndice = indice + 15;
+                for (int i = proxIndice; i >= indice; i--) {
+                    this.openEhrTerminologyGroup.remove(i);
+                }
+                this.idIndiceOpenEhrTerminologyGroup.remove(objeto);
+                this.idTipo.remove(objeto);
+            }
+            else if (this.idTipo.get(objeto) == OPENEHR_CODE_SET_IDENTIFIERS) {
+                int indice = this.idIndiceOpenEhrCodeSetIdentifiers.get(objeto);
+                int proxIndice = indice + 7;
+                for (int i = proxIndice; i >= indice; i--) {
+                    this.openEhrCodeSetIdentifiers.remove(i);
+                }
+                this.idIndiceOpenEhrCodeSetIdentifiers.remove(objeto);
+                this.idTipo.remove(objeto);
+            }
+            else if (this.idTipo.get(objeto) == TERMINOLOGY_SERVICE) {
+                int indice = this.idIndiceTerminologyService.get(objeto);
+                int proxIndice = indice + 7;
+                for (int i = proxIndice; i >= indice; i--) {
+                    this.terminologyService.remove(i);
+                }
+                this.idIndiceTerminologyService.remove(objeto);
+                this.idTipo.remove(objeto);
+            }
+            else if (this.idTipo.get(objeto) == BASIC_DEFINITIONS) {
+                int indice = this.idIndiceBasicDefinitions.get(objeto);
+                int proxIndice = indice + 2;
+                for (int i = proxIndice; i >= indice; i--) {
+                    this.basicDefinitions.remove(i);
+                }
+                this.idIndiceBasicDefinitions.remove(objeto);
+                this.idTipo.remove(objeto);
+            }
+            else if (this.idTipo.get(objeto) == OPENEHR_DEFINITIONS) {
+                int indice = this.idIndiceOpenEhrDefinitions.get(objeto);
+                int proxIndice = indice + 2;
+                for (int i = proxIndice; i >= indice; i--) {
+                    this.openEhrDefinitions.remove(i);
+                }
+                this.idIndiceOpenEhrDefinitions.remove(objeto);
+                this.idTipo.remove(objeto);
+            }
+            else if (this.idTipo.get(objeto) == EHR) {
+                //
+            }
+            else if (this.idTipo.get(objeto) == EHR_STATUS) {
+                //
+            }
+            else if (this.idTipo.get(objeto) == EHR_ACCESS) {
+                //
+            }
+            else if (this.idTipo.get(objeto) == VERSIONED_COMPOSITION) {
+                int indice = this.idIndiceVersionedComposition.get(objeto);
+                int proxIndice = indice + 6;
+                for (int i = proxIndice; i >= indice; i--) {
+                    this.versionedComposition.remove(i);
+                }
+                this.idIndiceVersionedComposition.remove(objeto);
+                this.idTipo.remove(objeto);
+            }
+            else if (this.idTipo.get(objeto) == VERSIONED_EHR_STATUS) {
+                int indice = this.idIndiceVersionedEhrStatus.get(objeto);
+                int proxIndice = indice + 2;
+                for (int i = proxIndice; i >= indice; i--) {
+                    this.versionedEhrStatus.remove(i);
+                }
+                this.idIndiceVersionedEhrStatus.remove(objeto);
+                this.idTipo.remove(objeto);
+            }
+            else if (this.idTipo.get(objeto) == LINK) {
+                int indice = this.idIndiceLink.get(objeto);
+                int proxIndice = indice + 3;
+                for (int i = proxIndice; i >= indice; i--) {
+                    this.link.remove(i);
+                }
+                this.idIndiceLink.remove(objeto);
+                this.idTipo.remove(objeto);
+            }
+            else if (this.idTipo.get(objeto) == FEEDER_AUDIT_DETAILS) {
+                int indice = this.idIndiceFeederAuditDetails.get(objeto);
+                int proxIndice = indice + 6;
+                for (int i = proxIndice; i >= indice; i--) {
+                    this.feederAuditDetails.remove(i);
+                }
+                this.idIndiceFeederAuditDetails.remove(objeto);
+                this.idTipo.remove(objeto);
+            }
+            else if (this.idTipo.get(objeto) == ARCHETYPED) {
+                int indice = this.idIndiceArchetyped.get(objeto);
+                int proxIndice = indice + 3;
+                for (int i = proxIndice; i >= indice; i--) {
+                    this.archetyped.remove(i);
+                }
+                this.idIndiceArchetyped.remove(objeto);
+                this.idTipo.remove(objeto);
+            }
+            else if (this.idTipo.get(objeto) == ISM_TRANSITION) {
+                int indice = this.idIndiceIsmTransition.get(objeto);
+                int proxIndice = indice + 3;
+                for (int i = proxIndice; i >= indice; i--) {
+                    this.ismTransition.remove(i);
+                }
+                this.idIndiceIsmTransition.remove(objeto);
+                this.idTipo.remove(objeto);
+            }
+            else if (this.idTipo.get(objeto) == INSTRUCTION_DETAILS) {
+                int indice = this.idIndiceInstructionDetails.get(objeto);
+                int proxIndice = indice + 3;
+                for (int i = proxIndice; i >= indice; i--) {
+                    this.instructionDetails.remove(i);
+                }
+                this.idIndiceInstructionDetails.remove(objeto);
+                this.idTipo.remove(objeto);
+            }
+        }
     }
 
     /**
@@ -2678,6 +2990,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
         this.idIndiceVersionedComposition.put(idObjeto, indiceObjInserido);
         this.idTipo.put(idObjeto, VERSIONED_COMPOSITION);
         this.idObjeto++;
+        
         return idObjeto;
     }
     
@@ -2701,7 +3014,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      * @param signature OpenPGP digital signature or digest of content committed in this Version.
      * @param commit_audit Audit trail corresponding to the committal of this 
      *                      version to the VERSIONED_OBJECT.
-     * @return 
+     * @return  id do objeto inserido 
      */
     public int adicionaVersionedEhrStatus(int uid, 
             int owner_id,
@@ -2724,6 +3037,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
         this.idIndiceEhrStatus.put(idObjeto, indiceObjInserido);
         this.idTipo.put(idObjeto, VERSIONED_EHR_STATUS);
         this.idObjeto++;
+        
         return idObjeto;
     }
     
@@ -2751,7 +3065,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      *              links which must be followed and which can be broken when the extract is created.
      * @param target (DV_EHR_URI) The logical to object in the link relation, 
      *              as per the linguistic sense of the meaning attribute.
-     * @return 
+     * @return  id do objeto inserido 
      */
     public int adicionaLink(int meaning, 
             int type,
@@ -2768,6 +3082,169 @@ public class ImplementacaoMR implements ModeloDeReferencia {
         this.idIndiceLink.put(idObjeto, indiceObjInserido);
         this.idTipo.put(idObjeto, LINK);
         this.idObjeto++;
+        
         return idObjeto;
     }
+    
+    /**
+     * Adiciona instancia de FEEDER_AUDIT_DETAILS
+     * Audit details for any system in a feeder system chain. Audit details 
+     * here means the general notion of who/where/when the information item 
+     * to which the audit is attached was created. None of the attributes is 
+     * defined as mandatory, however, in different scenarios, various combinations 
+     * of attributes will usually be mandatory. This can be controlled by specifying 
+     * feeder audit details in legacy archetypes.
+     * 
+     * @param system_id (String) Identifier of the system which handled the information item.    
+     * @param location (PARTY_IDENTIFIED) Identifier of the particular site/facility 
+     *                  within an organisation which handled the item. 
+     *                  For computability, this identifier needs to be e.g. a 
+     *                  PKI identifier which can be included in the identifier 
+     *                  list of the PARTY_IDENTIFIED object.
+     * @param subject (PARTY_PROXY) Identifiers for subject of the received information item.
+     * @param provider (PARTY_IDENTIFIED) Optional provider(s) who created, 
+     *                  committed, forwarded or otherwise handled the item.
+     * @param time (DV_DATE_TIME) Time of handling the item. For an originating 
+     *              system, this will be time of creation, for an intermediate 
+     *              feeder system, this will be a time of accession or other time 
+     *              of handling, where available.
+     * @param version_id (String) Any identifier used in the system such 
+     *                  as "interim" , "final" , or numeric versions if available.
+     * @return id do objeto inserido 
+     */
+    public int adicionaFeederAuditDetails(String system_id, 
+            int location,
+            int subject,
+            int provider,
+            int time,
+            String version_id) {
+        
+        int idObjeto = this.idObjeto;
+        this.feederAuditDetails.add(idObjeto);
+        int indiceObjInserido = this.feederAuditDetails.size()-1;
+        
+        this.feederAuditDetails.add(system_id);
+        this.feederAuditDetails.add(location);
+        this.feederAuditDetails.add(subject);
+        this.feederAuditDetails.add(provider);
+        this.feederAuditDetails.add(time);
+        this.feederAuditDetails.add(version_id);
+                
+        this.idIndiceFeederAuditDetails.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, FEEDER_AUDIT_DETAILS);
+        this.idObjeto++;
+        
+        return idObjeto;
+    }
+    
+    /**
+     * Adiciona uma instancia de ARCHETYPED
+     * Archetypes act as the configuration basis for the particular structures of instances defined by the reference model. To enable archetypes to be used to create valid data, key classes in the reference model act as root points for archetyping; accordingly, these classes have the archetype_details attribute set. An instance of the class ARCHETYPED contains the relevant archetype identification information, allowing generating archetypes to be matched up with data instances.
+     * 
+     * @param archetype_id (ARCHETYPED_ID) Globally unique archetype identifier.
+     * @param template_id (TEMPLATE_ID) Globally unique template identifier, 
+     *                      if a template was active at this point in the structure. 
+     *                      Normally, a template would only be used at the top of a 
+     *                      top-level structure, but the possibility exists for templates at lower levels.
+     * @param rm_version (String) Version of the openEHR reference model used to 
+     *                      create this object. Expressed in terms of the release 
+     *                      version string, e.g. 1.0 , 1.2.4 .
+     * @return id do objeto inserido 
+     */
+    public int adicionaArchetyped(int archetype_id, 
+            int template_id,
+            String rm_version) {
+        
+        int idObjeto = this.idObjeto;
+        this.archetyped.add(idObjeto);
+        int indiceObjInserido = this.archetyped.size()-1;
+        
+        this.archetyped.add(archetype_id);
+        this.archetyped.add(template_id);
+        this.archetyped.add(rm_version);
+                
+        this.idIndiceArchetyped.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, ARCHETYPED);
+        this.idObjeto++;
+        
+        return idObjeto;
+    }
+    
+    /**
+     * Adiciona instancia de ISM_TRANSITION
+     * Model of a transition in the Instruction State Machine, 
+     * caused by a careflow step. The attributes document the 
+     * careflow step as well as the ISM transition.
+     * 
+     * Herda de PATHABLE
+     * 
+     * @param current_state (DV_CODED_TEXT) The ISM current state. Coded by 
+     *                          openEHR terminology group Instruction states.
+     * @param transition (DV_CODED_TEXT) The ISM transition which occurred to 
+     *                      arrive in the current_state. Coded by openEHR 
+     *                      terminology group Instruction transitions.
+     * @param careflow_step (DV_CODED_TEXT) The step in the careflow process 
+     *                      which occurred as part of generating this action, 
+     *                      e.g. dispense , start_administration . This attribute 
+     *                      represents the clinical label for the activity, 
+     *                      as opposed to current_state which represents the state 
+     *                      machine (ISM) computable form. Defined in archetype.
+     * @return  id do objeto inserido
+     */
+    public int adicionaIsmTrasition(int current_state, 
+            int transition,
+            int careflow_step) {
+        
+        int idObjeto = this.idObjeto;
+        this.ismTransition.add(idObjeto);
+        int indiceObjInserido = this.ismTransition.size()-1;
+        
+        this.ismTransition.add(current_state);
+        this.ismTransition.add(transition);
+        this.ismTransition.add(careflow_step);
+                
+        this.idIndiceIsmTransition.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, ISM_TRANSITION);
+        this.idObjeto++;
+        return idObjeto;
+    }
+    
+    /**
+     * Adiciona instancia de INSTRUCTION_DETAILS
+     * 
+     * Used to record details of the Instruction causing an Action.
+     * 
+     * @param instruction_id (LOCATABLE_REF) Reference to causing Instruction.
+     * @param activity_id  (String) Identifier of Activity within Instruction, 
+     *                      in the form of its archetype path.
+     * @param wf_details (ITEM_STRUCTURE) Various workflow engine state details, 
+     *                      potentially including such things as: * condition that 
+     *                      fired to cause this Action to be done (with actual 
+     *                      variables substituted); * list of notifications which 
+     *                      actually occurred (with all variables substituted); 
+                            * other workflow engine state. This specification does 
+                            *  not currently define the actual structure or semantics 
+                            * of this field.
+     * 
+     * @return id do objeto inserido
+     */
+    public int adicionaInstructionDetails(int instruction_id, 
+            String activity_id,
+            int wf_details) {
+        
+        int idObjeto = this.idObjeto;
+        this.instructionDetails.add(idObjeto);
+        int indiceObjInserido = this.instructionDetails.size()-1;
+        
+        this.instructionDetails.add(instruction_id);
+        this.instructionDetails.add(activity_id);
+        this.instructionDetails.add(wf_details);
+                
+        this.idIndiceInstructionDetails.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, INSTRUCTION_DETAILS);
+        this.idObjeto++;
+        return idObjeto;
+        
+    }
+    
 }
