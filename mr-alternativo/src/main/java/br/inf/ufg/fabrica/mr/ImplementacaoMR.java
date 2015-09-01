@@ -1378,11 +1378,24 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     private ArrayList<Object> objectID = new ArrayList<Object>();
     private Map<Integer, Integer> idIndiceObjectId = new HashMap<Integer, Integer>();
     private ArrayList<Object> listObjectId = new ArrayList<Object>();
+ /**
+     * Estruturas de dados utilizada para armazenar uma instância de OBJECT_ID
+     *
+     * Na estrutura #genericID devem ser inseridos 3 objetos, sendo todos Inteiros:
+     * ID único do objeto, inteiro.
+     * Ex.: 0, 3, 4"
+     *
+     * O #idIndiceGenericId que tem por função, mapear o ID do objeto com o
+     * índice dele na lista de objetos #genericID. O objetivo de agilizar a busca de objetos.
+     *
+     * Na estrutura #listGenericId devem ser inseridos no mínimo 2 objetos Inteiros:
+     * Quantidade de itens e o valor dos índices de #genericID.
+     * Ex.: 1, 2
+     */
+    private ArrayList<Object> genericID = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceGenericId = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listGenericId = new ArrayList<Object>();
     
-    
-    
-    
-
     /**
      * Método Construtor da Classe.
      */
@@ -1854,7 +1867,6 @@ public class ImplementacaoMR implements ModeloDeReferencia {
                     }
                 }
             }
-
         }
         return null;
     }
@@ -2154,6 +2166,20 @@ public class ImplementacaoMR implements ModeloDeReferencia {
                 else{
                     try{
                         return (Integer) this.address.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo inteiro!");
+                    }
+                }
+            }
+            else if ( this.idTipo.get(id) == GENERIC_ID) {
+                int idIndice = this.idIndiceInstructionDetails.get(id);
+                if ( campo < 0 || campo > 2 ) {
+                    throw new IllegalArgumentException("O campo não existe!");
+                }
+                else{
+                    try{
+                        return (Integer) this.instructionDetails.get(idIndice + campo + 1);
                     }
                     catch (Exception e) {
                         throw new IllegalArgumentException("O campo não é do tipo inteiro!");
@@ -3617,5 +3643,29 @@ public int adicionaObjectId(int value) {
         this.idTipo.put(idObjeto, OBJECT_ID);
         this.idObjeto++;
         return idObjeto;
+    }
+/**
+     * Adiciona um identificador ({@code GENERIC_ID}).
+     *
+     * @param value
+     * @param scheme - Nome do esquema ao qual este identificador conforma
+     *
+     * @return id do objeto inserido
+     */
+    public int adicionaGenericId(
+            int value,
+            int scheme) {
+        
+        int idObjeto = this.idObjeto;
+        this.genericID.add(idObjeto);
+        int indiceObjInserido = this.genericID.size()-1;
+        this.genericID.add(value);
+        this.genericID.add(scheme);
+        
+        this.idIndiceGenericId.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, GENERIC_ID);
+        this.idObjeto++;
+        return idObjeto;
+        
     }
 }
