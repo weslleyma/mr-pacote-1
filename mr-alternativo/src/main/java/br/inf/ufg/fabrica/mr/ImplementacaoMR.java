@@ -1610,12 +1610,12 @@ public class ImplementacaoMR implements ModeloDeReferencia {
             }
             else if ( this.idTipo.get(id) == BASIC_DEFINITIONS) {
                 int idIndice = this.idIndiceBasicDefinitions.get(id);
-                if ( campo < 0 || campo > 2 ) {
+                if ( campo < 0 || campo > 1 ) {
                     throw new IllegalArgumentException("O campo não existe!");
                 }
                 else{
                     try{
-                        return (String) this.basicDefinitions.get(idIndice + campo + 1);
+                        return (this.basicDefinitions.get(idIndice + campo + 1)).toString();
                     }
                     catch (Exception e) {
                         throw new IllegalArgumentException("O campo não é do tipo texto!");
