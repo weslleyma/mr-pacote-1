@@ -924,26 +924,15 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     private ArrayList<Object> listDvEhrUri = new ArrayList<Object>();
 
     /**
-     * Estruturas de dados utilizada para armazenar uma instância de TERMINOLOGY_ID
+     * Estruturas de dados utilizadas para armazenar uma instância de DV_PARSABLE
      *
-     * Na estrutura #terminologyId devem ser inseridos 3 objetos, sendo Integer e 2 String:
-     * ID único do objeto, name, version_id.
-     * Ex.: 0, "ab", "ab"
+     * Na estrutura #dvParsable devem ser inseridos 4 objetos.
+     * ID único do objeto, charset, language, value, formalism
+     * Ex.: 0, "índice para um CODE_PHRASE", "índice para um CODE_PHRASE", "ab", "ab"
      */
-    private ArrayList<Object> terminologyId = new ArrayList<Object>();
-    private Map<Integer, Integer> idIndiceTerminologyId = new HashMap<Integer, Integer>();
-    private ArrayList<Object> listTerminologyId = new ArrayList<Object>();
-
-    /**
-     * Estruturas de dados utilizada para armazenar uma instância de CODE_PHRASE
-     *
-     * Na estrutura #codePhrase devem ser inseridos 3 objetos, sendo Integer, Integer e String:
-     * ID único do objeto, índice para um terminologyId, e uma string.
-     * Ex.: 0, 5, "ab"
-     */
-    private ArrayList<Object> codePhrase = new ArrayList<Object>();
-    private Map<Integer, Integer> idIndiceCodePhrase = new HashMap<Integer, Integer>();
-    private ArrayList<Object> listCodePhrase = new ArrayList<Object>();
+    private ArrayList<Object> dvParsable = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceDvParsable = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listDvParsable = new ArrayList<Object>();
 
     /**
      * Estruturas de dados utilizada para armazenar uma instância de DV_MULTIMEDIA
@@ -957,6 +946,41 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     private ArrayList<Object> dvMultimedia = new ArrayList<Object>();
     private Map<Integer, Integer> idIndiceDvMultimedia = new HashMap<Integer, Integer>();
     private ArrayList<Object> listDvMultimedia = new ArrayList<Object>();
+
+    /**
+     * Estruturas de dados utilizadas para armazenar uma instância de DV_TEXT
+     *
+     * Na estrutura #dvText devem ser inseridos 4 objetos.
+     * ID único do objeto, value, hyperlink, formatting, mappings, language, encoding
+     * Ex.: 0, "índice para um CODE_PHRASE", "índice para um CODE_PHRASE", "ab", "ab"
+     */
+    private ArrayList<Object> dvText = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceDvText = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listDvText = new ArrayList<Object>();
+
+    /**
+     * Estruturas de dados utilizada para armazenar uma instância de CODE_PHRASE
+     *
+     * Na estrutura #codePhrase devem ser inseridos 3 objetos, sendo Integer, Integer e String:
+     * ID único do objeto, índice para um terminologyId, e uma string.
+     * Ex.: 0, 5, "ab"
+     */
+    private ArrayList<Object> codePhrase = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceCodePhrase = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listCodePhrase = new ArrayList<Object>();
+
+    /**
+     * Estruturas de dados utilizada para armazenar uma instância de TERMINOLOGY_ID
+     *
+     * Na estrutura #terminologyId devem ser inseridos 3 objetos, sendo Integer e 2 String:
+     * ID único do objeto, name, version_id.
+     * Ex.: 0, "ab", "ab"
+     */
+    private ArrayList<Object> terminologyId = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceTerminologyId = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listTerminologyId = new ArrayList<Object>();
+
+
 
 
     /**
@@ -1002,14 +1026,14 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      */
     private ArrayList<Object> openEhrCodeSetIdentifiers = new ArrayList<Object>();
     private Map<Integer, Integer> idIndiceOpenEhrCodeSetIdentifiers = new HashMap<Integer, Integer>();
-    private ArrayList<Object> listOpenEhrCodeSetIdentifiers = new ArrayList<Object>();    
+    private ArrayList<Object> listOpenEhrCodeSetIdentifiers = new ArrayList<Object>();
 
 
     /**
      * Estruturas de dados utilizada para armazenar uma instância de TERMINOLOGY_SERVICES
      *
      * Herda de duas classes: OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS, OPENEHR_CODE_SET_IDENTIFIERS
-     * 
+     *
      * Na estrutura #terminologyServices devem ser inseridos 23 objetos: Inteiro e Strings referentes
      * aos atributos das duas classes-pai.
      *
@@ -1022,12 +1046,12 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      */
     private ArrayList<Object> terminologyService = new ArrayList<Object>();
     private Map<Integer, Integer> idIndiceTerminologyService = new HashMap<Integer, Integer>();
-    private ArrayList<Object> listTerminologyServices = new ArrayList<Object>(); 
+    private ArrayList<Object> listTerminologyServices = new ArrayList<Object>();
 
     /**
      * Estruturas de dados utilizada para armazenar uma instância de BASIC_DEFINITIONS
      *
-     * 
+     *
      * Na estrutura #basicDefinitions devem ser inseridos 3 objetos: Inteiro, String, String.
      *
      * O #idIndiceBasicDefinitions que tem por função, mapear o ID do objeto com o
@@ -1039,13 +1063,13 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      */
     private ArrayList<Object> basicDefinitions = new ArrayList<Object>();
     private Map<Integer, Integer> idIndiceBasicDefinitions = new HashMap<Integer, Integer>();
-    private ArrayList<Object> listBasicDefinitions = new ArrayList<Object>(); 
-    
+    private ArrayList<Object> listBasicDefinitions = new ArrayList<Object>();
+
     /**
      * Estruturas de dados utilizada para armazenar uma instância de OPENEHR_DEFINITIONS
      *
      * Herda da classe BASIC_DEFINITIONS
-     * 
+     *
      * Na estrutura #basicDefinitions devem ser inseridos 3 objetos: Inteiro, e Strings referentes 
      * aos atributos da classe pai.
      *
@@ -1058,11 +1082,11 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      */
     private ArrayList<Object> openEhrDefinitions = new ArrayList<Object>();
     private Map<Integer, Integer> idIndiceOpenEhrDefinitions = new HashMap<Integer, Integer>();
-    private ArrayList<Object> listOpenEhrDefinitions = new ArrayList<Object>(); 
-    
+    private ArrayList<Object> listOpenEhrDefinitions = new ArrayList<Object>();
+
     /**
      * Estruturas de dados utilizada para armazenar uma instância de EHR
-     * 
+     *
      * Na estrutura #ehr devem ser inseridos 9 objetos: Inteiro, Inteiro, Inteiro, List<Integer>,
      * Inteiro, Inteiro, List<Integer>, Inteiro, Inteiro
      *
@@ -1075,13 +1099,13 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      */
     private ArrayList<Object> ehr = new ArrayList<Object>();
     private Map<Integer, Integer> idIndiceEhr = new HashMap<Integer, Integer>();
-    private ArrayList<Object> listEhr = new ArrayList<Object>(); 
-    
+    private ArrayList<Object> listEhr = new ArrayList<Object>();
+
     /**
      * Estruturas de dados utilizada para armazenar uma instância de VERSIONED_EHR_ACCESS
-     * 
+     *
      * Herda da classe LOCATABLE
-     * 
+     *
      * Na estrutura #ehrStatus devem ser inseridos 11 objetos: Inteiro, Boolean, Inteiro, Boolean,
      * Inteiro, Inteiro, String, Inteiro, Inteiro[], Inteiro, Inteiro
      *
@@ -1094,13 +1118,13 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      */
     private ArrayList<Object> ehrStatus = new ArrayList<Object>();
     private Map<Integer, Integer> idIndiceEhrStatus = new HashMap<Integer, Integer>();
-    private ArrayList<Object> listEhrStatus = new ArrayList<Object>(); 
-    
+    private ArrayList<Object> listEhrStatus = new ArrayList<Object>();
+
     /**
      * Estruturas de dados utilizada para armazenar uma instância de VERSIONED_EHR_ACCESS
-     * 
+     *
      * Herda as estruturas das classes VERSIONED_OBJECT e VERSION
-     * 
+     *
      * Na estrutura #versionedEhrAccess devem ser inseridos 7 objetos: Inteiro, Inteiro, Inteiro, Inteiro,
      * Inteiro, String, Inteiro
      *
@@ -1113,13 +1137,13 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      */
     private ArrayList<Object> versionedEhrAccess = new ArrayList<Object>();
     private Map<Integer, Integer> idIndiceVersionedEhrAccess = new HashMap<Integer, Integer>();
-    private ArrayList<Object> listVersionedEhrAccess = new ArrayList<Object>(); 
-    
+    private ArrayList<Object> listVersionedEhrAccess = new ArrayList<Object>();
+
     /**
      * Estruturas de dados utilizada para armazenar uma instância de VERSIONED_EHR_ACCESS
-     * 
+     *
      * Herda as estruturas das classes VERSIONED_OBJECT e VERSION
-     * 
+     *
      * Na estrutura #versionedEhrAccess devem ser inseridos 7 objetos: Inteiro, Inteiro, Inteiro, Inteiro,
      * Inteiro, String, Inteiro
      *
@@ -1133,10 +1157,10 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     private ArrayList<Object> versionedEhrStatus = new ArrayList<Object>();
     private Map<Integer, Integer> idIndiceVersionedEhrStatus = new HashMap<Integer, Integer>();
     private ArrayList<Object> listVersionedEhrStatus = new ArrayList<Object>();
-    
+
     /**
      * Estruturas de dados utilizada para armazenar uma instância de VERSIONED_EHR_ACCESS
-     * 
+     *
      * Na estrutura #ehrAccess devem ser inseridos 7 objetos: Inteiro, Boolean, Inteiro, Boolean,
      * Inteiro, Inteiro, String, Inteiro, Inteiro[], Inteiro, Inteiro
      *
@@ -1153,9 +1177,9 @@ public class ImplementacaoMR implements ModeloDeReferencia {
 
     /**
      * Estruturas de dados utilizada para armazenar uma instância de VERSIONED_EHR_ACCESS
-     * 
+     *
      * Herda a estrutura da classe VERSIONED_OBJECT
-     * 
+     *
      * Na estrutura #versionedComposition devem ser inseridos 4 objetos: Inteiro, Inteiro, Inteiro, Inteiro
      *
      * O #idIndiceVersionedComposition que tem por função, mapear o ID do objeto com o
@@ -1168,11 +1192,11 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     private ArrayList<Object> versionedComposition = new ArrayList<Object>();
     private Map<Integer, Integer> idIndiceVersionedComposition = new HashMap<Integer, Integer>();
     private ArrayList<Object> listVersionedComposition = new ArrayList<Object>();
-    
-    
+
+
     /**
      * Estruturas de dados utilizada para armazenar uma instância de LINK
-     * 
+     *
      * Na estrutura #link devem ser inseridos 4 objetos: Inteiro, Inteiro, Inteiro, Inteiro
      *
      * O #idIndiceLink que tem por função, mapear o ID do objeto com o
@@ -1185,11 +1209,11 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     private ArrayList<Object> link = new ArrayList<Object>();
     private Map<Integer, Integer> idIndiceLink = new HashMap<Integer, Integer>();
     private ArrayList<Object> listLink = new ArrayList<Object>();
-    
-    
+
+
     /**
      * Estruturas de dados utilizada para armazenar uma instância de FEEDER_AUDIT_DETAILS
-     * 
+     *
      * Na estrutura #feederAuditDetails devem ser inseridos 7 objetos: Inteiro, String, Inteiro, Inteiro,
      * Inteiro, Inteiro, String
      *
@@ -1203,11 +1227,11 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     private ArrayList<Object> feederAuditDetails = new ArrayList<Object>();
     private Map<Integer, Integer> idIndiceFeederAuditDetails = new HashMap<Integer, Integer>();
     private ArrayList<Object> listFeederAuditDetails = new ArrayList<Object>();
-    
+
 
     /**
      * Estruturas de dados utilizada para armazenar uma instância de ARCHETYPED
-     * 
+     *
      * Na estrutura #archetyped devem ser inseridos 7 objetos: Inteiro, String, Inteiro, Inteiro,
      * Inteiro, Inteiro, String
      *
@@ -1221,10 +1245,10 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     private ArrayList<Object> archetyped = new ArrayList<Object>();
     private Map<Integer, Integer> idIndiceArchetyped = new HashMap<Integer, Integer>();
     private ArrayList<Object> listArchetyped = new ArrayList<Object>();
-    
+
     /**
      * Estruturas de dados utilizada para armazenar uma instância de ISM_TRANSITIONS
-     * 
+     *
      * Na estrutura #ismTransitions devem ser inseridos 4 objetos: Inteiro, Inteiro, Inteiro, Inteiro
      *
      * O #idIndiceIsmTransitions que tem por função, mapear o ID do objeto com o
@@ -1237,10 +1261,10 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     private ArrayList<Object> ismTransition = new ArrayList<Object>();
     private Map<Integer, Integer> idIndiceIsmTransition = new HashMap<Integer, Integer>();
     private ArrayList<Object> listIsmTransitions = new ArrayList<Object>();
-    
+
     /**
      * Estruturas de dados utilizada para armazenar uma instância de IINSTRUCTION_DETAILS
-     * 
+     *
      * Na estrutura #instructionDetails devem ser inseridos 4 objetos: Inteiro, Inteiro, String, Inteiro
      *
      * O #idIndiceInstructionDetails que tem por função, mapear o ID do objeto com o
@@ -1253,11 +1277,11 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     private ArrayList<Object> instructionDetails = new ArrayList<Object>();
     private Map<Integer, Integer> idIndiceInstructionDetails = new HashMap<Integer, Integer>();
     private ArrayList<Object> listInstructionDetails = new ArrayList<Object>();
-    
 
-     /**
+
+    /**
      * Estruturas de dados utilizada para armazenar uma instância de Generic_Entry
-     * 
+     *
      * Na estrutura #genericEntry deve ser inserido 1 objetos: Inteiro
      *
      * O #idIndiceGenericEntry que tem por função, mapear o ID do objeto com o
@@ -1270,12 +1294,12 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     private ArrayList<Object> genericEntry = new ArrayList<Object>();
     private Map<Integer, Integer> idIndiceGenericEntry = new HashMap<Integer, Integer>();
     private ArrayList<Object> listGenericEntry = new ArrayList<Object>();
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
 
     /**
      * Método Construtor da Classe.
@@ -1500,7 +1524,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
                         throw new IllegalArgumentException("O campo não é do tipo lógico!");
                     }
                 }
-            } 
+            }
             else if ( this.idTipo.get(id) == EHR_STATUS) {
                 int idIndice = this.idIndiceEhrStatus.get(id);
                 if ( campo < 0 || campo > 9 ) {
@@ -1610,12 +1634,12 @@ public class ImplementacaoMR implements ModeloDeReferencia {
             }
             else if ( this.idTipo.get(id) == BASIC_DEFINITIONS) {
                 int idIndice = this.idIndiceBasicDefinitions.get(id);
-                if ( campo < 0 || campo > 2 ) {
+                if ( campo < 0 || campo > 1 ) {
                     throw new IllegalArgumentException("O campo não existe!");
                 }
                 else{
                     try{
-                        return (String) this.basicDefinitions.get(idIndice + campo + 1);
+                        return (this.basicDefinitions.get(idIndice + campo + 1)).toString();
                     }
                     catch (Exception e) {
                         throw new IllegalArgumentException("O campo não é do tipo texto!");
@@ -1692,7 +1716,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
                     }
                 }
             }
-            
+
         }
         return null;
     }
@@ -1915,7 +1939,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
                 }
             }
             else if ( this.idTipo.get(id) == GENERIC_ENTRY) {
-               int idIndice = this.idIndiceGenericEntry.get(id);
+                int idIndice = this.idIndiceGenericEntry.get(id);
                 if ( campo != 0 ) {
                     throw new IllegalArgumentException("O campo não exite!");
                 }
@@ -1956,7 +1980,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
                     }
                 }
             }
-        }        
+        }
         return -1;
     }
 
@@ -2572,7 +2596,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     }
 
     /**
-     * 
+     *
      * @param terminologyIdOpenehr Name of openEHR’s own terminology.
      * @param groupIdAuditChange
      * @param groupIdAttestationReason
@@ -2588,29 +2612,29 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      * @param groupIdTermMappingPurpose
      * @param groupIdSubjectRelationship
      * @param groupIdVersionLifeCycleState
-     * 
+     *
      * @return id do objeto inserido
      */
-    public int adicionaOpenEhrTerminologyGroup(String terminologyIdOpenehr, 
-            String groupIdAuditChange,  
-            String groupIdAttestationReason, 
-            String groupIdCompositionCategory, 
-            String groupIdEventMathFunction,
-            String groupIdInstructionStates,
-            String groupIdInstructionTransitions, 
-            String groupIdNullFlavours, 
-            String groupIdProperty, 
-            String groupIdParticipationFunction, 
-            String groupIdParticipationMode, 
-            String groupIdSetting, 
-            String groupIdTermMappingPurpose, 
-            String groupIdSubjectRelationship, 
-            String groupIdVersionLifeCycleState) {
-        
+    public int adicionaOpenEhrTerminologyGroup(String terminologyIdOpenehr,
+                                               String groupIdAuditChange,
+                                               String groupIdAttestationReason,
+                                               String groupIdCompositionCategory,
+                                               String groupIdEventMathFunction,
+                                               String groupIdInstructionStates,
+                                               String groupIdInstructionTransitions,
+                                               String groupIdNullFlavours,
+                                               String groupIdProperty,
+                                               String groupIdParticipationFunction,
+                                               String groupIdParticipationMode,
+                                               String groupIdSetting,
+                                               String groupIdTermMappingPurpose,
+                                               String groupIdSubjectRelationship,
+                                               String groupIdVersionLifeCycleState) {
+
         int idObjeto = this.idObjeto;
         this.openEhrTerminologyGroup.add(idObjeto);
         int indiceObjInserido = this.openEhrTerminologyGroup.size()-1;
-        
+
         this.openEhrTerminologyGroup.add(terminologyIdOpenehr);
         this.openEhrTerminologyGroup.add(groupIdAuditChange);
         this.openEhrTerminologyGroup.add(groupIdAttestationReason);
@@ -2626,15 +2650,15 @@ public class ImplementacaoMR implements ModeloDeReferencia {
         this.openEhrTerminologyGroup.add(groupIdTermMappingPurpose);
         this.openEhrTerminologyGroup.add(groupIdSubjectRelationship);
         this.openEhrTerminologyGroup.add(groupIdVersionLifeCycleState);
-        
+
         this.idIndiceOpenEhrTerminologyGroup.put(idObjeto, indiceObjInserido);
         this.idTipo.put(idObjeto, OPENEHR_TERMINOLOGY_GROUP);
         this.idObjeto++;
         return idObjeto;
     }
-    
+
     /**
-     * 
+     *
      * @param codeSetIdCharacterSets
      * @param codeSetIdCompressionAlgorithms
      * @param codeSetIdCountries
@@ -2642,21 +2666,21 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      * @param codeSetIdLanguages
      * @param codeSetIdMediaTypes
      * @param codeSetIdNormalStatuses
-     * 
+     *
      * @return id do objeto inserido
      */
-    public int adicionaOpenEhrCodeSetIdentifiers(String codeSetIdCharacterSets, 
-            String codeSetIdCompressionAlgorithms,  
-            String codeSetIdCountries, 
-            String codeSetIntegrityCheckAlgorithms, 
-            String codeSetIdLanguages,
-            String codeSetIdMediaTypes,
-            String codeSetIdNormalStatuses) {
-        
+    public int adicionaOpenEhrCodeSetIdentifiers(String codeSetIdCharacterSets,
+                                                 String codeSetIdCompressionAlgorithms,
+                                                 String codeSetIdCountries,
+                                                 String codeSetIntegrityCheckAlgorithms,
+                                                 String codeSetIdLanguages,
+                                                 String codeSetIdMediaTypes,
+                                                 String codeSetIdNormalStatuses) {
+
         int idObjeto = this.idObjeto;
         this.openEhrCodeSetIdentifiers.add(idObjeto);
         int indiceObjInserido = this.openEhrCodeSetIdentifiers.size()-1;
-        
+
         this.openEhrCodeSetIdentifiers.add(codeSetIdCharacterSets);
         this.openEhrCodeSetIdentifiers.add(codeSetIdCompressionAlgorithms);
         this.openEhrCodeSetIdentifiers.add(codeSetIdCountries);
@@ -2664,16 +2688,16 @@ public class ImplementacaoMR implements ModeloDeReferencia {
         this.openEhrCodeSetIdentifiers.add(codeSetIdLanguages);
         this.openEhrCodeSetIdentifiers.add(codeSetIdMediaTypes);
         this.openEhrCodeSetIdentifiers.add(codeSetIdNormalStatuses);
-        
+
         this.idIndiceOpenEhrCodeSetIdentifiers.put(idObjeto, indiceObjInserido);
         this.idTipo.put(idObjeto, OPENEHR_CODE_SET_IDENTIFIERS);
         this.idObjeto++;
         return idObjeto;
     }
-    
+
     /**
      * Herda das classes OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS e OPENEHR_CODE_SET_IDENTIFIERS
-     * 
+     *
      * Atributos da classe OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS:
      * @param terminologyIdOpenehr
      * @param groupIdAuditChange
@@ -2690,7 +2714,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      * @param groupIdTermMappingPurpose
      * @param groupIdSubjectRelationship
      * @param groupIdVersionLifeCycleState
-     * 
+     *
      * Atributos da classe OPENEHR_CODE_SET_IDENTIFIERS:
      * @param codeSetIdCharacterSets
      * @param codeSetIdCompressionAlgorithms
@@ -2699,36 +2723,36 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      * @param codeSetIdLanguages
      * @param codeSetIdMediaTypes
      * @param codeSetIdNormalStatuses
-     * 
+     *
      * @return id do objeto inserido
      */
-    public int adicionaTerminologyService(String terminologyIdOpenehr, 
-            String groupIdAuditChange,  
-            String groupIdAttestationReason, 
-            String groupIdCompositionCategory, 
-            String groupIdEventMathFunction,
-            String groupIdInstructionStates,
-            String groupIdInstructionTransitions, 
-            String groupIdNullFlavours, 
-            String groupIdProperty, 
-            String groupIdParticipationFunction, 
-            String groupIdParticipationMode, 
-            String groupIdSetting, 
-            String groupIdTermMappingPurpose, 
-            String groupIdSubjectRelationship, 
-            String groupIdVersionLifeCycleState,
-            String codeSetIdCharacterSets, 
-            String codeSetIdCompressionAlgorithms,  
-            String codeSetIdCountries, 
-            String codeSetIntegrityCheckAlgorithms, 
-            String codeSetIdLanguages,
-            String codeSetIdMediaTypes,
-            String codeSetIdNormalStatuses) {
-        
+    public int adicionaTerminologyService(String terminologyIdOpenehr,
+                                          String groupIdAuditChange,
+                                          String groupIdAttestationReason,
+                                          String groupIdCompositionCategory,
+                                          String groupIdEventMathFunction,
+                                          String groupIdInstructionStates,
+                                          String groupIdInstructionTransitions,
+                                          String groupIdNullFlavours,
+                                          String groupIdProperty,
+                                          String groupIdParticipationFunction,
+                                          String groupIdParticipationMode,
+                                          String groupIdSetting,
+                                          String groupIdTermMappingPurpose,
+                                          String groupIdSubjectRelationship,
+                                          String groupIdVersionLifeCycleState,
+                                          String codeSetIdCharacterSets,
+                                          String codeSetIdCompressionAlgorithms,
+                                          String codeSetIdCountries,
+                                          String codeSetIntegrityCheckAlgorithms,
+                                          String codeSetIdLanguages,
+                                          String codeSetIdMediaTypes,
+                                          String codeSetIdNormalStatuses) {
+
         int idObjeto = this.idObjeto;
         this.terminologyService.add(idObjeto);
         int indiceObjInserido = this.terminologyService.size()-1;
-        
+
         this.terminologyService.add(terminologyIdOpenehr);
         this.terminologyService.add(groupIdAuditChange);
         this.terminologyService.add(groupIdAttestationReason);
@@ -2751,57 +2775,57 @@ public class ImplementacaoMR implements ModeloDeReferencia {
         this.terminologyService.add(codeSetIdLanguages);
         this.terminologyService.add(codeSetIdMediaTypes);
         this.terminologyService.add(codeSetIdNormalStatuses);
-        
+
         this.idIndiceTerminologyService.put(idObjeto, indiceObjInserido);
         this.idTipo.put(idObjeto, TERMINOLOGY_SERVICE);
         this.idObjeto++;
         return idObjeto;
     }
-    
+
     /**
-     * 
+     *
      * Define vaores de constantes usados globalmente.
-     * 
+     *
      * @param CR carriage return character
      * @param LF line feed character
-     * 
+     *
      * @return id do objeto inserido 
      */
-    public int adicionaBasicDefinition(char CR, 
-            char LF) {
-        
+    public int adicionaBasicDefinition(char CR,
+                                       char LF) {
+
         int idObjeto = this.idObjeto;
         this.basicDefinitions.add(idObjeto);
         int indiceObjInserido = this.basicDefinitions.size()-1;
-        
+
         this.basicDefinitions.add(CR);
         this.basicDefinitions.add(LF);
-                
+
         this.idIndiceBasicDefinitions.put(idObjeto, indiceObjInserido);
         this.idTipo.put(idObjeto, BASIC_DEFINITIONS);
         this.idObjeto++;
         return idObjeto;
     }
-    
+
     /**
      * Classe de herança usada para acessar constantes definidas em outros pacotes
      * Herda da classe BASIC_DEFINITIONS
-     * 
+     *
      * @param CR carriage return character
      * @param LF line feed character
-     * 
+     *
      * @return id do objeto inserido 
      */
-    public int adicionaOpenEhrDefinitions(char CR, 
-            char LF) {
-        
+    public int adicionaOpenEhrDefinitions(char CR,
+                                          char LF) {
+
         int idObjeto = this.idObjeto;
         this.openEhrDefinitions.add(idObjeto);
         int indiceObjInserido = this.openEhrDefinitions.size()-1;
-        
+
         this.basicDefinitions.add(CR);
         this.basicDefinitions.add(LF);
-                
+
         this.idIndiceOpenEhrDefinitions.put(idObjeto, indiceObjInserido);
         this.idTipo.put(idObjeto, OPENEHR_DEFINITIONS);
         this.idObjeto++;
@@ -2811,7 +2835,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
 
     /**
      * Objeto raiz e ponto de acesso do EHR para um objeto de cuidados
-     * 
+     *
      * @param system_id The id of the EHR system on which this EHR was created (HIER_OBJECT_ID).
      * @param ehr_id The id of this EHR (HIER_OBJECT_ID).
      * @param contributions Array(int) of contributions causing changes to this EHR. 
@@ -2823,54 +2847,54 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      * @param compositions Array(int) Master list of all Versioned Composition references in this EHR.
      * @param directory Optional directory structure for this EHR.
      * @param time_created Time of creation of the EHR (DV_DATE_TIME).
-     * 
+     *
      * @return id do obejto inserido
      */
-    public int adicionaEHR(int system_id, 
-            int ehr_id,
-            int[] contributions,
-            int ehr_status,
-            int ehr_access,
-            int[] compositions,
-            int directory,
-            int time_created) {
-        
+    public int adicionaEHR(int system_id,
+                           int ehr_id,
+                           int[] contributions,
+                           int ehr_status,
+                           int ehr_access,
+                           int[] compositions,
+                           int directory,
+                           int time_created) {
+
         int idObjeto = this.idObjeto;
         this.ehr.add(idObjeto);
         int indiceObjInserido = this.ehr.size()-1;
-        
+
         this.ehr.add(system_id);
         this.ehr.add(ehr_id);
-        
+
         this.ehr.add(contributions.length); //tamanho do array contributions
         for (int i = 0; i < contributions.length; i++) {
-           this.ehr.add(contributions[i]); 
+            this.ehr.add(contributions[i]);
         }
-        
+
         this.ehr.add(contributions);
         this.ehr.add(ehr_status);
         this.ehr.add(ehr_access);
-        
+
         this.ehr.add(compositions.length); //tamanho do array compositions
         for (int i = 0; i < compositions.length; i++) {
-           this.ehr.add(compositions[i]); 
+            this.ehr.add(compositions[i]);
         }
 
         this.ehr.add(directory);
         this.ehr.add(time_created);
-                
+
         this.idIndiceEhr.put(idObjeto, indiceObjInserido);
         this.idTipo.put(idObjeto, EHR);
         this.idObjeto++;
         return idObjeto;
     }
-    
+
     /**
-     * 
+     *
      * Single object per EHR giving various EHR-wide information
-     * 
+     *
      * Extende a classe LOCATABLE
-     * 
+     *
      * Atributos da própria classe:
      * @param subject The subject of this EHR. The external_ref attribute can 
      *                  be used to contain a direct reference to the subject in 
@@ -2881,7 +2905,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      * @param is_modifiable True if this EHR is allowed to be written to.
      * @param other_datails Any other details of the EHR summary object, 
      *                      in the form of an archetyped Item_structure.
-     * 
+     *
      * Atributos da classe LOCATABLE:
      * @param name
      * @param archetype_node_id
@@ -2889,23 +2913,23 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      * @param links
      * @param archetype_details
      * @param feeder_audit
-     * @return 
+     * @return
      */
-    public int adicionaEhrStatus(int subject, 
-            boolean is_queryable,
-            boolean is_modifiable,
-            int other_datails,
-            int name,
-            String archetype_node_id,
-            int uid,
-            int[] links,
-            int archetype_details,
-            int feeder_audit) {
-        
+    public int adicionaEhrStatus(int subject,
+                                 boolean is_queryable,
+                                 boolean is_modifiable,
+                                 int other_datails,
+                                 int name,
+                                 String archetype_node_id,
+                                 int uid,
+                                 int[] links,
+                                 int archetype_details,
+                                 int feeder_audit) {
+
         int idObjeto = this.idObjeto;
         this.ehrStatus.add(idObjeto);
         int indiceObjInserido = this.ehrStatus.size()-1;
-        
+
         this.ehrStatus.add(subject);
         this.ehrStatus.add(is_queryable);
         this.ehrStatus.add(is_modifiable);
@@ -2916,40 +2940,40 @@ public class ImplementacaoMR implements ModeloDeReferencia {
         this.ehrStatus.add(links);
         this.ehrStatus.add(archetype_details);
         this.ehrStatus.add(feeder_audit);
-                
+
         this.idIndiceEhrStatus.put(idObjeto, indiceObjInserido);
         this.idTipo.put(idObjeto, EHR_STATUS);
         this.idObjeto++;
         return idObjeto;
     }
-    
-    public int adicionaEhrAccess(int settings, 
-            int uid,
-            int[] links,
-            int archetype_details,
-            int feeder_audit) {
-        
+
+    public int adicionaEhrAccess(int settings,
+                                 int uid,
+                                 int[] links,
+                                 int archetype_details,
+                                 int feeder_audit) {
+
         int idObjeto = this.idObjeto;
         this.ehr.add(idObjeto);
         int indiceObjInserido = this.ehrStatus.size()-1;
-        
+
         this.ehrStatus.add(settings);
         this.ehrStatus.add(uid);
         this.ehrStatus.add(links);
         this.ehrStatus.add(archetype_details);
         this.ehrStatus.add(feeder_audit);
-                
+
         this.idIndiceEhrStatus.put(idObjeto, indiceObjInserido);
         this.idTipo.put(idObjeto, EHR_STATUS);
         this.idObjeto++;
         return idObjeto;
     }
-    
+
     /**
-     * 
+     *
      * Junção dos atributos das classes VERSION_OBJECT e VERSION
      * para versionamento de objeto do tipo EHR_ACCESS.
-     * 
+     *
      * Atributos da classe VERSIONED_OBJECT:
      * @param uid Unique identifier of this version container. This id will be 
      *              the same in all instances of the same container in a 
@@ -2959,42 +2983,42 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      *                  belongs, e.g. the id of the containing EHR or other 
      *                  relevant owning entity.
      * @param time_created Time of initial creation of this versioned object.
-     * 
+     *
      * Atributos da classe VERSION:
      * @param contribution Contribution in which this version was added.
      * @param signature OpenPGP digital signature or digest of content committed in this Version.
      * @param commit_audit Audit trail corresponding to the committal of this 
      *                      version to the VERSIONED_OBJECT.
-     * @return 
+     * @return
      */
-    public int adicionaVersionedEhrAccess(int uid, 
-            int owner_id,
-            int time_created,
-            int contribution,
-            String signature,
-            int commit_audit) {
-        
+    public int adicionaVersionedEhrAccess(int uid,
+                                          int owner_id,
+                                          int time_created,
+                                          int contribution,
+                                          String signature,
+                                          int commit_audit) {
+
         int idObjeto = this.idObjeto;
         this.versionedEhrAccess.add(idObjeto);
         int indiceObjInserido = this.versionedEhrAccess.size()-1;
-        
+
         this.versionedEhrAccess.add(uid);
         this.versionedEhrAccess.add(owner_id);
         this.versionedEhrAccess.add(time_created);
         this.versionedEhrAccess.add(contribution);
         this.versionedEhrAccess.add(signature);
         this.versionedEhrAccess.add(commit_audit);
-                
+
         this.idIndiceEhrStatus.put(idObjeto, indiceObjInserido);
         this.idTipo.put(idObjeto, VERSIONED_EHR_ACCESS);
         this.idObjeto++;
         return idObjeto;
     }
-    
+
     /**
      * Adiciona objeto VERSIONED_COMPOSITION
      * Version-controlled composition abstraction, defined by inheriting VERSIONED_OBJECT<COMPOSITION>
-     * 
+     *
      * Atributos da classe VERSIONED_OBJECT:
      * @param uid Unique identifier of this version container. This id will be 
      *              the same in all instances of the same container in a 
@@ -3004,33 +3028,33 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      *                  belongs, e.g. the id of the containing EHR or other 
      *                  relevant owning entity.
      * @param time_created Time of initial creation of this versioned object.
-     * 
+     *
      * @return id do objeto inserido
      */
-    public int adicionaVersionedComposition(int uid, 
-            int owner_id,
-            int time_created) {
-        
+    public int adicionaVersionedComposition(int uid,
+                                            int owner_id,
+                                            int time_created) {
+
         int idObjeto = this.idObjeto;
         this.versionedComposition.add(idObjeto);
         int indiceObjInserido = this.versionedComposition.size()-1;
-        
+
         this.versionedComposition.add(uid);
         this.versionedComposition.add(owner_id);
         this.versionedComposition.add(time_created);
-                
+
         this.idIndiceVersionedComposition.put(idObjeto, indiceObjInserido);
         this.idTipo.put(idObjeto, VERSIONED_COMPOSITION);
         this.idObjeto++;
-        
+
         return idObjeto;
     }
-    
+
     /**
-     * 
+     *
      * Junção dos atributos das classes VERSION_OBJECT e VERSION
      * para versionamento de objeto do tipo EHR_STATUS.
-     * 
+     *
      * Atributos da classe VERSIONED_OBJECT:
      * @param uid Unique identifier of this version container. This id will be 
      *              the same in all instances of the same container in a 
@@ -3040,7 +3064,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      *                  belongs, e.g. the id of the containing EHR or other 
      *                  relevant owning entity.
      * @param time_created Time of initial creation of this versioned object.
-     * 
+     *
      * Atributos da classe VERSION:
      * @param contribution Contribution in which this version was added.
      * @param signature OpenPGP digital signature or digest of content committed in this Version.
@@ -3048,31 +3072,31 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      *                      version to the VERSIONED_OBJECT.
      * @return  id do objeto inserido 
      */
-    public int adicionaVersionedEhrStatus(int uid, 
-            int owner_id,
-            int time_created,
-            int contribution,
-            String signature,
-            int commit_audit) {
-        
+    public int adicionaVersionedEhrStatus(int uid,
+                                          int owner_id,
+                                          int time_created,
+                                          int contribution,
+                                          String signature,
+                                          int commit_audit) {
+
         int idObjeto = this.idObjeto;
         this.versionedEhrStatus.add(idObjeto);
         int indiceObjInserido = this.versionedEhrStatus.size()-1;
-        
+
         this.versionedEhrStatus.add(uid);
         this.versionedEhrStatus.add(owner_id);
         this.versionedEhrStatus.add(time_created);
         this.versionedEhrStatus.add(contribution);
         this.versionedEhrStatus.add(signature);
         this.versionedEhrStatus.add(commit_audit);
-                
+
         this.idIndiceEhrStatus.put(idObjeto, indiceObjInserido);
         this.idTipo.put(idObjeto, VERSIONED_EHR_STATUS);
         this.idObjeto++;
-        
+
         return idObjeto;
     }
-    
+
     /**
      * The LINK type defines a logical relationship between two items,
      * such as two ENTRYs or an ENTRY and a COMPOSITION. 
@@ -3081,7 +3105,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      * although this probably should be prevented in archetypes. Multiple LINKs 
      * can be attached to the root object of any archetyped structure to give 
      * the effect of a 1→N link.
-     * 
+     *
      * @param meaning (DV_TEXT) Used to describe the relationship, usually in 
      *                  clinical terms, such as in response to (the relationship 
      *                  between test results and an order), follow-up to and so on. 
@@ -3099,25 +3123,25 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      *              as per the linguistic sense of the meaning attribute.
      * @return  id do objeto inserido 
      */
-    public int adicionaLink(int meaning, 
-            int type,
-            int target) {
-        
+    public int adicionaLink(int meaning,
+                            int type,
+                            int target) {
+
         int idObjeto = this.idObjeto;
         this.link.add(idObjeto);
         int indiceObjInserido = this.link.size()-1;
-        
+
         this.link.add(meaning);
         this.link.add(type);
         this.link.add(target);
-                
+
         this.idIndiceLink.put(idObjeto, indiceObjInserido);
         this.idTipo.put(idObjeto, LINK);
         this.idObjeto++;
-        
+
         return idObjeto;
     }
-    
+
     /**
      * Adiciona instancia de FEEDER_AUDIT_DETAILS
      * Audit details for any system in a feeder system chain. Audit details 
@@ -3126,7 +3150,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      * defined as mandatory, however, in different scenarios, various combinations 
      * of attributes will usually be mandatory. This can be controlled by specifying 
      * feeder audit details in legacy archetypes.
-     * 
+     *
      * @param system_id (String) Identifier of the system which handled the information item.    
      * @param location (PARTY_IDENTIFIED) Identifier of the particular site/facility 
      *                  within an organisation which handled the item. 
@@ -3144,35 +3168,35 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      *                  as "interim" , "final" , or numeric versions if available.
      * @return id do objeto inserido 
      */
-    public int adicionaFeederAuditDetails(String system_id, 
-            int location,
-            int subject,
-            int provider,
-            int time,
-            String version_id) {
-        
+    public int adicionaFeederAuditDetails(String system_id,
+                                          int location,
+                                          int subject,
+                                          int provider,
+                                          int time,
+                                          String version_id) {
+
         int idObjeto = this.idObjeto;
         this.feederAuditDetails.add(idObjeto);
         int indiceObjInserido = this.feederAuditDetails.size()-1;
-        
+
         this.feederAuditDetails.add(system_id);
         this.feederAuditDetails.add(location);
         this.feederAuditDetails.add(subject);
         this.feederAuditDetails.add(provider);
         this.feederAuditDetails.add(time);
         this.feederAuditDetails.add(version_id);
-                
+
         this.idIndiceFeederAuditDetails.put(idObjeto, indiceObjInserido);
         this.idTipo.put(idObjeto, FEEDER_AUDIT_DETAILS);
         this.idObjeto++;
-        
+
         return idObjeto;
     }
-    
+
     /**
      * Adiciona uma instancia de ARCHETYPED
      * Archetypes act as the configuration basis for the particular structures of instances defined by the reference model. To enable archetypes to be used to create valid data, key classes in the reference model act as root points for archetyping; accordingly, these classes have the archetype_details attribute set. An instance of the class ARCHETYPED contains the relevant archetype identification information, allowing generating archetypes to be matched up with data instances.
-     * 
+     *
      * @param archetype_id (ARCHETYPED_ID) Globally unique archetype identifier.
      * @param template_id (TEMPLATE_ID) Globally unique template identifier, 
      *                      if a template was active at this point in the structure. 
@@ -3183,34 +3207,34 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      *                      version string, e.g. 1.0 , 1.2.4 .
      * @return id do objeto inserido 
      */
-    public int adicionaArchetyped(int archetype_id, 
-            int template_id,
-            String rm_version) {
-        
+    public int adicionaArchetyped(int archetype_id,
+                                  int template_id,
+                                  String rm_version) {
+
         int idObjeto = this.idObjeto;
         this.archetyped.add(idObjeto);
         int indiceObjInserido = this.archetyped.size()-1;
-        
+
         this.archetyped.add(archetype_id);
         this.archetyped.add(template_id);
         this.archetyped.add(rm_version);
-                
+
         this.idIndiceArchetyped.put(idObjeto, indiceObjInserido);
         this.idTipo.put(idObjeto, ARCHETYPED);
         this.idObjeto++;
-        
+
         return idObjeto;
     }
 
-    
+
     /**
      * Adiciona instancia de ISM_TRANSITION
      * Model of a transition in the Instruction State Machine, 
      * caused by a careflow step. The attributes document the 
      * careflow step as well as the ISM transition.
-     * 
+     *
      * Herda de PATHABLE
-     * 
+     *
      * @param current_state (DV_CODED_TEXT) The ISM current state. Coded by 
      *                          openEHR terminology group Instruction states.
      * @param transition (DV_CODED_TEXT) The ISM transition which occurred to 
@@ -3224,29 +3248,29 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      *                      machine (ISM) computable form. Defined in archetype.
      * @return  id do objeto inserido
      */
-    public int adicionaIsmTrasition(int current_state, 
-            int transition,
-            int careflow_step) {
-        
+    public int adicionaIsmTrasition(int current_state,
+                                    int transition,
+                                    int careflow_step) {
+
         int idObjeto = this.idObjeto;
         this.ismTransition.add(idObjeto);
         int indiceObjInserido = this.ismTransition.size()-1;
-        
+
         this.ismTransition.add(current_state);
         this.ismTransition.add(transition);
         this.ismTransition.add(careflow_step);
-                
+
         this.idIndiceIsmTransition.put(idObjeto, indiceObjInserido);
         this.idTipo.put(idObjeto, ISM_TRANSITION);
         this.idObjeto++;
         return idObjeto;
     }
-    
+
     /**
      * Adiciona instancia de INSTRUCTION_DETAILS
-     * 
+     *
      * Used to record details of the Instruction causing an Action.
-     * 
+     *
      * @param instruction_id (LOCATABLE_REF) Reference to causing Instruction.
      * @param activity_id  (String) Identifier of Activity within Instruction, 
      *                      in the form of its archetype path.
@@ -3255,48 +3279,48 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      *                      fired to cause this Action to be done (with actual 
      *                      variables substituted); * list of notifications which 
      *                      actually occurred (with all variables substituted); 
-                            * other workflow engine state. This specification does 
-                            *  not currently define the actual structure or semantics 
-                            * of this field.
-     * 
+     * other workflow engine state. This specification does
+     *  not currently define the actual structure or semantics
+     * of this field.
+     *
      * @return id do objeto inserido
      */
-    public int adicionaInstructionDetails(int instruction_id, 
-            String activity_id,
-            int wf_details) {
-        
+    public int adicionaInstructionDetails(int instruction_id,
+                                          String activity_id,
+                                          int wf_details) {
+
         int idObjeto = this.idObjeto;
         this.instructionDetails.add(idObjeto);
         int indiceObjInserido = this.instructionDetails.size()-1;
-        
+
         this.instructionDetails.add(instruction_id);
         this.instructionDetails.add(activity_id);
         this.instructionDetails.add(wf_details);
-                
+
         this.idIndiceInstructionDetails.put(idObjeto, indiceObjInserido);
         this.idTipo.put(idObjeto, INSTRUCTION_DETAILS);
         this.idObjeto++;
         return idObjeto;
-        
+
     }
 
-     /**
-     * 
-     * @param data.
+    /**
+     *
+     * @param data
      * @return id do obejeto inserido
      */
     public int adicionaGenericEntry(int data) {
-        
+
         int idObjeto = this.idObjeto;
         this.genericEntry.add(idObjeto);
         int indiceObjInserido = this.genericEntry.size()-1;
-        
+
         this.genericEntry.add(data);
-               
+
         this.idIndiceGenericEntry.put(idObjeto, indiceObjInserido);
         this.idTipo.put(idObjeto, GENERIC_ENTRY);
         this.idObjeto++;
         return idObjeto;
     }
-    
+
 }
