@@ -2441,7 +2441,14 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      * terminologia na estrutura.
      */
     public int adicionaTerminologyId(String valor) {
-        return 0;
+        int idObjeto = this.idObjeto;
+        this.terminologyId.add(idObjeto);
+        int indiceObjInserido = this.terminologyId.size()-1;
+        this.terminologyId.add(valor);
+        this.idIndiceTerminologyId.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, TERMINOLOGY_ID);
+        this.idObjeto++;
+        return idObjeto;
     }
 
     /**
@@ -2452,7 +2459,15 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      * @return O identificador único do código na estrutura.
      */
     public int adicionaCodePhrase(String terminologyId, String codeString) {
-        return 0;
+        int idObjeto = this.idObjeto;
+        this.codePhrase.add(idObjeto);
+        int indiceObjInserido = this.codePhrase.size()-1;
+        this.codePhrase.add(terminologyId);
+        this.codePhrase.add(codeString);
+        this.idIndiceCodePhrase.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, CODE_PHRASE);
+        this.idObjeto++;
+        return idObjeto;
     }
 
     /**
