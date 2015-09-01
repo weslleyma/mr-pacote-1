@@ -2122,7 +2122,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
             else if ( this.idTipo.get(id) == GENERIC_ENTRY) {
                 int idIndice = this.idIndiceGenericEntry.get(id);
                 if ( campo != 0 ) {
-                    throw new IllegalArgumentException("O campo não exite!");
+                    throw new IllegalArgumentException("O campo não existe!");
                 }
                 else{
                     try{
@@ -2164,7 +2164,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
             else if ( this.idTipo.get(id) == ADDRESS) {
                 int idIndice = this.idIndiceAddress.get(id);
                 if ( campo != 0 ) {
-                    throw new IllegalArgumentException("O campo não exite!");
+                    throw new IllegalArgumentException("O campo não existe!");
                 }
                 else{
                     try{
@@ -2192,7 +2192,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
             else if ( this.idTipo.get(id) == OBJECT_ID) {
                 int idIndice = this.idIndiceAddress.get(id);
                 if ( campo != 0 ) {
-                    throw new IllegalArgumentException("O campo não exite!");
+                    throw new IllegalArgumentException("O campo não existe!");
                 }
                 else{
                     try{
@@ -2220,7 +2220,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
             else if ( this.idTipo.get(id) == UID_BASED_ID) {
                 int idIndice = this.idIndiceAddress.get(id);
                 if ( campo != 0 ) {
-                    throw new IllegalArgumentException("O campo não exite!");
+                    throw new IllegalArgumentException("O campo não existe!");
                 }
                 else{
                     try{
