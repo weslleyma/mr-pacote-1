@@ -396,7 +396,6 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      */
     final int LOCATABLE_REF = 64;
 
-
     /**
      * Identificador do tipo OPENEHR_TERMINOLOGY_GROUP.
      */
@@ -555,7 +554,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     /**
      * Identificador do tipo FEEDER_AUDIT_DETAILS.
      */
-    final int FEEDER_AUDIT_DETAILS = 100;
+    final int FEEDER_AUDIT_DETAILS = 66;
 
     /**
      * Identificador do tipo PARTY_PROXY.
@@ -1078,13 +1077,132 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     private Map<Integer, Integer> idIndiceEhr = new HashMap<Integer, Integer>();
     private ArrayList<Object> listEhr = new ArrayList<Object>(); 
     
+    /**
+     * Estruturas de dados utilizada para armazenar uma instância de VERSIONED_EHR_ACCESS
+     * 
+     * Herda da classe LOCATABLE
+     * 
+     * Na estrutura #ehrStatus devem ser inseridos 11 objetos: Inteiro, Boolean, Inteiro, Boolean,
+     * Inteiro, Inteiro, String, Inteiro, Inteiro[], Inteiro, Inteiro
+     *
+     * O #idIndiceEhrStatus que tem por função, mapear o ID do objeto com o
+     * índice dele na lista de objetos #versionedEhrStatus. O objetivo é agilizar a busca de objetos
+     *
+     * Na estrutura #listEhrStatus devem ser inseridos no mínimo 2 objetos Inteiros:
+     * Quantidade de itens e o valor dos índices de #versionedEhrStatus.
+     * Ex.: 1, 10
+     */
+    private ArrayList<Object> ehrStatus = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceEhrStatus = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listEhrStatus = new ArrayList<Object>(); 
+    
+    /**
+     * Estruturas de dados utilizada para armazenar uma instância de VERSIONED_EHR_ACCESS
+     * 
+     * Herda as estruturas das classes VERSIONED_OBJECT e VERSION
+     * 
+     * Na estrutura #versionedEhrAccess devem ser inseridos 7 objetos: Inteiro, Inteiro, Inteiro, Inteiro,
+     * Inteiro, String, Inteiro
+     *
+     * O #idIndiceVersionedEhrAccess que tem por função, mapear o ID do objeto com o
+     * índice dele na lista de objetos #versionedEhrAccess. O objetivo é agilizar a busca de objetos.
+     *
+     * Na estrutura #listVersionedEhrAccess devem ser inseridos no mínimo 2 objetos Inteiros:
+     * Quantidade de itens e o valor dos índices de #versionedEhrAccess.
+     * Ex.: 1, 10
+     */
+    private ArrayList<Object> versionedEhrAccess = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceVersionedEhrAccess = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listVersionedEhrAccess = new ArrayList<Object>(); 
+    
+    /**
+     * Estruturas de dados utilizada para armazenar uma instância de VERSIONED_EHR_ACCESS
+     * 
+     * Herda as estruturas das classes VERSIONED_OBJECT e VERSION
+     * 
+     * Na estrutura #versionedEhrAccess devem ser inseridos 7 objetos: Inteiro, Inteiro, Inteiro, Inteiro,
+     * Inteiro, String, Inteiro
+     *
+     * O #idIndiceVersionedEhrAccess que tem por função, mapear o ID do objeto com o
+     * índice dele na lista de objetos #versionedEhrAccess. O objetivo é agilizar a busca de objetos.
+     *
+     * Na estrutura #listVersionedEhrAccess devem ser inseridos no mínimo 2 objetos Inteiros:
+     * Quantidade de itens e o valor dos índices de #versionedEhrAccess.
+     * Ex.: 1, 10
+     */
+    private ArrayList<Object> versionedEhrStatus = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceVersionedEhrStatus = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listVersionedEhrStatus = new ArrayList<Object>();
+    
+    /**
+     * Estruturas de dados utilizada para armazenar uma instância de VERSIONED_EHR_ACCESS
+     * 
+     * Na estrutura #ehrAccess devem ser inseridos 7 objetos: Inteiro, Boolean, Inteiro, Boolean,
+     * Inteiro, Inteiro, String, Inteiro, Inteiro[], Inteiro, Inteiro
+     *
+     * O #idIndiceEhrAccess que tem por função, mapear o ID do objeto com o
+     * índice dele na lista de objetos #ehrAccess. O objetivo é agilizar a busca de objetos.
+     *
+     * Na estrutura #listEhrAccess devem ser inseridos no mínimo 2 objetos Inteiros:
+     * Quantidade de itens e o valor dos índices de #ehrAccess.
+     * Ex.: 1, 10
+     */
+    private ArrayList<Object> ehrAccess = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceEhrAccess = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listEhrAccess = new ArrayList<Object>();
+
+    /**
+     * Estruturas de dados utilizada para armazenar uma instância de VERSIONED_EHR_ACCESS
+     * 
+     * Herda a estrutura da classe VERSIONED_OBJECT
+     * 
+     * Na estrutura #versionedComposition devem ser inseridos 4 objetos: Inteiro, Inteiro, Inteiro, Inteiro
+     *
+     * O #idIndiceVersionedComposition que tem por função, mapear o ID do objeto com o
+     * índice dele na lista de objetos #versionedComposition. O objetivo é agilizar a busca de objetos.
+     *
+     * Na estrutura #listVersionedComposition devem ser inseridos no mínimo 2 objetos Inteiros:
+     * Quantidade de itens e o valor dos índices de #versionedComposition.
+     * Ex.: 1, 10
+     */
+    private ArrayList<Object> versionedComposition = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceVersionedComposition = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listVersionedComposition = new ArrayList<Object>();
     
     
+    /**
+     * Estruturas de dados utilizada para armazenar uma instância de LINK
+     * 
+     * Na estrutura #link devem ser inseridos 4 objetos: Inteiro, Inteiro, Inteiro, Inteiro
+     *
+     * O #idIndiceLink que tem por função, mapear o ID do objeto com o
+     * índice dele na lista de objetos #link. O objetivo é agilizar a busca de objetos.
+     *
+     * Na estrutura #listLink devem ser inseridos no mínimo 2 objetos Inteiros:
+     * Quantidade de itens e o valor dos índices de #link.
+     * Ex.: 1, 10
+     */
+    private ArrayList<Object> link = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceLink = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listLink = new ArrayList<Object>();
     
     
-    
-    
-    
+    /**
+     * Estruturas de dados utilizada para armazenar uma instância de FEEDER_AUDIT_DETAILS
+     * 
+     * Na estrutura #feederAuditDetails devem ser inseridos 7 objetos: Inteiro, String, Inteiro, Inteiro,
+     * Inteiro, Inteiro, String
+     *
+     * O #idIndiceFeederAuditDetails que tem por função, mapear o ID do objeto com o
+     * índice dele na lista de objetos #feederAuditDetails. O objetivo é agilizar a busca de objetos.
+     *
+     * Na estrutura #listFeederAuditDetails devem ser inseridos no mínimo 2 objetos Inteiros:
+     * Quantidade de itens e o valor dos índices de #feederAuditDetails.
+     * Ex.: 1, 10
+     */
+    private ArrayList<Object> feederAuditDetails = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceFeederAuditDetails = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listFeederAuditDetails = new ArrayList<Object>();
     
     
     
@@ -1302,7 +1420,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
             if ( this.idTipo.get(id) == DV_BOOLEAN  ) {
                 int idIndice = this.idIndiceDvBoolean.get(id);
                 if ( campo != 0 ) {
-                    throw new IllegalArgumentException("O campo não exite!");
+                    throw new IllegalArgumentException("O campo não existe!");
                 }
                 else{
                     try{
@@ -1312,9 +1430,21 @@ public class ImplementacaoMR implements ModeloDeReferencia {
                         throw new IllegalArgumentException("O campo não é do tipo lógico!");
                     }
                 }
+            } 
+            else if ( this.idTipo.get(id) == EHR_STATUS) {
+                int idIndice = this.idIndiceEhrStatus.get(id);
+                if ( campo < 0 || campo > 9 ) {
+                    throw new IllegalArgumentException("O campo não existe!");
+                }
+                else{
+                    try{
+                        return (Boolean) this.ehrStatus.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo lógico!");
+                    }
+                }
             }
-            
-            
         }
         return false;
     }
@@ -1341,7 +1471,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
             if ( this.idTipo.get(id) == DV_IDENTIFIER  ) {
                 int idIndice = this.idIndiceDvIdentifier.get(id);
                 if ( campo < 0 || campo > 3 ) {
-                    throw new IllegalArgumentException("O campo não exite!");
+                    throw new IllegalArgumentException("O campo não existe!");
                 }
                 else{
                     try{
@@ -1355,7 +1485,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
             else if ( this.idTipo.get(id) == DV_URI  ) {
                 int idIndice = this.idIndiceDvUri.get(id);
                 if ( campo != 0 ) {
-                    throw new IllegalArgumentException("O campo não exite!");
+                    throw new IllegalArgumentException("O campo não existe!");
                 }
                 else{
                     try{
@@ -1369,7 +1499,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
             else if ( this.idTipo.get(id) == OPENEHR_TERMINOLOGY_GROUP) {
                 int idIndice = this.idIndiceOpenEhrTerminologyGroup.get(id);
                 if ( campo < 0 || campo > 14 ) {
-                    throw new IllegalArgumentException("O campo não exite!");
+                    throw new IllegalArgumentException("O campo não existe!");
                 }
                 else{
                     try{
@@ -1383,7 +1513,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
             else if ( this.idTipo.get(id) == OPENEHR_CODE_SET_IDENTIFIERS) {
                 int idIndice = this.idIndiceOpenEhrCodeSetIdentifiers.get(id);
                 if ( campo < 0 || campo > 6 ) {
-                    throw new IllegalArgumentException("O campo não exite!");
+                    throw new IllegalArgumentException("O campo não existe!");
                 }
                 else{
                     try{
@@ -1397,7 +1527,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
             else if ( this.idTipo.get(id) == TERMINOLOGY_SERVICE) {
                 int idIndice = this.idIndiceTerminologyService.get(id);
                 if ( campo < 0 || campo > 21 ) {
-                    throw new IllegalArgumentException("O campo não exite!");
+                    throw new IllegalArgumentException("O campo não existe!");
                 }
                 else{
                     try{
@@ -1411,7 +1541,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
             else if ( this.idTipo.get(id) == BASIC_DEFINITIONS) {
                 int idIndice = this.idIndiceBasicDefinitions.get(id);
                 if ( campo < 0 || campo > 2 ) {
-                    throw new IllegalArgumentException("O campo não exite!");
+                    throw new IllegalArgumentException("O campo não existe!");
                 }
                 else{
                     try{
@@ -1425,11 +1555,39 @@ public class ImplementacaoMR implements ModeloDeReferencia {
             else if ( this.idTipo.get(id) == OPENEHR_DEFINITIONS) {
                 int idIndice = this.idIndiceOpenEhrDefinitions.get(id);
                 if ( campo < 0 || campo > 2 ) {
-                    throw new IllegalArgumentException("O campo não exite!");
+                    throw new IllegalArgumentException("O campo não existe!");
                 }
                 else{
                     try{
                         return (String) this.openEhrDefinitions.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo texto!");
+                    }
+                }
+            }
+            else if ( this.idTipo.get(id) == VERSIONED_EHR_ACCESS) {
+                int idIndice = this.idIndiceVersionedEhrAccess.get(id);
+                if ( campo < 0 || campo > 5 ) {
+                    throw new IllegalArgumentException("O campo não existe!");
+                }
+                else{
+                    try{
+                        return (String) this.versionedEhrAccess.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo texto!");
+                    }
+                }
+            }
+            else if ( this.idTipo.get(id) == FEEDER_AUDIT_DETAILS) {
+                int idIndice = this.idIndiceFeederAuditDetails.get(id);
+                if ( campo < 0 || campo > 5 ) {
+                    throw new IllegalArgumentException("O campo não existe!");
+                }
+                else{
+                    try{
+                        return (String) this.feederAuditDetails.get(idIndice + campo + 1);
                     }
                     catch (Exception e) {
                         throw new IllegalArgumentException("O campo não é do tipo texto!");
@@ -1547,12 +1705,82 @@ public class ImplementacaoMR implements ModeloDeReferencia {
         else {
             if ( this.idTipo.get(id) == EHR) {
                 int idIndice = this.idIndiceEhr.get(id);
-                if ( campo < 0 || campo > 8 ) {
+                if ( campo < 0 || campo > 7 ) {
                     throw new IllegalArgumentException("O campo não existe!");
                 }
                 else{
                     try{
                         return (Integer) this.ehr.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo inteiro!");
+                    }
+                }
+            }
+            else if ( this.idTipo.get(id) == EHR_ACCESS) {
+                int idIndice = this.idIndiceEhrStatus.get(id);
+                if ( campo < 0 || campo > 6 ) {
+                    throw new IllegalArgumentException("O campo não existe!");
+                }
+                else{
+                    try{
+                        return (Integer) this.ehrStatus.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo inteiro!");
+                    }
+                }
+            }
+            else if ( this.idTipo.get(id) == VERSIONED_EHR_ACCESS) {
+                int idIndice = this.idIndiceVersionedEhrAccess.get(id);
+                if ( campo < 0 || campo > 5 ) {
+                    throw new IllegalArgumentException("O campo não existe!");
+                }
+                else{
+                    try{
+                        return (Integer) this.versionedEhrAccess.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo inteiro!");
+                    }
+                }
+            }
+            else if ( this.idTipo.get(id) == VERSIONED_EHR_STATUS) {
+                int idIndice = this.idIndiceVersionedEhrStatus.get(id);
+                if ( campo < 0 || campo > 5 ) {
+                    throw new IllegalArgumentException("O campo não existe!");
+                }
+                else{
+                    try{
+                        return (Integer) this.versionedEhrStatus.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo inteiro!");
+                    }
+                }
+            }
+            else if ( this.idTipo.get(id) == VERSIONED_COMPOSITION) {
+                int idIndice = this.idIndiceVersionedComposition.get(id);
+                if ( campo < 0 || campo > 2 ) {
+                    throw new IllegalArgumentException("O campo não existe!");
+                }
+                else{
+                    try{
+                        return (Integer) this.versionedComposition.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo inteiro!");
+                    }
+                }
+            }
+            else if ( this.idTipo.get(id) == LINK) {
+                int idIndice = this.idIndiceLink.get(id);
+                if ( campo < 0 || campo > 2 ) {
+                    throw new IllegalArgumentException("O campo não existe!");
+                }
+                else{
+                    try{
+                        return (Integer) this.link.get(idIndice + campo + 1);
                     }
                     catch (Exception e) {
                         throw new IllegalArgumentException("O campo não é do tipo inteiro!");
@@ -2275,6 +2503,256 @@ public class ImplementacaoMR implements ModeloDeReferencia {
                 
         this.idIndiceEhr.put(idObjeto, indiceObjInserido);
         this.idTipo.put(idObjeto, EHR);
+        this.idObjeto++;
+        return idObjeto;
+    }
+    
+    /**
+     * 
+     * Single object per EHR giving various EHR-wide information
+     * 
+     * Extende a classe LOCATABLE
+     * 
+     * Atributos da própria classe:
+     * @param subject The subject of this EHR. The external_ref attribute can 
+     *                  be used to contain a direct reference to the subject in 
+     *                  a demographic or identity service. Alternatively, the association 
+     *                  between patients and their records may be done elsewhere for security reasons.
+     * @param is_queryable True if this EHR should be included in population queries, 
+     *                      i.e. if this EHR is considered active in the population.
+     * @param is_modifiable True if this EHR is allowed to be written to.
+     * @param other_datails Any other details of the EHR summary object, 
+     *                      in the form of an archetyped Item_structure.
+     * 
+     * Atributos da classe LOCATABLE:
+     * @param name
+     * @param archetype_node_id
+     * @param uid
+     * @param links
+     * @param archetype_details
+     * @param feeder_audit
+     * @return 
+     */
+    public int adicionaEhrStatus(int subject, 
+            boolean is_queryable,
+            boolean is_modifiable,
+            int other_datails,
+            int name,
+            String archetype_node_id,
+            int uid,
+            int[] links,
+            int archetype_details,
+            int feeder_audit) {
+        
+        int idObjeto = this.idObjeto;
+        this.ehrStatus.add(idObjeto);
+        int indiceObjInserido = this.ehrStatus.size()-1;
+        
+        this.ehrStatus.add(subject);
+        this.ehrStatus.add(is_queryable);
+        this.ehrStatus.add(is_modifiable);
+        this.ehrStatus.add(other_datails);
+        this.ehrStatus.add(name);
+        this.ehrStatus.add(archetype_node_id);
+        this.ehrStatus.add(uid);
+        this.ehrStatus.add(links);
+        this.ehrStatus.add(archetype_details);
+        this.ehrStatus.add(feeder_audit);
+                
+        this.idIndiceEhrStatus.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, EHR_STATUS);
+        this.idObjeto++;
+        return idObjeto;
+    }
+    
+    public int adicionaEhrAccess(int settings, 
+            int uid,
+            int[] links,
+            int archetype_details,
+            int feeder_audit) {
+        
+        int idObjeto = this.idObjeto;
+        this.ehr.add(idObjeto);
+        int indiceObjInserido = this.ehrStatus.size()-1;
+        
+        this.ehrStatus.add(settings);
+        this.ehrStatus.add(uid);
+        this.ehrStatus.add(links);
+        this.ehrStatus.add(archetype_details);
+        this.ehrStatus.add(feeder_audit);
+                
+        this.idIndiceEhrStatus.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, EHR_STATUS);
+        this.idObjeto++;
+        return idObjeto;
+    }
+    
+    /**
+     * 
+     * Junção dos atributos das classes VERSION_OBJECT e VERSION
+     * para versionamento de objeto do tipo EHR_ACCESS.
+     * 
+     * Atributos da classe VERSIONED_OBJECT:
+     * @param uid Unique identifier of this version container. This id will be 
+     *              the same in all instances of the same container in a 
+     *              distributed environment, meaning that it can be understood 
+     *              as the uid of the virtual version tree .
+     * @param owner_id Reference to object to which this version container 
+     *                  belongs, e.g. the id of the containing EHR or other 
+     *                  relevant owning entity.
+     * @param time_created Time of initial creation of this versioned object.
+     * 
+     * Atributos da classe VERSION:
+     * @param contribution Contribution in which this version was added.
+     * @param signature OpenPGP digital signature or digest of content committed in this Version.
+     * @param commit_audit Audit trail corresponding to the committal of this 
+     *                      version to the VERSIONED_OBJECT.
+     * @return 
+     */
+    public int adicionaVersionedEhrAccess(int uid, 
+            int owner_id,
+            int time_created,
+            int contribution,
+            String signature,
+            int commit_audit) {
+        
+        int idObjeto = this.idObjeto;
+        this.versionedEhrAccess.add(idObjeto);
+        int indiceObjInserido = this.versionedEhrAccess.size()-1;
+        
+        this.versionedEhrAccess.add(uid);
+        this.versionedEhrAccess.add(owner_id);
+        this.versionedEhrAccess.add(time_created);
+        this.versionedEhrAccess.add(contribution);
+        this.versionedEhrAccess.add(signature);
+        this.versionedEhrAccess.add(commit_audit);
+                
+        this.idIndiceEhrStatus.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, VERSIONED_EHR_ACCESS);
+        this.idObjeto++;
+        return idObjeto;
+    }
+    
+    /**
+     * Adiciona objeto VERSIONED_COMPOSITION
+     * Version-controlled composition abstraction, defined by inheriting VERSIONED_OBJECT<COMPOSITION>
+     * 
+     * Atributos da classe VERSIONED_OBJECT:
+     * @param uid Unique identifier of this version container. This id will be 
+     *              the same in all instances of the same container in a 
+     *              distributed environment, meaning that it can be understood 
+     *              as the uid of the virtual version tree .
+     * @param owner_id Reference to object to which this version container 
+     *                  belongs, e.g. the id of the containing EHR or other 
+     *                  relevant owning entity.
+     * @param time_created Time of initial creation of this versioned object.
+     * 
+     * @return id do objeto inserido
+     */
+    public int adicionaVersionedComposition(int uid, 
+            int owner_id,
+            int time_created) {
+        
+        int idObjeto = this.idObjeto;
+        this.versionedComposition.add(idObjeto);
+        int indiceObjInserido = this.versionedComposition.size()-1;
+        
+        this.versionedComposition.add(uid);
+        this.versionedComposition.add(owner_id);
+        this.versionedComposition.add(time_created);
+                
+        this.idIndiceVersionedComposition.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, VERSIONED_COMPOSITION);
+        this.idObjeto++;
+        return idObjeto;
+    }
+    
+    /**
+     * 
+     * Junção dos atributos das classes VERSION_OBJECT e VERSION
+     * para versionamento de objeto do tipo EHR_STATUS.
+     * 
+     * Atributos da classe VERSIONED_OBJECT:
+     * @param uid Unique identifier of this version container. This id will be 
+     *              the same in all instances of the same container in a 
+     *              distributed environment, meaning that it can be understood 
+     *              as the uid of the virtual version tree .
+     * @param owner_id Reference to object to which this version container 
+     *                  belongs, e.g. the id of the containing EHR or other 
+     *                  relevant owning entity.
+     * @param time_created Time of initial creation of this versioned object.
+     * 
+     * Atributos da classe VERSION:
+     * @param contribution Contribution in which this version was added.
+     * @param signature OpenPGP digital signature or digest of content committed in this Version.
+     * @param commit_audit Audit trail corresponding to the committal of this 
+     *                      version to the VERSIONED_OBJECT.
+     * @return 
+     */
+    public int adicionaVersionedEhrStatus(int uid, 
+            int owner_id,
+            int time_created,
+            int contribution,
+            String signature,
+            int commit_audit) {
+        
+        int idObjeto = this.idObjeto;
+        this.versionedEhrStatus.add(idObjeto);
+        int indiceObjInserido = this.versionedEhrStatus.size()-1;
+        
+        this.versionedEhrStatus.add(uid);
+        this.versionedEhrStatus.add(owner_id);
+        this.versionedEhrStatus.add(time_created);
+        this.versionedEhrStatus.add(contribution);
+        this.versionedEhrStatus.add(signature);
+        this.versionedEhrStatus.add(commit_audit);
+                
+        this.idIndiceEhrStatus.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, VERSIONED_EHR_STATUS);
+        this.idObjeto++;
+        return idObjeto;
+    }
+    
+    /**
+     * The LINK type defines a logical relationship between two items,
+     * such as two ENTRYs or an ENTRY and a COMPOSITION. 
+     * Links can be used across compositions, and across EHRs. Links can 
+     * potentially be used between interior (i.e. non archetype root) nodes, 
+     * although this probably should be prevented in archetypes. Multiple LINKs 
+     * can be attached to the root object of any archetyped structure to give 
+     * the effect of a 1→N link.
+     * 
+     * @param meaning (DV_TEXT) Used to describe the relationship, usually in 
+     *                  clinical terms, such as in response to (the relationship 
+     *                  between test results and an order), follow-up to and so on. 
+     *                  Such relationships can represent any clinically meaningful 
+     *                  connection between pieces of information. Values for meaning 
+     *                  include those described in Annex C, ENV 13606 pt 2 under 
+     *                  the categories of generic , documenting and reporting , 
+     *                  organisational , clinical , circumstancial , and view management .
+     * @param type (DV_TEXT) The type attribute is used to indicate a clinical 
+     *              or domain-level meaning for the kind of link, for example 
+     *              problem or issue . If type values are designed appropriately, 
+     *              they can be used by the requestor of EHR extracts to categorise 
+     *              links which must be followed and which can be broken when the extract is created.
+     * @param target (DV_EHR_URI) The logical to object in the link relation, 
+     *              as per the linguistic sense of the meaning attribute.
+     * @return 
+     */
+    public int adicionaLink(int meaning, 
+            int type,
+            int target) {
+        
+        int idObjeto = this.idObjeto;
+        this.link.add(idObjeto);
+        int indiceObjInserido = this.link.size()-1;
+        
+        this.link.add(meaning);
+        this.link.add(type);
+        this.link.add(target);
+                
+        this.idIndiceLink.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, LINK);
         this.idObjeto++;
         return idObjeto;
     }
