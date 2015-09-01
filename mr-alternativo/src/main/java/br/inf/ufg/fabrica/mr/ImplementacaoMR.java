@@ -3113,7 +3113,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
         this.versionedEhrAccess.add(signature);
         this.versionedEhrAccess.add(commit_audit);
 
-        this.idIndiceEhrStatus.put(idObjeto, indiceObjInserido);
+        this.idIndiceVersionedEhrAccess.put(idObjeto, indiceObjInserido);
         this.idTipo.put(idObjeto, VERSIONED_EHR_ACCESS);
         this.idObjeto++;
         return idObjeto;
@@ -3194,7 +3194,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
         this.versionedEhrStatus.add(signature);
         this.versionedEhrStatus.add(commit_audit);
 
-        this.idIndiceEhrStatus.put(idObjeto, indiceObjInserido);
+        this.idIndiceVersionedEhrStatus.put(idObjeto, indiceObjInserido);
         this.idTipo.put(idObjeto, VERSIONED_EHR_STATUS);
         this.idObjeto++;
 

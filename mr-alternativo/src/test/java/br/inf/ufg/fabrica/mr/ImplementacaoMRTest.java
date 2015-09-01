@@ -511,7 +511,7 @@ public class ImplementacaoMRTest {
     }
     
     @Test
-    public void testObtemTextoOpenEhrTerminologyGroup() {
+    public void testObtemTextoOpenEhrTerminologyGroupThrows() {
         exception.expect(IllegalArgumentException.class);
         exception.expectMessage("O objeto não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
