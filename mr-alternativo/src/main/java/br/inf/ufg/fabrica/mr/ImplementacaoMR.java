@@ -1330,7 +1330,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
 /**
      * Estruturas de dados utilizada para armazenar uma instância de ADDRESS
      *
-     * Na estrutura #address deve ser inserido 1 objetos: Inteiro
+     * Na estrutura #address deve ser inserido 1 objeto: Inteiro
      *
      * O #idIndiceAddress que tem por função, mapear o ID do objeto com o
      * índice dele na lista de objetos #address. O objetivo é agilizar a busca de objetos.
@@ -1343,8 +1343,23 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     private Map<Integer, Integer> idIndiceAddress = new HashMap<Integer, Integer>();
     private ArrayList<Object> listAddress = new ArrayList<Object>();
 
-
-
+/**
+     * Estruturas de dados utilizada para armazenar uma instância de CAPABILITY
+     *
+     * Na estrutura #dvIdentifier devem ser inseridos 3 objetos, sendo todos Inteiros:
+     * ID único do objeto, inteiro, inteiro.
+     * Ex.: 0, 3, 4"
+     *
+     * O #iidIndiceCapability que tem por função, mapear o ID do objeto com o
+     * índice dele na lista de objetos #capability. O objetivo de agilizar a busca de objetos.
+     *
+     * Na estrutura #listCapability devem ser inseridos no mínimo 2 objetos Inteiros:
+     * Quantidade de itens e o valor dos índices de #capability.
+     * Ex.: 1, 10
+     */
+    private ArrayList<Object> capability = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceCapability = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listCapability = new ArrayList<Object>();
 
 
     /**
@@ -2034,6 +2049,20 @@ public class ImplementacaoMR implements ModeloDeReferencia {
                 else{
                     try{
                         return (Integer) this.address.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo inteiro!");
+                    }
+                }
+            }
+            else if ( this.idTipo.get(id) == CAPABILITY) {
+                int idIndice = this.idIndiceArchetyped.get(id);
+                if ( campo < 0 || campo > 2 ) {
+                    throw new IllegalArgumentException("O campo não existe!");
+                }
+                else{
+                    try{
+                        return (Integer) this.archetyped.get(idIndice + campo + 1);
                     }
                     catch (Exception e) {
                         throw new IllegalArgumentException("O campo não é do tipo inteiro!");
@@ -3415,6 +3444,30 @@ public int adicionaAddress(int item_structure) {
 
         this.idIndiceAddress.put(idObjeto, indiceObjInserido);
         this.idTipo.put(idObjeto, ADDRESS);
+        this.idObjeto++;
+        return idObjeto;
+    }
+
+/**
+     * Adiciona um identificador ({@code CaPABILITY}).
+     *
+     * @param credentials- As qualificações do intérprete do papel para essa capacidade. 
+     * @param time_validity - Intervalo de tempo válido para as credenciais desta capacidade.
+     *
+     * @return id do objeto inserido
+     */
+    public int adicionaCapability(
+            int credentials,
+            int time_validity) {
+        
+        int idObjeto = this.idObjeto;
+        this.capability.add(idObjeto);
+        int indiceObjInserido = this.capability.size()-1;
+        this.capability.add(credentials);
+        this.capability.add(time_validity);
+        
+        this.idIndiceCapability.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, CAPABILITY);
         this.idObjeto++;
         return idObjeto;
     }
