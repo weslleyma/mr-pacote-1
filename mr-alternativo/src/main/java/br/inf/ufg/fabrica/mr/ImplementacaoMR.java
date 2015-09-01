@@ -925,6 +925,17 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     private ArrayList<Object> listDvEhrUri = new ArrayList<Object>();
 
     /**
+     * Estruturas de dados utilizada para armazenar uma instância de TERMINOLOGY_ID
+     *
+     * Na estrutura #terminologyId devem ser inseridos 3 objetos, sendo Integer e 2 String:
+     * ID único do objeto, name, version_id.
+     * Ex.: 0, "ab", "ab"
+     */
+    private ArrayList<Object> terminologyId = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceTerminologyId = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listTerminologyId = new ArrayList<Object>();
+
+    /**
      * Estruturas de dados utilizada para armazenar uma instância de CODE_PHRASE
      *
      * Na estrutura #codePhrase devem ser inseridos 3 objetos, sendo Integer, Integer e String:
@@ -938,8 +949,9 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     /**
      * Estruturas de dados utilizada para armazenar uma instância de DV_MULTIMEDIA
      *
-     * Na estrutura #dvMultimedia devem ser inseridos 9 objetos.
-     * Ex.: 0, "string", "índice para um DV_URI", "Byte", "índice para um CODE_PHRASE",
+     * Na estrutura #dvMultimedia devem ser inseridos 11 objetos.
+     * Ex.: 0, "índice para um CODE_PHRASE", "índice para um CODE_PHRASE", "string",
+     * "índice para um DV_URI", "Byte", "índice para um CODE_PHRASE",
      * "índice para um CODE_PHRASE", "Byte", "índice para uma Lista de CODE_PHRASE",
      * "índice para um DV_MULTIMEDIA".
      */
