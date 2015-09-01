@@ -621,6 +621,7 @@ public class ImplementacaoMRTest {
         ImplementacaoMR classe = new ImplementacaoMR();
         classe.obtemTexto(1, 1);
     }
+
     
     /**
      * Teste para método Obtem Texto da classe BASIC_DEFINITIONS
