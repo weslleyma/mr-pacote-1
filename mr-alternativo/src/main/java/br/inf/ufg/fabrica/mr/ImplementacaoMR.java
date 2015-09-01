@@ -1867,6 +1867,20 @@ public class ImplementacaoMR implements ModeloDeReferencia {
                     }
                 }
             }
+            else if ( this.idTipo.get(id) == DV_EHR_URI  ) {
+                int idIndice = this.idIndiceDvEhrUri.get(id);
+                if ( campo != 0 ) {
+                    throw new IllegalArgumentException("O campo não existe!");
+                }
+                else{
+                    try{
+                        return (String) this.dvEhrUri.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo texto!");
+                    }
+                }
+            }
         }
         return null;
     }
@@ -2587,7 +2601,14 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      * @return O identificador único desta DvEHRURI na estrutura.
      */
     public int adicionaDvEhrUri(String uri) {
-        return 0;
+        int idObjeto = this.idObjeto;
+        this.dvEhrUri.add(idObjeto);
+        int indiceObjInserido = this.dvEhrUri.size()-1;
+        this.dvEhrUri.add(uri);
+        this.idIndiceDvEhrUri.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, DV_EHR_URI);
+        this.idObjeto++;
+        return idObjeto;
     }
 
     /**
