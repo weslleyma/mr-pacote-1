@@ -926,7 +926,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     /**
      * Estruturas de dados utilizadas para armazenar uma instância de DV_PARSABLE
      *
-     * Na estrutura #dvParsable devem ser inseridos 4 objetos.
+     * Na estrutura #dvParsable devem ser inseridos 5 objetos.
      * ID único do objeto, charset, language, value, formalism
      * Ex.: 0, "índice para um CODE_PHRASE", "índice para um CODE_PHRASE", "ab", "ab"
      */
@@ -950,13 +950,35 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     /**
      * Estruturas de dados utilizadas para armazenar uma instância de DV_TEXT
      *
-     * Na estrutura #dvText devem ser inseridos 4 objetos.
+     * Na estrutura #dvText devem ser inseridos 7 objetos.
      * ID único do objeto, value, hyperlink, formatting, mappings, language, encoding
      * Ex.: 0, "índice para um CODE_PHRASE", "índice para um CODE_PHRASE", "ab", "ab"
      */
     private ArrayList<Object> dvText = new ArrayList<Object>();
     private Map<Integer, Integer> idIndiceDvText = new HashMap<Integer, Integer>();
     private ArrayList<Object> listDvText = new ArrayList<Object>();
+
+    /**
+     * Estruturas de dados utilizadas para armazenar uma instância de DV_CODED_TEXT
+     *
+     * Na estrutura #dvCodedText devem ser inseridos 8 objetos.
+     * ID único do objeto, value, hyperlink, formatting, mappings, language, encoding, defining_code
+     * Ex.: 0, "índice para um CODE_PHRASE", "índice para um CODE_PHRASE", "ab", "ab", "índice para um CODE_PHRASE"
+     */
+    private ArrayList<Object> dvCodedText = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceDvCodedText = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listDvCodedText = new ArrayList<Object>();
+
+    /**
+     * Estruturas de dados utilizadas para armazenar uma instância de DV_PARAGRAPH
+     *
+     * Na estrutura #dvParagraph devem ser inseridos 2 objetos.
+     * ID único do objeto, items
+     * Ex.: 0, "índice para uma lista de DV_TEXT"
+     */
+    private ArrayList<Object> dvParagraph = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceDvParagraph = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listDvParagraph = new ArrayList<Object>();
 
     /**
      * Estruturas de dados utilizada para armazenar uma instância de CODE_PHRASE
