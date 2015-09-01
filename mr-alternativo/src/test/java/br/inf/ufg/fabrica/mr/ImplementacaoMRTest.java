@@ -284,6 +284,178 @@ public class ImplementacaoMRTest {
         assertEquals(valor, 13);
     }
     
+    /**
+     * Teste para método Adicionar da classe TEMINOLOGY_ID (1 parametro)
+     */
+    @Test
+    public void testAdicionaTerminologyId() {
+        ImplementacaoMR classe = new ImplementacaoMR();
+
+        int idObjeto = classe.adicionaTerminologyId("hello");
+        String valor = classe.obtemTexto(idObjeto, 0);
+        
+        assertEquals(valor, "hello");
+    }
+    
+    /**
+     * Teste para método Adicionar da classe TEMINOLOGY_ID (2 parametros)
+     */
+    @Test
+    public void testAdicionaTerminologyId1() {
+        ImplementacaoMR classe = new ImplementacaoMR();
+
+        int idObjeto = classe.adicionaTerminologyId("hi", "hey");
+        String valor = classe.obtemTexto(idObjeto, 0);
+        String valor1 = classe.obtemTexto(idObjeto, 1);
+        
+        assertEquals(valor, "hi");
+        assertEquals(valor1, "hey");
+    }
+    
+    /**
+     * Teste para método Adicionar da classe CODE_PHRASE
+     */
+    @Test
+    public void testAdicionaCodePhrase() {
+        ImplementacaoMR classe = new ImplementacaoMR();
+
+        int idObjeto = classe.adicionaCodePhrase("hi", "hey");
+        String valor = classe.obtemTexto(idObjeto, 0);
+        String valor1 = classe.obtemTexto(idObjeto, 1);
+        
+        assertEquals(valor, "hi");
+        assertEquals(valor1, "hey");
+    }
+    
+    /**
+     * Teste para método Adicionar da classe DV_PARSABLE (2 parametros)
+     */
+    @Test
+    public void testAdicionaDvParsable() {
+        ImplementacaoMR classe = new ImplementacaoMR();
+
+        int idObjeto = classe.adicionaDvParsable("hi", "hey");
+        String valor = classe.obtemTexto(idObjeto, 0);
+        String valor1 = classe.obtemTexto(idObjeto, 1);
+        
+        assertEquals(valor, "hi");
+        assertEquals(valor1, "hey");
+    }
+    
+    /**
+     * Teste para método Adicionar da classe DV_PARSABLE (4 parametros)
+     */
+    @Test
+    public void testAdicionaDvParsable1() {
+        ImplementacaoMR classe = new ImplementacaoMR();
+
+        int idObjeto = classe.adicionaDvParsable("hi", "hey", "hello", "ola");
+        String valor = classe.obtemTexto(idObjeto, 0);
+        String valor3 = classe.obtemTexto(idObjeto, 3);
+        
+        assertEquals(valor, "hi");
+        assertEquals(valor3, "ola");
+    }
+    
+    /**
+     * Teste para método Adicionar da classe ISO_OID
+     */
+    @Test
+    public void testAdicionaIsoOid() {
+        ImplementacaoMR classe = new ImplementacaoMR();
+
+        int idObjeto = classe.adicionaIsoOid("hi");
+        String valor = classe.obtemTexto(idObjeto, 0);
+        
+        assertEquals(valor, "hi");
+    }
+    
+    /**
+     * Teste para método Adicionar da classe UUID
+     */
+    @Test
+    public void testAdicionaUuid() {
+        ImplementacaoMR classe = new ImplementacaoMR();
+
+        int idObjeto = classe.adicionaUuid("hi");
+        String valor = classe.obtemTexto(idObjeto, 0);
+        
+        assertEquals(valor, "hi");
+    }
+    
+    /**
+     * Teste para método Adicionar da classe INTERNET_ID
+     */
+    @Test
+    public void testAdicionaInternetId() {
+        ImplementacaoMR classe = new ImplementacaoMR();
+
+        int idObjeto = classe.adicionaInternetId("hi");
+        String valor = classe.obtemTexto(idObjeto, 0);
+        
+        assertEquals(valor, "hi");
+    }
+    
+    /**
+     * Teste para método Adicionar da classe HIER_OBJECT_ID (1 parametro)
+     */
+    @Test
+    public void testAdicionaHierObjectId() {
+        ImplementacaoMR classe = new ImplementacaoMR();
+
+        int idObjeto = classe.adicionaHierObjectId("hi");
+        String valor = classe.obtemTexto(idObjeto, 0);
+        
+        assertEquals(valor, "hi");
+    }
+    
+    /**
+     * Teste para método Adicionar da classe HIER_OBJECT_ID (2 parametro)
+     */
+    @Test
+    public void testAdicionaHierObjectId1() {
+        ImplementacaoMR classe = new ImplementacaoMR();
+
+        int idObjeto = classe.adicionaHierObjectId("hi", "hello");
+        String valor = classe.obtemTexto(idObjeto, 0);
+        String valor1 = classe.obtemTexto(idObjeto, 1);
+        
+        assertEquals(valor, "hi");
+        assertEquals(valor1, "hello");
+    }
+    
+    /**
+     * Teste para método Adicionar da classe OBJECT_VERSION_ID (1 parametro)
+     */
+    @Test
+    public void testAdicionaObjectVersionId() {
+        ImplementacaoMR classe = new ImplementacaoMR();
+
+        int idObjeto = classe.adicionaObjectVersionId("hi");
+        String valor = classe.obtemTexto(idObjeto, 0);
+        
+        assertEquals(valor, "hi");
+    }
+    
+    /**
+     * Teste para método Adicionar da classe OBJECT_VERSION_ID (3 parametros)
+     */
+    @Test
+    public void testAdicionaObjectVersionId1() {
+        ImplementacaoMR classe = new ImplementacaoMR();
+
+        int idObjeto = classe.adicionaObjectVersionId("hi", "hey", "hello");
+        String valor = classe.obtemTexto(idObjeto, 0);
+        String valor3 = classe.obtemTexto(idObjeto, 2);
+        
+        assertEquals(valor, "hi");
+        assertEquals(valor3, "hello");
+    }
+    
+    
+    
+    
+    
     
     
     @Test
