@@ -981,6 +981,17 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     private ArrayList<Object> listDvParagraph = new ArrayList<Object>();
 
     /**
+     * Estruturas de dados utilizadas para armazenar uma instância de TERM_MAPPING
+     *
+     * Na estrutura #termMapping devem ser inseridos 4 objetos.
+     * ID único do objeto, match, purpose, target
+     * Ex.: 0, 'c', "índice para DV_CODED_TEXT", "índice para um CODE_PHRASE"
+     */
+    private ArrayList<Object> termMapping = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceTermMapping = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listTermMapping = new ArrayList<Object>();
+
+    /**
      * Estruturas de dados utilizada para armazenar uma instância de CODE_PHRASE
      *
      * Na estrutura #codePhrase devem ser inseridos 3 objetos, sendo Integer, Integer e String:
