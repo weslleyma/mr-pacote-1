@@ -1434,6 +1434,23 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     private Map<Integer, Integer> idIndiceIsoOid = new HashMap<Integer, Integer>();
     private ArrayList<Object> listIsoOid = new ArrayList<Object>();
     
+       /**
+     * Estruturas de dados utilizada para armazenar uma instância de INTERNET_ID
+     *
+     * Na estrutura #internetId devem ser inseridos 2 objetos, sendo um inteiro e um String:
+     * ID único do objeto, string.
+     * Ex.: 0, "a"
+     *
+     * O #idIndiceInternetId que tem por função, mapear o ID do objeto com o
+     * índice dele na lista de objetos #internetId. O objetivo de agilizar a busca de objetos.
+     *
+     * Na estrutura #listInternetId devem ser inseridos no mínimo 2 objetos Inteiros:
+     * Quantidade de itens e o valor dos índices de #internetId.
+     * Ex.: 1, 2
+     */
+    private ArrayList<Object> internetId = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceInternetId = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listInternetId = new ArrayList<Object>();
     /**
      * Método Construtor da Classe.
      */
@@ -1934,6 +1951,20 @@ public class ImplementacaoMR implements ModeloDeReferencia {
                 }
             }
             else if ( this.idTipo.get(id) == ISO_OID  ) {
+                int idIndice = this.idIndiceDvUri.get(id);
+                if ( campo != 0 ) {
+                    throw new IllegalArgumentException("O campo não existe!");
+                }
+                else{
+                    try{
+                        return (String) this.dvUri.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo texto!");
+                    }
+                }
+            }
+            else if ( this.idTipo.get(id) == INTERNET_ID  ) {
                 int idIndice = this.idIndiceDvUri.get(id);
                 if ( campo != 0 ) {
                     throw new IllegalArgumentException("O campo não existe!");
@@ -2895,7 +2926,16 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      *          do identificador de internet.
      */
     public int adicionaInternetId(String valor) {
-        return 0;
+        int idObjeto = this.idObjeto;
+        this.internetId.add(idObjeto);
+        int indiceObjInserido = this.internetId.size()-1;
+
+        this.internetId.add(valor);
+
+        this.idIndiceInternetId.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, INTERNET_ID);
+        this.idObjeto++;
+        return idObjeto;
     }
 
     /**
