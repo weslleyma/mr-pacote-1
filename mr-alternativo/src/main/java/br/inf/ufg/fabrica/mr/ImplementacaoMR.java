@@ -1204,7 +1204,22 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     private Map<Integer, Integer> idIndiceFeederAuditDetails = new HashMap<Integer, Integer>();
     private ArrayList<Object> listFeederAuditDetails = new ArrayList<Object>();
     
+     /**
+     * Estruturas de dados utilizada para armazenar uma instância de Generic_Entry
+     * 
+     * Na estrutura #genericEntry deve ser inserido 1 objetos: Inteiro
+     *
+     * O #idIndiceGenericEntry que tem por função, mapear o ID do objeto com o
+     * índice dele na lista de objetos #genericEntry. O objetivo é agilizar a busca de objetos.
+     *
+     * Na estrutura #listGenericEntry devem ser inseridos no mínimo 1 objeto Inteiro:
+     * Quantidade de itens e o valor dos índices de #genericEntry.
+     * Ex.: 3
+     */
     
+    private ArrayList<Object> genericEntry = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceGenericEntry = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listGenericEntry = new ArrayList<Object>();
     
 
     /**
@@ -1801,7 +1816,21 @@ public class ImplementacaoMR implements ModeloDeReferencia {
                     }
                 }
             }
-        }
+        
+        else if ( this.idTipo.get(id) == GENERIC_ENTRY) {
+               int idIndice = this.idIndiceGenericEntry.get(id);
+                if ( campo != 0 ) {
+                    throw new IllegalArgumentException("O campo não exite!");
+                }
+                else{
+                    try{
+                        return (Integer) this.genericEntry.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo inteiro!");
+                    }
+                }
+            }
         
         return -1;
     }
@@ -2770,4 +2799,22 @@ public class ImplementacaoMR implements ModeloDeReferencia {
         this.idObjeto++;
         return idObjeto;
     }
+     /**
+     * 
+     * @param data.
+     * @return id do obejeto inserido
+     */
+    public int adicionaGenericEntry(int data) {
+        
+        int idObjeto = this.idObjeto;
+        this.genericEntry.add(idObjeto);
+        int indiceObjInserido = this.genericEntry.size()-1;
+        
+        this.genericEntry.add(data);
+               
+        this.idIndiceGenericEntry.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, GENERIC_ENTRY);
+        this.idObjeto++;
+        return idObjeto;
+    
 }
