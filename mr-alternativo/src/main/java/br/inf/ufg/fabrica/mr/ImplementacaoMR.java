@@ -2541,10 +2541,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
         int idObjeto = this.idObjeto;
         this.terminologyId.add(idObjeto);
         int indiceObjInserido = this.terminologyId.size()-1;
-        
         this.terminologyId.add(valor);
-        this.terminologyId.add(null);
-        
         this.idIndiceTerminologyId.put(idObjeto, indiceObjInserido);
         this.idTipo.put(idObjeto, TERMINOLOGY_ID);
         this.idObjeto++;
