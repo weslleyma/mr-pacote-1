@@ -561,7 +561,7 @@ public class ImplementacaoMRTest {
         ImplementacaoMR classe = new ImplementacaoMR();
         int idObjeto = classe.adicionaOpenEhrTerminologyGroup("", "", "", "", "", "", "", "", "", "", ""
                                                 , "", "", "", "");
-        classe.obtemTexto(idObjeto, 1);
+        classe.obtemTexto(idObjeto, 15);
     }
     
     /**
@@ -584,7 +584,7 @@ public class ImplementacaoMRTest {
         exception.expectMessage("O campo não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
         int idObjeto = classe.adicionaOpenEhrCodeSetIdentifiers("", "", "", "", "", "", "");
-        classe.obtemTexto(idObjeto, 1);
+        classe.obtemTexto(idObjeto, 7);
     }
     
     /**
@@ -608,7 +608,7 @@ public class ImplementacaoMRTest {
         ImplementacaoMR classe = new ImplementacaoMR();
         int idObjeto = classe.adicionaTerminologyService("", "", "", "", "", "", "","", "", "", "", "", "", ""
                                                         , "", "", "", "", "", "", "", "");
-        classe.obtemTexto(idObjeto, 1);
+        classe.obtemTexto(idObjeto, 22);
     }
     
     /**
@@ -632,7 +632,7 @@ public class ImplementacaoMRTest {
         exception.expectMessage("O campo não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
         int idObjeto = classe.adicionaBasicDefinition('a', 'b');
-        classe.obtemTexto(idObjeto, 1);
+        classe.obtemTexto(idObjeto, 2);
     }
     
     /**
@@ -655,7 +655,7 @@ public class ImplementacaoMRTest {
         exception.expectMessage("O campo não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
         int idObjeto = classe.adicionaOpenEhrDefinition('a', 'b');
-        classe.obtemTexto(idObjeto, 1);
+        classe.obtemTexto(idObjeto, 2);
     }
     
     /**
@@ -678,7 +678,7 @@ public class ImplementacaoMRTest {
         exception.expectMessage("O campo não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
         int idObjeto = classe.adicionaVersionedEhrAccess(1, 2, 3, 4, "a", 5);
-        classe.obtemTexto(idObjeto, 1);
+        classe.obtemTexto(idObjeto, 6);
     }
     
     /**
@@ -701,7 +701,7 @@ public class ImplementacaoMRTest {
         exception.expectMessage("O campo não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
         int idObjeto = classe.adicionaVersionedEhrAccess(1, 2, 3, 4, "a", 5);
-        classe.obtemTexto(idObjeto, 1);
+        classe.obtemTexto(idObjeto, 6);
     }
     
     /**
@@ -724,7 +724,7 @@ public class ImplementacaoMRTest {
         exception.expectMessage("O campo não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
         int idObjeto = classe.adicionaVersionedEhrStatus(1, 2, 3, 4, "a", 5);
-        classe.obtemTexto(idObjeto, 1);
+        classe.obtemTexto(idObjeto, 6);
     }
     
     /**
@@ -747,7 +747,7 @@ public class ImplementacaoMRTest {
         exception.expectMessage("O campo não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
         int idObjeto = classe.adicionaVersionedEhrStatus(1, 2, 3, 4, "a", 5);
-        classe.obtemTexto(idObjeto, 1);
+        classe.obtemTexto(idObjeto, 6);
     }
     
     /**
@@ -770,7 +770,7 @@ public class ImplementacaoMRTest {
         exception.expectMessage("O campo não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
         int idObjeto = classe.adicionaVersionedComposition(1, 2, 3);
-        classe.obtemTexto(idObjeto, 1);
+        classe.obtemTexto(idObjeto, 3);
     }
     
     /**
@@ -793,7 +793,7 @@ public class ImplementacaoMRTest {
         exception.expectMessage("O campo não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
         int idObjeto = classe.adicionaLink(1, 2, 3);
-        classe.obtemTexto(idObjeto, 1);
+        classe.obtemTexto(idObjeto, 3);
     }
     
     /**
@@ -816,7 +816,7 @@ public class ImplementacaoMRTest {
         exception.expectMessage("O campo não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
         int idObjeto = classe.adicionaFeederAuditDetails("a", 1, 2, 3, 4, "a");
-        classe.obtemTexto(idObjeto, 1);
+        classe.obtemTexto(idObjeto, 6);
     }
     
     /**
@@ -839,7 +839,7 @@ public class ImplementacaoMRTest {
         exception.expectMessage("O campo não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
         int idObjeto = classe.adicionaFeederAuditDetails("a", 1, 2, 3, 4, "a");
-        classe.obtemTexto(idObjeto, 1);
+        classe.obtemTexto(idObjeto, 6);
     }
     
     /**
@@ -862,7 +862,7 @@ public class ImplementacaoMRTest {
         exception.expectMessage("O campo não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
         int idObjeto = classe.adicionaArchetyped(1, 2, "a");
-        classe.obtemTexto(idObjeto, 1);
+        classe.obtemTexto(idObjeto, 3);
     }
     
     /**
@@ -885,7 +885,7 @@ public class ImplementacaoMRTest {
         exception.expectMessage("O campo não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
         int idObjeto = classe.adicionaArchetyped(1, 2, "a");
-        classe.obtemTexto(idObjeto, 1);
+        classe.obtemTexto(idObjeto, 3);
     }
     
     /**
@@ -908,7 +908,7 @@ public class ImplementacaoMRTest {
         exception.expectMessage("O campo não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
         int idObjeto = classe.adicionaIsmTrasition(1, 2, 1);
-        classe.obtemTexto(idObjeto, 1);
+        classe.obtemInteiro(idObjeto, 3);
     }
     
     /**
@@ -931,7 +931,7 @@ public class ImplementacaoMRTest {
         exception.expectMessage("O campo não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
         int idObjeto = classe.adicionaInstructionDetails(1, "a", 1);
-        classe.obtemTexto(idObjeto, 1);
+        classe.obtemTexto(idObjeto, 3);
     }
     
     /**
@@ -954,7 +954,7 @@ public class ImplementacaoMRTest {
         exception.expectMessage("O campo não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
         int idObjeto = classe.adicionaInstructionDetails(1, "a", 1);
-        classe.obtemTexto(idObjeto, 1);
+        classe.obtemTexto(idObjeto, 3);
     }
     
     /**
@@ -1000,7 +1000,7 @@ public class ImplementacaoMRTest {
         exception.expectMessage("O campo não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
         int idObjeto = classe.adicionaTerminologyId("a", "");
-        classe.obtemTexto(idObjeto, 1);
+        classe.obtemTexto(idObjeto, 2);
     }
     
     /**
@@ -1023,7 +1023,7 @@ public class ImplementacaoMRTest {
         exception.expectMessage("O campo não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
         int idObjeto = classe.adicionaCodePhrase("a", "");
-        classe.obtemTexto(idObjeto, 1);
+        classe.obtemTexto(idObjeto, 2);
     }
     
     /**
@@ -1046,7 +1046,7 @@ public class ImplementacaoMRTest {
         exception.expectMessage("O campo não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
         int idObjeto = classe.adicionaDvParsable("a", "");
-        classe.obtemTexto(idObjeto, 1);
+        classe.obtemTexto(idObjeto, 2);
     }
     
     /**
@@ -1057,7 +1057,7 @@ public class ImplementacaoMRTest {
         exception.expect(IllegalArgumentException.class);
         exception.expectMessage("O objeto não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
-        classe.obtemTexto(1, 1); 
+        classe.obtemTexto(1, 1);
     }
 
 }
