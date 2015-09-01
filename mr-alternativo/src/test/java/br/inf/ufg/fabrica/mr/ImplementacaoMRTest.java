@@ -131,7 +131,7 @@ public class ImplementacaoMRTest {
     public void testAdicionaOpenEhrDefinition() {
         ImplementacaoMR classe = new ImplementacaoMR();
 
-        int idObjeto = classe.adicionaOpenEhrDefinitions('a', 'b');
+        int idObjeto = classe.adicionaOpenEhrDefinition('a', 'b');
         String valor = classe.obtemTexto(idObjeto, 0);
         String valor1 = classe.obtemTexto(idObjeto, 1);
         

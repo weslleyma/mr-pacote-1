@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="3" time="0.326" errors="19" skipped="0" tests="36" name="br.inf.ufg.fabrica.mr.ImplementacaoMRTest">
+<testsuite failures="0" time="0.346" errors="17" skipped="0" tests="37" name="br.inf.ufg.fabrica.mr.ImplementacaoMRTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.7.0_79\jre\bin"/>
@@ -62,12 +62,13 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase time="0.015" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaDvUri"/>
-  <testcase time="0.004" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaBasicDefinition"/>
-  <testcase time="0.008" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaOpenEhrDefinition">
-    <error message="O campo não é do tipo texto!" type="java.lang.IllegalArgumentException">java.lang.IllegalArgumentException: O campo não é do tipo texto!
-	at br.inf.ufg.fabrica.mr.ImplementacaoMR.obtemTexto(ImplementacaoMR.java:1705)
-	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testAdicionaOpenEhrDefinition(ImplementacaoMRTest.java:135)
+  <testcase time="0.015" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaVersionedEhrStatus"/>
+  <testcase time="0.012" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testObtemValorLogicoDvBooleanThrows1">
+    <error message="org.junit.matchers.JUnitMatchers.both(Lorg/hamcrest/Matcher;)Lorg/junit/internal/matchers/CombinableMatcher;" type="java.lang.NoSuchMethodError">java.lang.NoSuchMethodError: org.junit.matchers.JUnitMatchers.both(Lorg/hamcrest/Matcher;)Lorg/junit/internal/matchers/CombinableMatcher;
+	at org.junit.rules.ExpectedException.expect(ExpectedException.java:73)
+	at org.junit.rules.ExpectedException.expectMessage(ExpectedException.java:97)
+	at org.junit.rules.ExpectedException.expectMessage(ExpectedException.java:89)
+	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testObtemValorLogicoDvBooleanThrows1(ImplementacaoMRTest.java:466)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -98,11 +99,12 @@
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 </error>
   </testcase>
-  <testcase time="0.006" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaIsmTransition"/>
-  <testcase time="0.005" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaGenericEntry">
-    <error message="O campo não é do tipo inteiro!" type="java.lang.IllegalArgumentException">java.lang.IllegalArgumentException: O campo não é do tipo inteiro!
-	at br.inf.ufg.fabrica.mr.ImplementacaoMR.obtemInteiro(ImplementacaoMR.java:1997)
-	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testAdicionaGenericEntry(ImplementacaoMRTest.java:282)
+  <testcase time="0.005" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testObtemTextoOpenEhrTerminologyGroupThrows1">
+    <error message="org.junit.matchers.JUnitMatchers.both(Lorg/hamcrest/Matcher;)Lorg/junit/internal/matchers/CombinableMatcher;" type="java.lang.NoSuchMethodError">java.lang.NoSuchMethodError: org.junit.matchers.JUnitMatchers.both(Lorg/hamcrest/Matcher;)Lorg/junit/internal/matchers/CombinableMatcher;
+	at org.junit.rules.ExpectedException.expect(ExpectedException.java:73)
+	at org.junit.rules.ExpectedException.expectMessage(ExpectedException.java:97)
+	at org.junit.rules.ExpectedException.expectMessage(ExpectedException.java:89)
+	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testObtemTextoOpenEhrTerminologyGroupThrows1(ImplementacaoMRTest.java:536)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -133,10 +135,12 @@
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 </error>
   </testcase>
-  <testcase time="0.023" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaInternetId">
-    <error message="O objeto não existe!" type="java.lang.IllegalArgumentException">java.lang.IllegalArgumentException: O objeto não existe!
-	at br.inf.ufg.fabrica.mr.ImplementacaoMR.obtemTexto(ImplementacaoMR.java:1608)
-	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testAdicionaInternetId(ImplementacaoMRTest.java:394)
+  <testcase time="0.018" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testObtemTextoOpenEhrTerminologyGroupThrows2">
+    <error message="org.junit.matchers.JUnitMatchers.both(Lorg/hamcrest/Matcher;)Lorg/junit/internal/matchers/CombinableMatcher;" type="java.lang.NoSuchMethodError">java.lang.NoSuchMethodError: org.junit.matchers.JUnitMatchers.both(Lorg/hamcrest/Matcher;)Lorg/junit/internal/matchers/CombinableMatcher;
+	at org.junit.rules.ExpectedException.expect(ExpectedException.java:73)
+	at org.junit.rules.ExpectedException.expectMessage(ExpectedException.java:97)
+	at org.junit.rules.ExpectedException.expectMessage(ExpectedException.java:89)
+	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testObtemTextoOpenEhrTerminologyGroupThrows2(ImplementacaoMRTest.java:549)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -167,11 +171,13 @@
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 </error>
   </testcase>
-  <testcase time="0.009" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaDvBoolean"/>
-  <testcase time="0.004" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaIsoOid">
-    <error message="O objeto não existe!" type="java.lang.IllegalArgumentException">java.lang.IllegalArgumentException: O objeto não existe!
-	at br.inf.ufg.fabrica.mr.ImplementacaoMR.obtemTexto(ImplementacaoMR.java:1608)
-	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testAdicionaIsoOid(ImplementacaoMRTest.java:368)
+  <testcase time="0.007" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaTerminologyService"/>
+  <testcase time="0.005" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testObtemTextoDvIdentifierThrows1">
+    <error message="org.junit.matchers.JUnitMatchers.both(Lorg/hamcrest/Matcher;)Lorg/junit/internal/matchers/CombinableMatcher;" type="java.lang.NoSuchMethodError">java.lang.NoSuchMethodError: org.junit.matchers.JUnitMatchers.both(Lorg/hamcrest/Matcher;)Lorg/junit/internal/matchers/CombinableMatcher;
+	at org.junit.rules.ExpectedException.expect(ExpectedException.java:73)
+	at org.junit.rules.ExpectedException.expectMessage(ExpectedException.java:97)
+	at org.junit.rules.ExpectedException.expectMessage(ExpectedException.java:89)
+	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testObtemTextoDvIdentifierThrows1(ImplementacaoMRTest.java:489)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -202,47 +208,17 @@
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 </error>
   </testcase>
-  <testcase time="0.005" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaTerminologyId">
-    <failure message="expected:&lt;null&gt; but was:&lt;hello&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;null&gt; but was:&lt;hello&gt;
-	at org.junit.Assert.fail(Assert.java:74)
-	at org.junit.Assert.failNotEquals(Assert.java:448)
-	at org.junit.Assert.assertEquals(Assert.java:102)
-	at org.junit.Assert.assertEquals(Assert.java:117)
-	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testAdicionaTerminologyId(ImplementacaoMRTest.java:297)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:606)
-	at org.junit.internal.runners.TestMethod.invoke(TestMethod.java:59)
-	at org.junit.internal.runners.MethodRoadie.runTestMethod(MethodRoadie.java:98)
-	at org.junit.internal.runners.MethodRoadie$2.run(MethodRoadie.java:79)
-	at org.junit.internal.runners.MethodRoadie.runBeforesThenTestThenAfters(MethodRoadie.java:87)
-	at org.junit.internal.runners.MethodRoadie.runTest(MethodRoadie.java:77)
-	at org.junit.internal.runners.MethodRoadie.run(MethodRoadie.java:42)
-	at org.junit.internal.runners.JUnit4ClassRunner.invokeTestMethod(JUnit4ClassRunner.java:88)
-	at org.junit.internal.runners.JUnit4ClassRunner.runMethods(JUnit4ClassRunner.java:51)
-	at org.junit.internal.runners.JUnit4ClassRunner$1.run(JUnit4ClassRunner.java:44)
-	at org.junit.internal.runners.ClassRoadie.runUnprotected(ClassRoadie.java:27)
-	at org.junit.internal.runners.ClassRoadie.runProtected(ClassRoadie.java:37)
-	at org.junit.internal.runners.JUnit4ClassRunner.run(JUnit4ClassRunner.java:42)
-	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:606)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
-	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
-	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-</failure>
-  </testcase>
-  <testcase time="0.003" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaTerminologyId1">
-    <error message="O objeto não existe!" type="java.lang.IllegalArgumentException">java.lang.IllegalArgumentException: O objeto não existe!
-	at br.inf.ufg.fabrica.mr.ImplementacaoMR.obtemTexto(ImplementacaoMR.java:1608)
-	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testAdicionaTerminologyId1(ImplementacaoMRTest.java:308)
+  <testcase time="0.005" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaOpenEhrCodeSetIdentifiers"/>
+  <testcase time="0.005" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaOpenEhrTerminologyGroup"/>
+  <testcase time="0.005" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaVersionedEhrAccess"/>
+  <testcase time="0.005" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaVersionedComposition"/>
+  <testcase time="0.006" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaFeederAuditDetails"/>
+  <testcase time="0.003" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testObtemTextoDvIdentifierThrows2">
+    <error message="org.junit.matchers.JUnitMatchers.both(Lorg/hamcrest/Matcher;)Lorg/junit/internal/matchers/CombinableMatcher;" type="java.lang.NoSuchMethodError">java.lang.NoSuchMethodError: org.junit.matchers.JUnitMatchers.both(Lorg/hamcrest/Matcher;)Lorg/junit/internal/matchers/CombinableMatcher;
+	at org.junit.rules.ExpectedException.expect(ExpectedException.java:73)
+	at org.junit.rules.ExpectedException.expectMessage(ExpectedException.java:97)
+	at org.junit.rules.ExpectedException.expectMessage(ExpectedException.java:89)
+	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testObtemTextoDvIdentifierThrows2(ImplementacaoMRTest.java:501)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -273,12 +249,12 @@
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 </error>
   </testcase>
-  <testcase time="0.007" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaLink"/>
-  <testcase time="0.004" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaArchetyped"/>
-  <testcase time="0.003" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaDvParsable">
-    <error message="O objeto não existe!" type="java.lang.IllegalArgumentException">java.lang.IllegalArgumentException: O objeto não existe!
-	at br.inf.ufg.fabrica.mr.ImplementacaoMR.obtemTexto(ImplementacaoMR.java:1608)
-	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testAdicionaDvParsable(ImplementacaoMRTest.java:338)
+  <testcase time="0.004" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testObtemValorLogicoDvBooleanThrows2">
+    <error message="org.junit.matchers.JUnitMatchers.both(Lorg/hamcrest/Matcher;)Lorg/junit/internal/matchers/CombinableMatcher;" type="java.lang.NoSuchMethodError">java.lang.NoSuchMethodError: org.junit.matchers.JUnitMatchers.both(Lorg/hamcrest/Matcher;)Lorg/junit/internal/matchers/CombinableMatcher;
+	at org.junit.rules.ExpectedException.expect(ExpectedException.java:73)
+	at org.junit.rules.ExpectedException.expectMessage(ExpectedException.java:97)
+	at org.junit.rules.ExpectedException.expectMessage(ExpectedException.java:89)
+	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testObtemValorLogicoDvBooleanThrows2(ImplementacaoMRTest.java:478)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -309,9 +285,46 @@
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 </error>
   </testcase>
+  <testcase time="0.003" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testObtemValorLogicoDvUriThrows1">
+    <error message="org.junit.matchers.JUnitMatchers.both(Lorg/hamcrest/Matcher;)Lorg/junit/internal/matchers/CombinableMatcher;" type="java.lang.NoSuchMethodError">java.lang.NoSuchMethodError: org.junit.matchers.JUnitMatchers.both(Lorg/hamcrest/Matcher;)Lorg/junit/internal/matchers/CombinableMatcher;
+	at org.junit.rules.ExpectedException.expect(ExpectedException.java:73)
+	at org.junit.rules.ExpectedException.expectMessage(ExpectedException.java:97)
+	at org.junit.rules.ExpectedException.expectMessage(ExpectedException.java:89)
+	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testObtemValorLogicoDvUriThrows1(ImplementacaoMRTest.java:512)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.internal.runners.TestMethod.invoke(TestMethod.java:59)
+	at org.junit.internal.runners.MethodRoadie.runTestMethod(MethodRoadie.java:98)
+	at org.junit.internal.runners.MethodRoadie$2.run(MethodRoadie.java:79)
+	at org.junit.internal.runners.MethodRoadie.runBeforesThenTestThenAfters(MethodRoadie.java:87)
+	at org.junit.internal.runners.MethodRoadie.runTest(MethodRoadie.java:77)
+	at org.junit.internal.runners.MethodRoadie.run(MethodRoadie.java:42)
+	at org.junit.internal.runners.JUnit4ClassRunner.invokeTestMethod(JUnit4ClassRunner.java:88)
+	at org.junit.internal.runners.JUnit4ClassRunner.runMethods(JUnit4ClassRunner.java:51)
+	at org.junit.internal.runners.JUnit4ClassRunner$1.run(JUnit4ClassRunner.java:44)
+	at org.junit.internal.runners.ClassRoadie.runUnprotected(ClassRoadie.java:27)
+	at org.junit.internal.runners.ClassRoadie.runProtected(ClassRoadie.java:37)
+	at org.junit.internal.runners.JUnit4ClassRunner.run(JUnit4ClassRunner.java:42)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
+	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
+	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
+</error>
+  </testcase>
+  <testcase time="0.005" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaInstructionDetails"/>
   <testcase time="0.003" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaDvParsable1">
     <error message="O objeto não existe!" type="java.lang.IllegalArgumentException">java.lang.IllegalArgumentException: O objeto não existe!
-	at br.inf.ufg.fabrica.mr.ImplementacaoMR.obtemTexto(ImplementacaoMR.java:1608)
+	at br.inf.ufg.fabrica.mr.ImplementacaoMR.obtemTexto(ImplementacaoMR.java:1640)
 	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testAdicionaDvParsable1(ImplementacaoMRTest.java:353)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
@@ -343,10 +356,12 @@
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 </error>
   </testcase>
-  <testcase time="0.003" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaUuid">
+  <testcase time="0.007" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaTerminologyId"/>
+  <testcase time="0.004" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaTerminologyId1"/>
+  <testcase time="0.004" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaInternetId">
     <error message="O objeto não existe!" type="java.lang.IllegalArgumentException">java.lang.IllegalArgumentException: O objeto não existe!
-	at br.inf.ufg.fabrica.mr.ImplementacaoMR.obtemTexto(ImplementacaoMR.java:1608)
-	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testAdicionaUuid(ImplementacaoMRTest.java:381)
+	at br.inf.ufg.fabrica.mr.ImplementacaoMR.obtemTexto(ImplementacaoMR.java:1640)
+	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testAdicionaInternetId(ImplementacaoMRTest.java:394)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -377,9 +392,9 @@
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 </error>
   </testcase>
-  <testcase time="0.003" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaHierObjectId">
+  <testcase time="0.004" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaHierObjectId">
     <error message="O objeto não existe!" type="java.lang.IllegalArgumentException">java.lang.IllegalArgumentException: O objeto não existe!
-	at br.inf.ufg.fabrica.mr.ImplementacaoMR.obtemTexto(ImplementacaoMR.java:1608)
+	at br.inf.ufg.fabrica.mr.ImplementacaoMR.obtemTexto(ImplementacaoMR.java:1640)
 	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testAdicionaHierObjectId(ImplementacaoMRTest.java:407)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
@@ -411,78 +426,9 @@
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 </error>
   </testcase>
-  <testcase time="0.005" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaDvIdentifier"/>
-  <testcase time="0.003" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaHierObjectId1">
+  <testcase time="0.004" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaObjectVersionId1">
     <error message="O objeto não existe!" type="java.lang.IllegalArgumentException">java.lang.IllegalArgumentException: O objeto não existe!
-	at br.inf.ufg.fabrica.mr.ImplementacaoMR.obtemTexto(ImplementacaoMR.java:1608)
-	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testAdicionaHierObjectId1(ImplementacaoMRTest.java:420)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:606)
-	at org.junit.internal.runners.TestMethod.invoke(TestMethod.java:59)
-	at org.junit.internal.runners.MethodRoadie.runTestMethod(MethodRoadie.java:98)
-	at org.junit.internal.runners.MethodRoadie$2.run(MethodRoadie.java:79)
-	at org.junit.internal.runners.MethodRoadie.runBeforesThenTestThenAfters(MethodRoadie.java:87)
-	at org.junit.internal.runners.MethodRoadie.runTest(MethodRoadie.java:77)
-	at org.junit.internal.runners.MethodRoadie.run(MethodRoadie.java:42)
-	at org.junit.internal.runners.JUnit4ClassRunner.invokeTestMethod(JUnit4ClassRunner.java:88)
-	at org.junit.internal.runners.JUnit4ClassRunner.runMethods(JUnit4ClassRunner.java:51)
-	at org.junit.internal.runners.JUnit4ClassRunner$1.run(JUnit4ClassRunner.java:44)
-	at org.junit.internal.runners.ClassRoadie.runUnprotected(ClassRoadie.java:27)
-	at org.junit.internal.runners.ClassRoadie.runProtected(ClassRoadie.java:37)
-	at org.junit.internal.runners.JUnit4ClassRunner.run(JUnit4ClassRunner.java:42)
-	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:606)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
-	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
-	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-</error>
-  </testcase>
-  <testcase time="0.003" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaObjectVersionId">
-    <error message="O objeto não existe!" type="java.lang.IllegalArgumentException">java.lang.IllegalArgumentException: O objeto não existe!
-	at br.inf.ufg.fabrica.mr.ImplementacaoMR.obtemTexto(ImplementacaoMR.java:1608)
-	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testAdicionaObjectVersionId(ImplementacaoMRTest.java:435)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:606)
-	at org.junit.internal.runners.TestMethod.invoke(TestMethod.java:59)
-	at org.junit.internal.runners.MethodRoadie.runTestMethod(MethodRoadie.java:98)
-	at org.junit.internal.runners.MethodRoadie$2.run(MethodRoadie.java:79)
-	at org.junit.internal.runners.MethodRoadie.runBeforesThenTestThenAfters(MethodRoadie.java:87)
-	at org.junit.internal.runners.MethodRoadie.runTest(MethodRoadie.java:77)
-	at org.junit.internal.runners.MethodRoadie.run(MethodRoadie.java:42)
-	at org.junit.internal.runners.JUnit4ClassRunner.invokeTestMethod(JUnit4ClassRunner.java:88)
-	at org.junit.internal.runners.JUnit4ClassRunner.runMethods(JUnit4ClassRunner.java:51)
-	at org.junit.internal.runners.JUnit4ClassRunner$1.run(JUnit4ClassRunner.java:44)
-	at org.junit.internal.runners.ClassRoadie.runUnprotected(ClassRoadie.java:27)
-	at org.junit.internal.runners.ClassRoadie.runProtected(ClassRoadie.java:37)
-	at org.junit.internal.runners.JUnit4ClassRunner.run(JUnit4ClassRunner.java:42)
-	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:606)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
-	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
-	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-</error>
-  </testcase>
-  <testcase time="0.003" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaObjectVersionId1">
-    <error message="O objeto não existe!" type="java.lang.IllegalArgumentException">java.lang.IllegalArgumentException: O objeto não existe!
-	at br.inf.ufg.fabrica.mr.ImplementacaoMR.obtemTexto(ImplementacaoMR.java:1608)
+	at br.inf.ufg.fabrica.mr.ImplementacaoMR.obtemTexto(ImplementacaoMR.java:1640)
 	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testAdicionaObjectVersionId1(ImplementacaoMRTest.java:448)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
@@ -514,51 +460,10 @@
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 </error>
   </testcase>
-  <testcase time="0.003" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaCodePhrase">
-    <failure message="expected:&lt;null&gt; but was:&lt;hi&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;null&gt; but was:&lt;hi&gt;
-	at org.junit.Assert.fail(Assert.java:74)
-	at org.junit.Assert.failNotEquals(Assert.java:448)
-	at org.junit.Assert.assertEquals(Assert.java:102)
-	at org.junit.Assert.assertEquals(Assert.java:117)
-	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testAdicionaCodePhrase(ImplementacaoMRTest.java:326)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:606)
-	at org.junit.internal.runners.TestMethod.invoke(TestMethod.java:59)
-	at org.junit.internal.runners.MethodRoadie.runTestMethod(MethodRoadie.java:98)
-	at org.junit.internal.runners.MethodRoadie$2.run(MethodRoadie.java:79)
-	at org.junit.internal.runners.MethodRoadie.runBeforesThenTestThenAfters(MethodRoadie.java:87)
-	at org.junit.internal.runners.MethodRoadie.runTest(MethodRoadie.java:77)
-	at org.junit.internal.runners.MethodRoadie.run(MethodRoadie.java:42)
-	at org.junit.internal.runners.JUnit4ClassRunner.invokeTestMethod(JUnit4ClassRunner.java:88)
-	at org.junit.internal.runners.JUnit4ClassRunner.runMethods(JUnit4ClassRunner.java:51)
-	at org.junit.internal.runners.JUnit4ClassRunner$1.run(JUnit4ClassRunner.java:44)
-	at org.junit.internal.runners.ClassRoadie.runUnprotected(ClassRoadie.java:27)
-	at org.junit.internal.runners.ClassRoadie.runProtected(ClassRoadie.java:37)
-	at org.junit.internal.runners.JUnit4ClassRunner.run(JUnit4ClassRunner.java:42)
-	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:606)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
-	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
-	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-</failure>
-  </testcase>
-  <testcase time="0.004" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaOpenEhrTerminologyGroup"/>
-  <testcase time="0.005" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaVersionedEhrAccess"/>
-  <testcase time="0.008" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testObtemValorLogicoDvBooleanThrows1">
-    <error message="org.junit.matchers.JUnitMatchers.both(Lorg/hamcrest/Matcher;)Lorg/junit/internal/matchers/CombinableMatcher;" type="java.lang.NoSuchMethodError">java.lang.NoSuchMethodError: org.junit.matchers.JUnitMatchers.both(Lorg/hamcrest/Matcher;)Lorg/junit/internal/matchers/CombinableMatcher;
-	at org.junit.rules.ExpectedException.expect(ExpectedException.java:73)
-	at org.junit.rules.ExpectedException.expectMessage(ExpectedException.java:97)
-	at org.junit.rules.ExpectedException.expectMessage(ExpectedException.java:89)
-	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testObtemValorLogicoDvBooleanThrows1(ImplementacaoMRTest.java:464)
+  <testcase time="0.004" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaUuid">
+    <error message="O objeto não existe!" type="java.lang.IllegalArgumentException">java.lang.IllegalArgumentException: O objeto não existe!
+	at br.inf.ufg.fabrica.mr.ImplementacaoMR.obtemTexto(ImplementacaoMR.java:1640)
+	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testAdicionaUuid(ImplementacaoMRTest.java:381)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -589,12 +494,11 @@
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 </error>
   </testcase>
-  <testcase time="0.003" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testObtemValorLogicoDvUriThrows2">
-    <error message="org.junit.matchers.JUnitMatchers.both(Lorg/hamcrest/Matcher;)Lorg/junit/internal/matchers/CombinableMatcher;" type="java.lang.NoSuchMethodError">java.lang.NoSuchMethodError: org.junit.matchers.JUnitMatchers.both(Lorg/hamcrest/Matcher;)Lorg/junit/internal/matchers/CombinableMatcher;
-	at org.junit.rules.ExpectedException.expect(ExpectedException.java:73)
-	at org.junit.rules.ExpectedException.expectMessage(ExpectedException.java:97)
-	at org.junit.rules.ExpectedException.expectMessage(ExpectedException.java:89)
-	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testObtemValorLogicoDvUriThrows2(ImplementacaoMRTest.java:508)
+  <testcase time="0.005" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaOpenEhrDefinition"/>
+  <testcase time="0.003" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaIsoOid">
+    <error message="O objeto não existe!" type="java.lang.IllegalArgumentException">java.lang.IllegalArgumentException: O objeto não existe!
+	at br.inf.ufg.fabrica.mr.ImplementacaoMR.obtemTexto(ImplementacaoMR.java:1640)
+	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testAdicionaIsoOid(ImplementacaoMRTest.java:368)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -625,12 +529,13 @@
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 </error>
   </testcase>
-  <testcase time="0.002" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testObtemValorLogicoDvBooleanThrows2">
+  <testcase time="0.005" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaCodePhrase"/>
+  <testcase time="0.004" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testObtemTextoDvUriThrows2">
     <error message="org.junit.matchers.JUnitMatchers.both(Lorg/hamcrest/Matcher;)Lorg/junit/internal/matchers/CombinableMatcher;" type="java.lang.NoSuchMethodError">java.lang.NoSuchMethodError: org.junit.matchers.JUnitMatchers.both(Lorg/hamcrest/Matcher;)Lorg/junit/internal/matchers/CombinableMatcher;
 	at org.junit.rules.ExpectedException.expect(ExpectedException.java:73)
 	at org.junit.rules.ExpectedException.expectMessage(ExpectedException.java:97)
 	at org.junit.rules.ExpectedException.expectMessage(ExpectedException.java:89)
-	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testObtemValorLogicoDvBooleanThrows2(ImplementacaoMRTest.java:473)
+	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testObtemTextoDvUriThrows2(ImplementacaoMRTest.java:525)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -661,12 +566,11 @@
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 </error>
   </testcase>
-  <testcase time="0.002" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testObtemValorLogicoDvIdentifierThrows1">
-    <error message="org.junit.matchers.JUnitMatchers.both(Lorg/hamcrest/Matcher;)Lorg/junit/internal/matchers/CombinableMatcher;" type="java.lang.NoSuchMethodError">java.lang.NoSuchMethodError: org.junit.matchers.JUnitMatchers.both(Lorg/hamcrest/Matcher;)Lorg/junit/internal/matchers/CombinableMatcher;
-	at org.junit.rules.ExpectedException.expect(ExpectedException.java:73)
-	at org.junit.rules.ExpectedException.expectMessage(ExpectedException.java:97)
-	at org.junit.rules.ExpectedException.expectMessage(ExpectedException.java:89)
-	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testObtemValorLogicoDvIdentifierThrows1(ImplementacaoMRTest.java:481)
+  <testcase time="0.004" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaGenericEntry"/>
+  <testcase time="0.003" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaHierObjectId1">
+    <error message="O objeto não existe!" type="java.lang.IllegalArgumentException">java.lang.IllegalArgumentException: O objeto não existe!
+	at br.inf.ufg.fabrica.mr.ImplementacaoMR.obtemTexto(ImplementacaoMR.java:1640)
+	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testAdicionaHierObjectId1(ImplementacaoMRTest.java:420)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -697,13 +601,10 @@
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 </error>
   </testcase>
-  <testcase time="0.005" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaTerminologyService"/>
-  <testcase time="0.003" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testObtemValorLogicoDvIdentifierThrows2">
-    <error message="org.junit.matchers.JUnitMatchers.both(Lorg/hamcrest/Matcher;)Lorg/junit/internal/matchers/CombinableMatcher;" type="java.lang.NoSuchMethodError">java.lang.NoSuchMethodError: org.junit.matchers.JUnitMatchers.both(Lorg/hamcrest/Matcher;)Lorg/junit/internal/matchers/CombinableMatcher;
-	at org.junit.rules.ExpectedException.expect(ExpectedException.java:73)
-	at org.junit.rules.ExpectedException.expectMessage(ExpectedException.java:97)
-	at org.junit.rules.ExpectedException.expectMessage(ExpectedException.java:89)
-	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testObtemValorLogicoDvIdentifierThrows2(ImplementacaoMRTest.java:490)
+  <testcase time="0.003" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaDvParsable">
+    <error message="O objeto não existe!" type="java.lang.IllegalArgumentException">java.lang.IllegalArgumentException: O objeto não existe!
+	at br.inf.ufg.fabrica.mr.ImplementacaoMR.obtemTexto(ImplementacaoMR.java:1640)
+	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testAdicionaDvParsable(ImplementacaoMRTest.java:338)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -734,12 +635,10 @@
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 </error>
   </testcase>
-  <testcase time="0.003" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testObtemTextoOpenEhrTerminologyGroup">
-    <error message="org.junit.matchers.JUnitMatchers.both(Lorg/hamcrest/Matcher;)Lorg/junit/internal/matchers/CombinableMatcher;" type="java.lang.NoSuchMethodError">java.lang.NoSuchMethodError: org.junit.matchers.JUnitMatchers.both(Lorg/hamcrest/Matcher;)Lorg/junit/internal/matchers/CombinableMatcher;
-	at org.junit.rules.ExpectedException.expect(ExpectedException.java:73)
-	at org.junit.rules.ExpectedException.expectMessage(ExpectedException.java:97)
-	at org.junit.rules.ExpectedException.expectMessage(ExpectedException.java:89)
-	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testObtemTextoOpenEhrTerminologyGroup(ImplementacaoMRTest.java:516)
+  <testcase time="0.002" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaObjectVersionId">
+    <error message="O objeto não existe!" type="java.lang.IllegalArgumentException">java.lang.IllegalArgumentException: O objeto não existe!
+	at br.inf.ufg.fabrica.mr.ImplementacaoMR.obtemTexto(ImplementacaoMR.java:1640)
+	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testAdicionaObjectVersionId(ImplementacaoMRTest.java:435)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -770,81 +669,11 @@
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 </error>
   </testcase>
-  <testcase time="0.004" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaFeederAuditDetails"/>
-  <testcase time="0.004" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaInstructionDetails"/>
-  <testcase time="0.003" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaVersionedEhrStatus">
-    <failure message="expected:&lt;null&gt; but was:&lt;ab&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;null&gt; but was:&lt;ab&gt;
-	at org.junit.Assert.fail(Assert.java:74)
-	at org.junit.Assert.failNotEquals(Assert.java:448)
-	at org.junit.Assert.assertEquals(Assert.java:102)
-	at org.junit.Assert.assertEquals(Assert.java:117)
-	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testAdicionaVersionedEhrStatus(ImplementacaoMRTest.java:172)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:606)
-	at org.junit.internal.runners.TestMethod.invoke(TestMethod.java:59)
-	at org.junit.internal.runners.MethodRoadie.runTestMethod(MethodRoadie.java:98)
-	at org.junit.internal.runners.MethodRoadie$2.run(MethodRoadie.java:79)
-	at org.junit.internal.runners.MethodRoadie.runBeforesThenTestThenAfters(MethodRoadie.java:87)
-	at org.junit.internal.runners.MethodRoadie.runTest(MethodRoadie.java:77)
-	at org.junit.internal.runners.MethodRoadie.run(MethodRoadie.java:42)
-	at org.junit.internal.runners.JUnit4ClassRunner.invokeTestMethod(JUnit4ClassRunner.java:88)
-	at org.junit.internal.runners.JUnit4ClassRunner.runMethods(JUnit4ClassRunner.java:51)
-	at org.junit.internal.runners.JUnit4ClassRunner$1.run(JUnit4ClassRunner.java:44)
-	at org.junit.internal.runners.ClassRoadie.runUnprotected(ClassRoadie.java:27)
-	at org.junit.internal.runners.ClassRoadie.runProtected(ClassRoadie.java:37)
-	at org.junit.internal.runners.JUnit4ClassRunner.run(JUnit4ClassRunner.java:42)
-	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:606)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
-	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
-	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-</failure>
-  </testcase>
-  <testcase time="0.004" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaVersionedComposition"/>
-  <testcase time="0.004" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaOpenEhrCodeSetIdentifiers"/>
-  <testcase time="0.003" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testObtemValorLogicoDvUriThrows1">
-    <error message="org.junit.matchers.JUnitMatchers.both(Lorg/hamcrest/Matcher;)Lorg/junit/internal/matchers/CombinableMatcher;" type="java.lang.NoSuchMethodError">java.lang.NoSuchMethodError: org.junit.matchers.JUnitMatchers.both(Lorg/hamcrest/Matcher;)Lorg/junit/internal/matchers/CombinableMatcher;
-	at org.junit.rules.ExpectedException.expect(ExpectedException.java:73)
-	at org.junit.rules.ExpectedException.expectMessage(ExpectedException.java:97)
-	at org.junit.rules.ExpectedException.expectMessage(ExpectedException.java:89)
-	at br.inf.ufg.fabrica.mr.ImplementacaoMRTest.testObtemValorLogicoDvUriThrows1(ImplementacaoMRTest.java:498)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:606)
-	at org.junit.internal.runners.TestMethod.invoke(TestMethod.java:59)
-	at org.junit.internal.runners.MethodRoadie.runTestMethod(MethodRoadie.java:98)
-	at org.junit.internal.runners.MethodRoadie$2.run(MethodRoadie.java:79)
-	at org.junit.internal.runners.MethodRoadie.runBeforesThenTestThenAfters(MethodRoadie.java:87)
-	at org.junit.internal.runners.MethodRoadie.runTest(MethodRoadie.java:77)
-	at org.junit.internal.runners.MethodRoadie.run(MethodRoadie.java:42)
-	at org.junit.internal.runners.JUnit4ClassRunner.invokeTestMethod(JUnit4ClassRunner.java:88)
-	at org.junit.internal.runners.JUnit4ClassRunner.runMethods(JUnit4ClassRunner.java:51)
-	at org.junit.internal.runners.JUnit4ClassRunner$1.run(JUnit4ClassRunner.java:44)
-	at org.junit.internal.runners.ClassRoadie.runUnprotected(ClassRoadie.java:27)
-	at org.junit.internal.runners.ClassRoadie.runProtected(ClassRoadie.java:37)
-	at org.junit.internal.runners.JUnit4ClassRunner.run(JUnit4ClassRunner.java:42)
-	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:606)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
-	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
-	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-</error>
-  </testcase>
+  <testcase time="0.004" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaBasicDefinition"/>
+  <testcase time="0.005" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaDvBoolean"/>
+  <testcase time="0.004" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaDvIdentifier"/>
+  <testcase time="0.006" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaDvUri"/>
+  <testcase time="0.004" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaLink"/>
+  <testcase time="0.004" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaArchetyped"/>
+  <testcase time="0.004" classname="br.inf.ufg.fabrica.mr.ImplementacaoMRTest" name="testAdicionaIsmTransition"/>
 </testsuite>

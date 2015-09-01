@@ -1731,7 +1731,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
                 }
                 else{
                     try{
-                        return (String) this.openEhrDefinitions.get(idIndice + campo + 1);
+                        return (this.openEhrDefinitions.get(idIndice + campo + 1)).toString();
                     }
                     catch (Exception e) {
                         throw new IllegalArgumentException("O campo não é do tipo texto!");
@@ -1788,6 +1788,48 @@ public class ImplementacaoMR implements ModeloDeReferencia {
                 else{
                     try{
                         return (String) this.instructionDetails.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo texto!");
+                    }
+                }
+            }
+            else if ( this.idTipo.get(id) == VERSIONED_EHR_STATUS) {
+                int idIndice = this.idIndiceVersionedEhrStatus.get(id);
+                if ( campo < 0 || campo > 5 ) {
+                    throw new IllegalArgumentException("O campo não existe!");
+                }
+                else{
+                    try{
+                        return (String) this.versionedEhrStatus.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo texto!");
+                    }
+                }
+            }
+            else if ( this.idTipo.get(id) == TERMINOLOGY_ID) {
+                int idIndice = this.idIndiceTerminologyId.get(id);
+                if ( campo < 0 || campo > 1 ) {
+                    throw new IllegalArgumentException("O campo não existe!");
+                }
+                else{
+                    try{
+                        return (String) this.terminologyId.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo texto!");
+                    }
+                }
+            }
+            else if ( this.idTipo.get(id) == CODE_PHRASE) {
+                int idIndice = this.idIndiceCodePhrase.get(id);
+                if ( campo < 0 || campo > 1 ) {
+                    throw new IllegalArgumentException("O campo não existe!");
+                }
+                else{
+                    try{
+                        return (String) this.codePhrase.get(idIndice + campo + 1);
                     }
                     catch (Exception e) {
                         throw new IllegalArgumentException("O campo não é do tipo texto!");
@@ -2961,15 +3003,15 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      *
      * @return id do objeto inserido 
      */
-    public int adicionaOpenEhrDefinitions(char CR,
+    public int adicionaOpenEhrDefinition(char CR,
                                           char LF) {
 
         int idObjeto = this.idObjeto;
         this.openEhrDefinitions.add(idObjeto);
         int indiceObjInserido = this.openEhrDefinitions.size()-1;
 
-        this.basicDefinitions.add(CR);
-        this.basicDefinitions.add(LF);
+        this.openEhrDefinitions.add(CR);
+        this.openEhrDefinitions.add(LF);
 
         this.idIndiceOpenEhrDefinitions.put(idObjeto, indiceObjInserido);
         this.idTipo.put(idObjeto, OPENEHR_DEFINITIONS);
@@ -3457,8 +3499,8 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     public int adicionaGenericEntry(int data) {
 
         int idObjeto = this.idObjeto;
-        this.address.add(idObjeto);
-        int indiceObjInserido = this.address.size()-1;
+        this.genericEntry.add(idObjeto);
+        int indiceObjInserido = this.genericEntry.size()-1;
 
         this.genericEntry.add(data);
 
