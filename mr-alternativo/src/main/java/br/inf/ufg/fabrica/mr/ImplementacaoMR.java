@@ -1327,8 +1327,21 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     private ArrayList<Object> genericEntry = new ArrayList<Object>();
     private Map<Integer, Integer> idIndiceGenericEntry = new HashMap<Integer, Integer>();
     private ArrayList<Object> listGenericEntry = new ArrayList<Object>();
-
-
+/**
+     * Estruturas de dados utilizada para armazenar uma instância de ADDRESS
+     *
+     * Na estrutura #address deve ser inserido 1 objetos: Inteiro
+     *
+     * O #idIndiceAddress que tem por função, mapear o ID do objeto com o
+     * índice dele na lista de objetos #address. O objetivo é agilizar a busca de objetos.
+     *
+     * Na estrutura #listAddress devem ser inseridos no mínimo 1 objeto Inteiro:
+     * Quantidade de itens e o valor dos índices de #address.
+     * Ex.: 2
+     */
+    private ArrayList<Object> address = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceAddress = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listAddress = new ArrayList<Object>();
 
 
 
@@ -2007,6 +2020,20 @@ public class ImplementacaoMR implements ModeloDeReferencia {
                 else{
                     try{
                         return (Integer) this.instructionDetails.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo inteiro!");
+                    }
+                }
+            }
+            else if ( this.idTipo.get(id) == ADDRESS) {
+                int idIndice = this.idIndiceAddress.get(id);
+                if ( campo != 0 ) {
+                    throw new IllegalArgumentException("O campo não exite!");
+                }
+                else{
+                    try{
+                        return (Integer) this.address.get(idIndice + campo + 1);
                     }
                     catch (Exception e) {
                         throw new IllegalArgumentException("O campo não é do tipo inteiro!");
@@ -3355,13 +3382,13 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     /**
      *
      * @param data
-     * @return id do obejeto inserido
+     * @return id do objeto inserido
      */
     public int adicionaGenericEntry(int data) {
 
         int idObjeto = this.idObjeto;
-        this.genericEntry.add(idObjeto);
-        int indiceObjInserido = this.genericEntry.size()-1;
+        this.address.add(idObjeto);
+        int indiceObjInserido = this.address.size()-1;
 
         this.genericEntry.add(data);
 
@@ -3370,5 +3397,25 @@ public class ImplementacaoMR implements ModeloDeReferencia {
         this.idObjeto++;
         return idObjeto;
     }
+    /**
+     * Adiciona a instancia de Adress
+     * utilizada para armazenar um endereço 
+     * de contato, que pode ser eletrônico ou geografico.
+     * 
+     * @param item_structure
+     * @return id do objeto inserido
+     */
+public int adicionaAddress(int item_structure) {
 
+        int idObjeto = this.idObjeto;
+        this.address.add(idObjeto);
+        int indiceObjInserido = this.address.size()-1;
+
+        this.address.add(item_structure);
+
+        this.idIndiceAddress.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, ADDRESS);
+        this.idObjeto++;
+        return idObjeto;
+    }
 }
