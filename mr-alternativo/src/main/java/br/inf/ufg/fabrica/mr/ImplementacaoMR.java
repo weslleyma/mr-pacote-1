@@ -1396,23 +1396,44 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     private Map<Integer, Integer> idIndiceGenericId = new HashMap<Integer, Integer>();
     private ArrayList<Object> listGenericId = new ArrayList<Object>();
     
-     /**
-     * Estruturas de dados utilizada para armazenar uma instância de UID_BASED_ID
+     
+    
+    /**
+     * Estruturas de dados utilizada para armazenar uma instância de UUID
      *
-     * Na estrutura #uidBasesId devem ser inseridos 2 objetos, sendo todos Inteiros:
-     * ID único do objeto, inteiro.
-     * Ex.: 0, 3"
+     * Na estrutura #uuid devem ser inseridos 2 objetos, sendo um inteiro e um String:
+     * ID único do objeto, string.
+     * Ex.: 0, "a"
      *
-     * O #idIndiceuidBasesId que tem por função, mapear o ID do objeto com o
-     * índice dele na lista de objetos #uidBasesId. O objetivo de agilizar a busca de objetos.
+     * O #idIndiceUuid que tem por função, mapear o ID do objeto com o
+     * índice dele na lista de objetos #uuid. O objetivo de agilizar a busca de objetos.
      *
-     * Na estrutura #listGenericId devem ser inseridos no mínimo 2 objetos Inteiros:
-     * Quantidade de itens e o valor dos índices de #uidBasesId.
+     * Na estrutura #listUuid devem ser inseridos no mínimo 2 objetos Inteiros:
+     * Quantidade de itens e o valor dos índices de #uuid.
      * Ex.: 1, 2
      */
-    private ArrayList<Object> uidBasesId = new ArrayList<Object>();
-    private Map<Integer, Integer> idIndiceuidBasesId = new HashMap<Integer, Integer>();
-    private ArrayList<Object> listuidBasesId = new ArrayList<Object>();
+    private ArrayList<Object> uuid = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceUuid = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listUuid = new ArrayList<Object>();
+    
+    /**
+     * Estruturas de dados utilizada para armazenar uma instância de ISO_OID
+     *
+     * Na estrutura #isoOid ddevem ser inseridos 2 objetos, sendo um inteiro e um String:
+     * ID único do objeto, string.
+     * Ex.: 0, "a"
+     *
+     * O #idIndiceIsoOid que tem por função, mapear o ID do objeto com o
+     * índice dele na lista de objetos #isoOid. O objetivo de agilizar a busca de objetos.
+     *
+     * Na estrutura #listIsoOid devem ser inseridos no mínimo 2 objetos Inteiros:
+     * Quantidade de itens e o valor dos índices de #isoOid.
+     * Ex.: 1, 2
+     */
+    private ArrayList<Object> isoOid = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceIsoOid = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listIsoOid = new ArrayList<Object>();
+    
     /**
      * Método Construtor da Classe.
      */
@@ -1898,6 +1919,34 @@ public class ImplementacaoMR implements ModeloDeReferencia {
                     }
                 }
             }
+            else if ( this.idTipo.get(id) == UUID  ) {
+                int idIndice = this.idIndiceDvUri.get(id);
+                if ( campo != 0 ) {
+                    throw new IllegalArgumentException("O campo não existe!");
+                }
+                else{
+                    try{
+                        return (String) this.dvUri.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo texto!");
+                    }
+                }
+            }
+            else if ( this.idTipo.get(id) == ISO_OID  ) {
+                int idIndice = this.idIndiceDvUri.get(id);
+                if ( campo != 0 ) {
+                    throw new IllegalArgumentException("O campo não existe!");
+                }
+                else{
+                    try{
+                        return (String) this.dvUri.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo texto!");
+                    }
+                }
+            }
         }
         return null;
     }
@@ -2211,20 +2260,6 @@ public class ImplementacaoMR implements ModeloDeReferencia {
                 else{
                     try{
                         return (Integer) this.instructionDetails.get(idIndice + campo + 1);
-                    }
-                    catch (Exception e) {
-                        throw new IllegalArgumentException("O campo não é do tipo inteiro!");
-                    }
-                }
-            }
-            else if ( this.idTipo.get(id) == UID_BASED_ID) {
-                int idIndice = this.idIndiceAddress.get(id);
-                if ( campo != 0 ) {
-                    throw new IllegalArgumentException("O campo não existe!");
-                }
-                else{
-                    try{
-                        return (Integer) this.address.get(idIndice + campo + 1);
                     }
                     catch (Exception e) {
                         throw new IllegalArgumentException("O campo não é do tipo inteiro!");
@@ -2815,7 +2850,17 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      *          identificador de objeto da ISO.
      */
     public int adicionaIsoOid(String valor) {
-        return 0;
+        int idObjeto = this.idObjeto;
+        this.isoOid.add(idObjeto);
+        int indiceObjInserido = this.isoOid.size()-1;
+
+        this.isoOid.add(valor);
+
+        this.idIndiceIsoOid.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, UUID);
+        this.idObjeto++;
+        return idObjeto;
+        
     }
 
     /**
@@ -2827,7 +2872,17 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      * @return O identificador único na estrutura do UUID.
      */
     public int adicionaUuid(String valor) {
-        return 0;
+        int idObjeto = this.idObjeto;
+        this.uuid.add(idObjeto);
+        int indiceObjInserido = this.uuid.size()-1;
+
+        this.uuid.add(valor);
+
+        this.idIndiceUuid.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, UUID);
+        this.idObjeto++;
+        return idObjeto;
+        
     }
 
     /**
@@ -3719,24 +3774,5 @@ public int adicionaObjectId(int value) {
         this.idObjeto++;
         return idObjeto;
     }
-     /**
-     * Adiciona a instancia de UID_BASED_ID
-     *
-     * @param value
-     * 
-     * @return id do objeto inserido
-     */
-public int adicionaUidBasedId(int value) {
 
-        int idObjeto = this.idObjeto;
-        this.uidBasesId.add(idObjeto);
-        int indiceObjInserido = this.uidBasesId.size()-1;
-
-        this.uidBasesId.add(value);
-
-        this.idIndiceuidBasesId.put(idObjeto, indiceObjInserido);
-        this.idTipo.put(idObjeto, UID_BASED_ID);
-        this.idObjeto++;
-        return idObjeto; 
-    }
 }

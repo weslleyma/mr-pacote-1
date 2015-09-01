@@ -621,6 +621,443 @@ public class ImplementacaoMRTest {
         ImplementacaoMR classe = new ImplementacaoMR();
         classe.obtemTexto(1, 1);
     }
+
     
+    /**
+     * Teste para método Obtem Texto da classe BASIC_DEFINITIONS
+     */
+    @Test
+    public void testObtemTextoBasicDefinitionsThrows1() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O campo não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        int idObjeto = classe.adicionaBasicDefinition('a', 'b');
+        classe.obtemTexto(idObjeto, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Texto da classe BASIC_DEFINITIONS
+     */
+    @Test
+    public void testObtemTextoBasicDefinitionsThrows2() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O objeto não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        classe.obtemTexto(1, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Texto da classe OPENEHR_DEFINITIONS
+     */
+    @Test
+    public void testObtemTextoOpenEhrDefinitionsThrows1() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O campo não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        int idObjeto = classe.adicionaOpenEhrDefinition('a', 'b');
+        classe.obtemTexto(idObjeto, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Texto da classe OPENEHR_DEFINITIONS
+     */
+    @Test
+    public void testObtemTextoOpenEhrDefinitionsThrows2() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O objeto não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        classe.obtemTexto(1, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Texto da classe VERSIONED_EHR_ACCESS
+     */
+    @Test
+    public void testObtemTextoVersionedEhrAccessThrows1() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O campo não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        int idObjeto = classe.adicionaVersionedEhrAccess(1, 2, 3, 4, "a", 5);
+        classe.obtemTexto(idObjeto, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Texto da classe VERSIONED_EHR_ACCESS
+     */
+    @Test
+    public void testObtemTextoVersionedEhrAccessThrows2() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O objeto não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        classe.obtemTexto(1, 1);
+    }
+    
+     /**
+     * Teste para método Obtem Inteiro da classe VERSIONED_EHR_ACCESS
+     */
+    @Test
+    public void testObtemInteiroVersionedEhrAccessThrows1() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O campo não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        int idObjeto = classe.adicionaVersionedEhrAccess(1, 2, 3, 4, "a", 5);
+        classe.obtemTexto(idObjeto, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Inteiro da classe VERSIONED_EHR_ACCESS
+     */
+    @Test
+    public void testObtemInteiroVersionedEhrAccessThrows2() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O objeto não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        classe.obtemTexto(1, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Texto da classe VERSIONED_EHR_STATUS
+     */
+    @Test
+    public void testObtemTextoVersionedEhrStatusThrows1() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O campo não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        int idObjeto = classe.adicionaVersionedEhrStatus(1, 2, 3, 4, "a", 5);
+        classe.obtemTexto(idObjeto, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Texto da classe VERSIONED_EHR_STATUS
+     */
+    @Test
+    public void testObtemTextoVersionedEhrStatusThrows2() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O objeto não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        classe.obtemTexto(1, 1);
+    }
+    
+     /**
+     * Teste para método Obtem Inteiro da classe VERSIONED_EHR_STATUS
+     */
+    @Test
+    public void testObtemInteiroVersionedEhrStatusThrows1() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O campo não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        int idObjeto = classe.adicionaVersionedEhrStatus(1, 2, 3, 4, "a", 5);
+        classe.obtemTexto(idObjeto, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Inteiro da classe VERSIONED_EHR_STATUS
+     */
+    @Test
+    public void testObtemInteiroVersionedEhrStatusThrows2() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O objeto não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        classe.obtemTexto(1, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Inteiro da classe VERSIONED_COMPOSITION
+     */
+    @Test
+    public void testObtemInteiroVersionedCompositionThrows1() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O campo não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        int idObjeto = classe.adicionaVersionedComposition(1, 2, 3);
+        classe.obtemTexto(idObjeto, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Inteiro da classe VERSIONED_EHR_STATUS
+     */
+    @Test
+    public void testObtemInteiroVersionedCompositionThrows2() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O objeto não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        classe.obtemTexto(1, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Inteiro da classe LINK
+     */
+    @Test
+    public void testObtemInteiroLinkThrows1() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O campo não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        int idObjeto = classe.adicionaLink(1, 2, 3);
+        classe.obtemTexto(idObjeto, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Inteiro da classe LINK
+     */
+    @Test
+    public void testObtemInteiroLinkThrows2() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O objeto não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        classe.obtemTexto(1, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Inteiro da classe FEEDER_AUDIT_DETAILS
+     */
+    @Test
+    public void testObtemInteiroFeederAuditDetailsThrows1() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O campo não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        int idObjeto = classe.adicionaFeederAuditDetails("a", 1, 2, 3, 4, "a");
+        classe.obtemTexto(idObjeto, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Inteiro da classe FEEDER_AUDIT_DETAILS
+     */
+    @Test
+    public void testObtemInteiroFeederAuditDetailsThrows2() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O objeto não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        classe.obtemTexto(1, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Texto da classe FEEDER_AUDIT_DETAILS
+     */
+    @Test
+    public void testObtemTextoFeederAuditDetailsThrows1() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O campo não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        int idObjeto = classe.adicionaFeederAuditDetails("a", 1, 2, 3, 4, "a");
+        classe.obtemTexto(idObjeto, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Texto da classe FEEDER_AUDIT_DETAILS
+     */
+    @Test
+    public void testObtemTextoFeederAuditDetailsThrows2() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O objeto não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        classe.obtemTexto(1, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Texto da classe ARCHETYPED
+     */
+    @Test
+    public void testObtemTextoArchetypedThrows1() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O campo não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        int idObjeto = classe.adicionaArchetyped(1, 2, "a");
+        classe.obtemTexto(idObjeto, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Texto da classe ARCHETYPED
+     */
+    @Test
+    public void testObtemTextoArchetypedThrows2() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O objeto não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        classe.obtemTexto(1, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Inteiro da classe ARCHETYPED
+     */
+    @Test
+    public void testObtemInteiroArchetypedThrows1() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O campo não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        int idObjeto = classe.adicionaArchetyped(1, 2, "a");
+        classe.obtemTexto(idObjeto, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Inteiro da classe ARCHETYPED
+     */
+    @Test
+    public void testObtemInteiroArchetypedThrows2() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O objeto não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        classe.obtemTexto(1, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Inteiro da classe ISM_TRANSITION
+     */
+    @Test
+    public void testObtemInteiroIsmTRansitionThrows1() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O campo não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        int idObjeto = classe.adicionaIsmTrasition(1, 2, 1);
+        classe.obtemTexto(idObjeto, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Inteiro da classe ISM_TRANSITION
+     */
+    @Test
+    public void testObtemInteiroIsmTransitionThrows2() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O objeto não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        classe.obtemTexto(1, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Inteiro da classe INSTRUCTION_DETAILS
+     */
+    @Test
+    public void testObtemInteiroInstructionDetailsThrows1() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O campo não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        int idObjeto = classe.adicionaInstructionDetails(1, "a", 1);
+        classe.obtemTexto(idObjeto, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Inteiro da classe INSTRUCTION_DETAILS
+     */
+    @Test
+    public void testObtemInteiroInstructionDetailsThrows2() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O objeto não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        classe.obtemTexto(1, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Texto da classe INSTRUCTION_DETAILS
+     */
+    @Test
+    public void testObtemTextoInstructionDetailsThrows1() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O campo não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        int idObjeto = classe.adicionaInstructionDetails(1, "a", 1);
+        classe.obtemTexto(idObjeto, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Texto da classe INSTRUCTION_DETAILS
+     */
+    @Test
+    public void testObtemTextoInstructionDetailsThrows2() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O objeto não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        classe.obtemTexto(1, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Inteiro da classe GENERIC_ENTRY
+     */
+    @Test
+    public void testObtemInteiroGenericEntryThrows1() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O campo não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        int idObjeto = classe.adicionaGenericEntry(1);
+        classe.obtemTexto(idObjeto, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Inteiro da classe GENERIC_ENTRY
+     */
+    @Test
+    public void testObtemInteiroGenericEntryThrows2() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O objeto não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        classe.obtemTexto(1, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Texto da classe TERMINOLOGY_ID
+     */
+    @Test
+    public void testObtemTextoTerminologyIdThrows1() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O campo não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        int idObjeto = classe.adicionaTerminologyId("a", "");
+        classe.obtemTexto(idObjeto, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Texto da classe TERMINOLOGY_ID
+     */
+    @Test
+    public void testObtemTextoTerminologyIdDetailsThrows2() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O objeto não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        classe.obtemTexto(1, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Texto da classe CODE_PHRASE
+     */
+    @Test
+    public void testObtemTextoCodePhraseThrows1() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O campo não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        int idObjeto = classe.adicionaCodePhrase("a", "");
+        classe.obtemTexto(idObjeto, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Texto da classe CODE_PHRASE
+     */
+    @Test
+    public void testObtemTextoCodePhraseDetailsThrows2() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O objeto não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        classe.obtemTexto(1, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Texto da classe DV_PARSABLE
+     */
+    @Test
+    public void testObtemTextoDvParsableThrows1() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O campo não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        int idObjeto = classe.adicionaDvParsable("a", "");
+        classe.obtemTexto(idObjeto, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Texto da classe DV_PARSABLE
+     */
+    @Test
+    public void testObtemTextoDvParsableThrows2() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O objeto não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        classe.obtemTexto(1, 1);
+    }
 
 }
