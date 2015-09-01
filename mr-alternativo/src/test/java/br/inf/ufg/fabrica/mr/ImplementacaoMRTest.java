@@ -463,7 +463,7 @@ public class ImplementacaoMRTest {
     @Test
     public void testObtemValorLogicoDvBooleanThrows1() {
         exception.expect(IllegalArgumentException.class);
-        exception.expectMessage("O campo não exite!");
+        exception.expectMessage("O campo não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
         int idObjeto = classe.adicionaDvBoolean(true);
         classe.obtemValorLogico(idObjeto, 1);
@@ -486,7 +486,7 @@ public class ImplementacaoMRTest {
     @Test
     public void testObtemTextoDvIdentifierThrows1() {
         exception.expect(IllegalArgumentException.class);
-        exception.expectMessage("O campo não exite!");
+        exception.expectMessage("O campo não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
         int idObjeto = classe.adicionaDvIdentifier("issuer", "assigner", "id", "type");
         classe.obtemTexto(idObjeto, 4);
@@ -509,7 +509,7 @@ public class ImplementacaoMRTest {
     @Test
     public void testObtemValorLogicoDvUriThrows1() throws URISyntaxException {
         exception.expect(IllegalArgumentException.class);
-        exception.expectMessage("O campo não exite!");
+        exception.expectMessage("O campo não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
         String uri = new URI("weslley").toString();
         int idObjeto = classe.adicionaDvUri(uri);
@@ -528,12 +528,36 @@ public class ImplementacaoMRTest {
     }
     
     /**
+     * Teste para método Obtem Texto da classe DV_EHR_URI
+     */
+    @Test
+    public void testObtemValorLogicoDvEhrUriThrows1() throws URISyntaxException {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O campo não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        String uri = new URI("weslley").toString();
+        int idObjeto = classe.adicionaDvEhrUri(uri);
+        classe.obtemTexto(idObjeto, 1);
+    }
+
+    /**
+     * Teste para método Obtem Texto da classe DV_EHR_URI
+     */
+    @Test
+    public void testObtemTextoDvEhrUriThrows2() throws URISyntaxException {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O objeto não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        classe.obtemTexto(1, 1);
+    }
+    
+    /**
      * Teste para método Obtem Texto da classe OPENEHR_TERMINOLOGY_GROUP
      */
     @Test
-    public void testObtemTextoOpenEhrTerminologyGroupThrows1() throws URISyntaxException {
+    public void testObtemTextoOpenEhrTerminologyGroupThrows1() {
         exception.expect(IllegalArgumentException.class);
-        exception.expectMessage("O campo não exite!");
+        exception.expectMessage("O campo não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
         int idObjeto = classe.adicionaOpenEhrTerminologyGroup("", "", "", "", "", "", "", "", "", "", ""
                                                 , "", "", "", "");
@@ -545,6 +569,53 @@ public class ImplementacaoMRTest {
      */
     @Test
     public void testObtemTextoOpenEhrTerminologyGroupThrows2() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O objeto não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        classe.obtemTexto(1, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Texto da classe OPENEHR_CODE_SET_IDENTIFIERS
+     */
+    @Test
+    public void testObtemTextoOpenEhrCodeSetIdentifiersThrows1() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O campo não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        int idObjeto = classe.adicionaOpenEhrCodeSetIdentifiers("", "", "", "", "", "", "");
+        classe.obtemTexto(idObjeto, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Texto da classe OPENEHR_CODE_SET_IDENTIFIERS
+     */
+    @Test
+    public void testObtemTextoOpenEhrCodeSetIdentifiersThrows2() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O objeto não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        classe.obtemTexto(1, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Texto da classe TERMINOLOGY_SERVICES
+     */
+    @Test
+    public void testObtemTextoTerminologyServicesThrows1() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O campo não existe!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        int idObjeto = classe.adicionaTerminologyService("", "", "", "", "", "", "","", "", "", "", "", "", ""
+                                                        , "", "", "", "", "", "", "", "");
+        classe.obtemTexto(idObjeto, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Texto da classe TERMINOLOGY_SERVICES
+     */
+    @Test
+    public void testObtemTextoTerminologyServicesThrows2() {
         exception.expect(IllegalArgumentException.class);
         exception.expectMessage("O objeto não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
