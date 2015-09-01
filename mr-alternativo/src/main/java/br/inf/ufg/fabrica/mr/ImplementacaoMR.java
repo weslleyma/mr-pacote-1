@@ -1787,6 +1787,20 @@ public class ImplementacaoMR implements ModeloDeReferencia {
                     }
                 }
             }
+            else if ( this.idTipo.get(id) == FEEDER_AUDIT_DETAILS) {
+                int idIndice = this.idIndiceFeederAuditDetails.get(id);
+                if ( campo < 0 || campo > 5 ) {
+                    throw new IllegalArgumentException("O campo não existe!");
+                }
+                else{
+                    try{
+                        return (Integer) this.feederAuditDetails.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo inteiro!");
+                    }
+                }
+            }
         }
         
         return -1;
