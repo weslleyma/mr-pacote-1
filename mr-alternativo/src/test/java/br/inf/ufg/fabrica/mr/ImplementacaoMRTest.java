@@ -770,7 +770,7 @@ public class ImplementacaoMRTest {
         exception.expectMessage("O campo não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
         int idObjeto = classe.adicionaVersionedComposition(1, 2, 3);
-        classe.obtemTexto(idObjeto, 3);
+        classe.obtemInteiro(idObjeto, 3);
     }
     
     /**
@@ -793,7 +793,7 @@ public class ImplementacaoMRTest {
         exception.expectMessage("O campo não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
         int idObjeto = classe.adicionaLink(1, 2, 3);
-        classe.obtemTexto(idObjeto, 3);
+        classe.obtemInteiro(idObjeto, 3);
     }
     
     /**
@@ -977,7 +977,7 @@ public class ImplementacaoMRTest {
         exception.expectMessage("O campo não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
         int idObjeto = classe.adicionaGenericEntry(1);
-        classe.obtemTexto(idObjeto, 1);
+        classe.obtemInteiro(idObjeto, 1);
     }
     
     /**
@@ -1046,7 +1046,7 @@ public class ImplementacaoMRTest {
         exception.expectMessage("O campo não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
         int idObjeto = classe.adicionaDvParsable("a", "");
-        classe.obtemTexto(idObjeto, 2);
+        classe.obtemTexto(idObjeto, 4);
     }
     
     /**

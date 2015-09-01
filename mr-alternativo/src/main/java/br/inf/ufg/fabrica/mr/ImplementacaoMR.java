@@ -1798,7 +1798,7 @@ public class ImplementacaoMR implements ModeloDeReferencia {
             }
             else if ( this.idTipo.get(id) == OPENEHR_DEFINITIONS) {
                 int idIndice = this.idIndiceOpenEhrDefinitions.get(id);
-                if ( campo < 0 || campo > 2 ) {
+                if ( campo < 0 || campo > 1 ) {
                     throw new IllegalArgumentException("O campo não existe!");
                 }
                 else{
