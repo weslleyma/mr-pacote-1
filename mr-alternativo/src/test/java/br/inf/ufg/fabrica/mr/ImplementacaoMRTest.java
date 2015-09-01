@@ -457,7 +457,9 @@ public class ImplementacaoMRTest {
     
     
     
-    
+    /**
+     * Teste para método Obtem Valor Logico da classe DV_BOOLEAN
+     */
     @Test
     public void testObtemValorLogicoDvBooleanThrows1() {
         exception.expect(IllegalArgumentException.class);
@@ -467,6 +469,9 @@ public class ImplementacaoMRTest {
         classe.obtemValorLogico(idObjeto, 1);
     }
 
+    /**
+     * Teste para método Obtem Valor Logico da classe DV_BOOLEAN
+     */
     @Test
     public void testObtemValorLogicoDvBooleanThrows2() {
         exception.expect(IllegalArgumentException.class);
@@ -475,8 +480,11 @@ public class ImplementacaoMRTest {
         classe.obtemValorLogico(1, 1);
     }
   
+    /**
+     * Teste para método Obtem Texto da classe DV_IDENTIFIER
+     */
     @Test
-    public void testObtemValorLogicoDvIdentifierThrows1() {
+    public void testObtemTextoDvIdentifierThrows1() {
         exception.expect(IllegalArgumentException.class);
         exception.expectMessage("O campo não exite!");
         ImplementacaoMR classe = new ImplementacaoMR();
@@ -484,14 +492,20 @@ public class ImplementacaoMRTest {
         classe.obtemTexto(idObjeto, 4);
     }
 
+    /**
+     * Teste para método Obtem Texto da classe DV_IDENTIFIER
+     */
     @Test
-    public void testObtemValorLogicoDvIdentifierThrows2() {
+    public void testObtemTextoDvIdentifierThrows2() {
         exception.expect(IllegalArgumentException.class);
         exception.expectMessage("O objeto não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
         classe.obtemTexto(1, 1);
     }
     
+    /**
+     * Teste para método Obtem Texto da classe DV_URI
+     */
     @Test
     public void testObtemValorLogicoDvUriThrows1() throws URISyntaxException {
         exception.expect(IllegalArgumentException.class);
@@ -502,16 +516,35 @@ public class ImplementacaoMRTest {
         classe.obtemTexto(idObjeto, 1);
     }
 
+    /**
+     * Teste para método Obtem Texto da classe DV_URI
+     */
     @Test
-    public void testObtemValorLogicoDvUriThrows2() throws URISyntaxException {
+    public void testObtemTextoDvUriThrows2() throws URISyntaxException {
         exception.expect(IllegalArgumentException.class);
         exception.expectMessage("O objeto não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
         classe.obtemTexto(1, 1);
     }
     
+    /**
+     * Teste para método Obtem Texto da classe OPENEHR_TERMINOLOGY_GROUP
+     */
     @Test
-    public void testObtemTextoOpenEhrTerminologyGroupThrows() {
+    public void testObtemTextoOpenEhrTerminologyGroupThrows1() throws URISyntaxException {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("O campo não exite!");
+        ImplementacaoMR classe = new ImplementacaoMR();
+        int idObjeto = classe.adicionaOpenEhrTerminologyGroup("", "", "", "", "", "", "", "", "", "", ""
+                                                , "", "", "", "");
+        classe.obtemTexto(idObjeto, 1);
+    }
+    
+    /**
+     * Teste para método Obtem Texto da classe OPENEHR_TERMINOLOGY_GROUP 
+     */
+    @Test
+    public void testObtemTextoOpenEhrTerminologyGroupThrows2() {
         exception.expect(IllegalArgumentException.class);
         exception.expectMessage("O objeto não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
