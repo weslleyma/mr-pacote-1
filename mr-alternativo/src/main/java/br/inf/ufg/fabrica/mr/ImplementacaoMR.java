@@ -1361,6 +1361,23 @@ public class ImplementacaoMR implements ModeloDeReferencia {
     private Map<Integer, Integer> idIndiceCapability = new HashMap<Integer, Integer>();
     private ArrayList<Object> listCapability = new ArrayList<Object>();
 
+    /**
+     * Estruturas de dados utilizada para armazenar uma instância de OBJECT_ID
+     *
+     * Na estrutura #objectID devem ser inseridos 2 objetos, sendo todos Inteiros:
+     * ID único do objeto, inteiro.
+     * Ex.: 0, 3"
+     *
+     * O #idIndiceObjectID que tem por função, mapear o ID do objeto com o
+     * índice dele na lista de objetos #objectID. O objetivo de agilizar a busca de objetos.
+     *
+     * Na estrutura #listObjectID devem ser inseridos no mínimo 2 objetos Inteiros:
+     * Quantidade de itens e o valor dos índices de #objectID.
+     * Ex.: 1, 10
+     */
+    private ArrayList<Object> objectID = new ArrayList<Object>();
+    private Map<Integer, Integer> idIndiceObjectId = new HashMap<Integer, Integer>();
+    private ArrayList<Object> listObjectId = new ArrayList<Object>();
 
     /**
      * Método Construtor da Classe.
@@ -2063,6 +2080,20 @@ public class ImplementacaoMR implements ModeloDeReferencia {
                 else{
                     try{
                         return (Integer) this.archetyped.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo inteiro!");
+                    }
+                }
+            }
+            else if ( this.idTipo.get(id) == OBJECT_ID) {
+                int idIndice = this.idIndiceAddress.get(id);
+                if ( campo != 0 ) {
+                    throw new IllegalArgumentException("O campo não exite!");
+                }
+                else{
+                    try{
+                        return (Integer) this.address.get(idIndice + campo + 1);
                     }
                     catch (Exception e) {
                         throw new IllegalArgumentException("O campo não é do tipo inteiro!");
@@ -3468,6 +3499,27 @@ public int adicionaAddress(int item_structure) {
         
         this.idIndiceCapability.put(idObjeto, indiceObjInserido);
         this.idTipo.put(idObjeto, CAPABILITY);
+        this.idObjeto++;
+        return idObjeto;
+    }
+    
+    /**
+     * Adiciona a instancia de OBEJECT_ID
+     *
+     * @param value
+     * 
+     * @return id do objeto inserido
+     */
+public int adicionaObjectId(int value) {
+
+        int idObjeto = this.idObjeto;
+        this.objectID.add(idObjeto);
+        int indiceObjInserido = this.objectID.size()-1;
+
+        this.objectID.add(value);
+
+        this.idIndiceObjectId.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, OBJECT_ID);
         this.idObjeto++;
         return idObjeto;
     }
