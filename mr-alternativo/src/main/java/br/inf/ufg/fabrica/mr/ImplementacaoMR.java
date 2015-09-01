@@ -1853,7 +1853,20 @@ public class ImplementacaoMR implements ModeloDeReferencia {
                     }
                 }
             }
-
+            else if ( this.idTipo.get(id) == DV_PARSABLE) {
+                int idIndice = this.idIndiceDvParsable.get(id);
+                if ( campo < 0 || campo > 3 ) {
+                    throw new IllegalArgumentException("O campo não existe!");
+                }
+                else{
+                    try{
+                        return (String) this.dvParsable.get(idIndice + campo + 1);
+                    }
+                    catch (Exception e) {
+                        throw new IllegalArgumentException("O campo não é do tipo texto!");
+                    }
+                }
+            }
         }
         return null;
     }
@@ -2650,7 +2663,19 @@ public class ImplementacaoMR implements ModeloDeReferencia {
      * estrutura.
      */
     public int adicionaDvParsable(String valor, String formalismo) {
-        return 0;
+        int idObjeto = this.idObjeto;
+        this.dvParsable.add(idObjeto);
+        int indiceObjInserido = this.dvParsable.size()-1;
+        
+        this.dvParsable.add(valor);
+        this.dvParsable.add(formalismo);
+        this.dvParsable.add(null);
+        this.dvParsable.add(null);
+        
+        this.idIndiceDvParsable.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, DV_PARSABLE);
+        this.idObjeto++;
+        return idObjeto;
     }
 
     /**
@@ -2672,7 +2697,20 @@ public class ImplementacaoMR implements ModeloDeReferencia {
             String codePhraseLanguage,
             String valor,
             String formalismo) {
-        return 0;
+        
+        int idObjeto = this.idObjeto;
+        this.dvParsable.add(idObjeto);
+        int indiceObjInserido = this.dvParsable.size()-1;
+        
+        this.dvParsable.add(codePhraseCharSet);
+        this.dvParsable.add(codePhraseLanguage);
+        this.dvParsable.add(valor);
+        this.dvParsable.add(formalismo);
+        
+        this.idIndiceDvParsable.put(idObjeto, indiceObjInserido);
+        this.idTipo.put(idObjeto, DV_PARSABLE);
+        this.idObjeto++;
+        return idObjeto;
     }
 
     /**
