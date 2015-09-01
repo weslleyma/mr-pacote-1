@@ -619,7 +619,7 @@ public class ImplementacaoMRTest {
         exception.expect(IllegalArgumentException.class);
         exception.expectMessage("O objeto não existe!");
         ImplementacaoMR classe = new ImplementacaoMR();
-        classe.obtemTexto(1, 1);
+        classe.obtemTexto(1, 1); 
     }
 
     

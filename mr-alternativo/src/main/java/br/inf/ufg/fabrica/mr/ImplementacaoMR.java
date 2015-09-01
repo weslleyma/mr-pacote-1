@@ -3737,6 +3737,6 @@ public int adicionaUidBasedId(int value) {
         this.idIndiceuidBasesId.put(idObjeto, indiceObjInserido);
         this.idTipo.put(idObjeto, UID_BASED_ID);
         this.idObjeto++;
-        return idObjeto;
+        return idObjeto; 
     }
 }
